@@ -87,15 +87,6 @@ export const Footer = () => {
                 <i className="ri-twitter-x-fill text-xl"></i>
               </a>
             </div>
-            <span className="text-gray-600 mx-3">|</span>
-            <a 
-              href="https://readdy.ai/?ref=logo" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="text-gray-400 hover:text-[#FF6B35] transition-colors text-sm cursor-pointer"
-            >
-              Powered by Readdy
-            </a>
           </div>
         </div>
       </div>

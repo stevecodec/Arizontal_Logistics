@@ -18,9 +18,20 @@ export const navigatePromise = new Promise<NavigateFunction>((resolve) => {
 export function AppRoutes() {
   const element = useRoutes(routes);
   const navigate = useNavigate();
+  
   useEffect(() => {
     window.REACT_APP_NAVIGATE = navigate;
-    navigateResolver(window.REACT_APP_NAVIGATE);
-  });
+    if (navigateResolver) {
+      navigateResolver(window.REACT_APP_NAVIGATE);
+    }
+    
+    return () => {
+      // Cleanup: remove navigate from window on unmount
+      if (window.REACT_APP_NAVIGATE) {
+        delete window.REACT_APP_NAVIGATE;
+      }
+    };
+  }, [navigate]);
+  
   return element;
 }

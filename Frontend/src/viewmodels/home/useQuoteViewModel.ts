@@ -1,6 +1,6 @@
 // Quote Form ViewModel
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { QuoteFormData } from '@/models/types';
 import { EQUIPMENT_TYPES } from '@/constants/home';
 
@@ -17,6 +17,16 @@ export const useQuoteViewModel = () => {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
 
   const updateFormField = <K extends keyof QuoteFormData>(
     field: K,
@@ -31,10 +41,15 @@ export const useQuoteViewModel = () => {
 
     try {
       // Future: API call to submit quote request
-      console.log('Submitting quote:', formData);
+      // TODO: Replace with actual API call
+      // const response = await submitQuoteRequest(formData);
       
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      // Simulate API call with proper cleanup
+      await new Promise<void>((resolve) => {
+        timeoutRef.current = setTimeout(() => {
+          resolve();
+        }, 1000);
+      });
       
       // Reset form after successful submission
       setFormData({
@@ -44,9 +59,14 @@ export const useQuoteViewModel = () => {
         weight: '',
       });
     } catch (error) {
-      console.error('Error submitting quote:', error);
+      // Error handling - in production, use proper error logging service
+      if (process.env.NODE_ENV === 'development') {
+        console.error('Error submitting quote:', error);
+      }
+      // TODO: Show user-friendly error message
     } finally {
       setIsSubmitting(false);
+      timeoutRef.current = null;
     }
   };
 

@@ -1,6 +1,6 @@
 // Custom Hook for Scroll Detection
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 /**
  * Hook to detect scroll position
@@ -15,8 +15,13 @@ export const useScroll = (threshold: number = 50): boolean => {
       setScrolled(window.scrollY > threshold);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    // Set initial state
+    handleScroll();
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, [threshold]);
 
   return scrolled;

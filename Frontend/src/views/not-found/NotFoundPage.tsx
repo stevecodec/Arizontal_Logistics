@@ -2,7 +2,7 @@
 
 import { useLocation } from 'react-router-dom';
 
-export const NotFoundPage = () => {
+const NotFoundPage = () => {
   const location = useLocation();
   
   return (
@@ -18,3 +18,5 @@ export const NotFoundPage = () => {
     </div>
   );
 };
+
+export default NotFoundPage;

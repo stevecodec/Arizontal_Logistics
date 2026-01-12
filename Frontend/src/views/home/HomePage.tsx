@@ -11,7 +11,7 @@ import { QuickQuote } from '@/views/home/components/QuickQuote';
 import { StatsBar } from '@/views/home/components/StatsBar';
 import { Footer } from '@/views/shared/Footer';
 
-export const HomePage = () => {
+const HomePage = () => {
   return (
     <div className="min-h-screen">
       <Header />
@@ -29,3 +29,5 @@ export const HomePage = () => {
     </div>
   );
 };
+
+export default HomePage;
