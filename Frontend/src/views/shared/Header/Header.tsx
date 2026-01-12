@@ -3,6 +3,7 @@
 import { useScroll } from '@/hooks/useScroll';
 import { useNavigation } from '@/hooks/useNavigation';
 import { APP_NAME, APP_SUBTITLE, NAVIGATION_ITEMS } from '@/constants';
+import { getImageUrl } from '@/data/services/imageService';
 
 export const Header = () => {
   const scrolled = useScroll();
@@ -13,9 +14,11 @@ export const Header = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center space-x-2">
-            <div className="w-9 h-9 bg-gradient-to-br from-orange-500 to-orange-600 rounded-lg flex items-center justify-center">
-              <i className="ri-truck-line text-lg text-white"></i>
-            </div>
+            <img 
+              src={getImageUrl('logo')}
+              alt={`${APP_NAME} Logo`}
+              className="h-9 w-auto object-contain"
+            />
             <div>
               <h1 className={`text-sm font-bold ${scrolled ? 'text-slate-900' : 'text-white'}`}>{APP_NAME}</h1>
               <p className={`text-xs ${scrolled ? 'text-slate-600' : 'text-slate-300'}`}>{APP_SUBTITLE}</p>

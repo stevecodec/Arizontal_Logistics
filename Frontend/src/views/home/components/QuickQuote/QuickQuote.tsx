@@ -33,7 +33,7 @@ export const QuickQuote = () => {
                         placeholder="Los Angeles, CA"
                         value={formData.originCity}
                         onChange={(e) => updateFormField('originCity', e.target.value)}
-                        className="w-full px-4 py-3 border border-slate-300 rounded-sm focus:ring-2 focus:ring-orange-500 focus:border-transparent text-sm"
+                        className="w-full px-4 py-3 border border-slate-300 rounded-sm focus:outline-none focus:border-orange-500 text-sm"
                         required
                       />
                     </div>
@@ -44,7 +44,7 @@ export const QuickQuote = () => {
                         placeholder="New York, NY"
                         value={formData.destinationCity}
                         onChange={(e) => updateFormField('destinationCity', e.target.value)}
-                        className="w-full px-4 py-3 border border-slate-300 rounded-sm focus:ring-2 focus:ring-orange-500 focus:border-transparent text-sm"
+                        className="w-full px-4 py-3 border border-slate-300 rounded-sm focus:outline-none focus:border-orange-500 text-sm"
                         required
                       />
                     </div>
@@ -56,7 +56,7 @@ export const QuickQuote = () => {
                       <select 
                         value={formData.equipmentType}
                         onChange={(e) => updateFormField('equipmentType', e.target.value)}
-                        className="w-full px-4 py-3 border border-slate-300 rounded-sm focus:ring-2 focus:ring-orange-500 focus:border-transparent text-sm"
+                        className="w-full px-4 py-3 border border-slate-300 rounded-sm focus:outline-none focus:border-orange-500 text-sm"
                         required
                       >
                         {equipmentTypes.map((type) => (
@@ -71,7 +71,7 @@ export const QuickQuote = () => {
                         placeholder="40,000"
                         value={formData.weight}
                         onChange={(e) => updateFormField('weight', e.target.value)}
-                        className="w-full px-4 py-3 border border-slate-300 rounded-sm focus:ring-2 focus:ring-orange-500 focus:border-transparent text-sm"
+                        className="w-full px-4 py-3 border border-slate-300 rounded-sm focus:outline-none focus:border-orange-500 text-sm"
                         required
                       />
                     </div>

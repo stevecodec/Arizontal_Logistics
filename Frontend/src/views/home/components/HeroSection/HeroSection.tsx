@@ -1,18 +1,21 @@
 // Hero Section Component (View Layer)
 
 import { useNavigation } from '@/hooks/useNavigation';
-import { getImageUrl } from '@/data/services/imageService';
+import heroVideo from '@/assets/videos/herosection video.mp4';
 
 export const HeroSection = () => {
   const { handleGetQuote } = useNavigation();
 
   return (
     <div className="relative h-screen w-full overflow-hidden">
-      {/* Background Image */}
+      {/* Background Video */}
       <div className="absolute inset-0">
-        <img 
-          src={getImageUrl('hero')}
-          alt="Professional truck driver in cab"
+        <video 
+          src={heroVideo}
+          autoPlay
+          loop
+          muted
+          playsInline
           className="w-full h-full object-cover"
         />
       </div>
@@ -30,7 +33,7 @@ export const HeroSection = () => {
             </h2>
 
             <p className="text-sm lg:text-base text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-              Delivering exceptional logistics services with innovative, tailored freight solutions designed for your success.
+              Delivering exceptional logistics services, tailored freight solutions designed for your success.
             </p>
 
             {/* CTA Buttons */}

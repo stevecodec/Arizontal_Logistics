@@ -10,7 +10,10 @@ import { SECTION_IDS } from '@/constants';
  */
 export const useNavigation = () => {
   const handleGetQuote = useCallback(() => {
-    scrollToElement(SECTION_IDS.QUICK_QUOTE);
+    const footer = document.querySelector('footer');
+    if (footer) {
+      footer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }, []);
 
   const handleScrollToSection = useCallback((sectionId: string) => {

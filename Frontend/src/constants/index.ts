@@ -1,7 +1,7 @@
 // Application Constants
 
 export const APP_NAME = 'Arizontal';
-export const APP_SUBTITLE = 'Transportation Group';
+export const APP_SUBTITLE = 'Logistics';
 export const COMPANY_NAME = 'Arizontal Logistics';
 
 // Contact Information
