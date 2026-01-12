@@ -1,0 +1,46 @@
+// Header Component (View Layer)
+
+import { useScroll } from '@/hooks/useScroll';
+import { useNavigation } from '@/hooks/useNavigation';
+import { APP_NAME, APP_SUBTITLE, NAVIGATION_ITEMS } from '@/constants';
+
+export const Header = () => {
+  const scrolled = useScroll();
+  const { handleGetQuote } = useNavigation();
+
+  return (
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-lg' : 'bg-transparent'}`}>
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          <div className="flex items-center space-x-2">
+            <div className="w-9 h-9 bg-gradient-to-br from-orange-500 to-orange-600 rounded-lg flex items-center justify-center">
+              <i className="ri-truck-line text-lg text-white"></i>
+            </div>
+            <div>
+              <h1 className={`text-sm font-bold ${scrolled ? 'text-slate-900' : 'text-white'}`}>{APP_NAME}</h1>
+              <p className={`text-xs ${scrolled ? 'text-slate-600' : 'text-slate-300'}`}>{APP_SUBTITLE}</p>
+            </div>
+          </div>
+          
+          <div className="hidden md:flex items-center space-x-6">
+            {NAVIGATION_ITEMS.map((item) => (
+              <a 
+                key={item.href}
+                href={item.href} 
+                className={`text-xs font-medium hover:text-orange-500 transition-colors whitespace-nowrap ${scrolled ? 'text-slate-900' : 'text-white'}`}
+              >
+                {item.label}
+              </a>
+            ))}
+            <button 
+              onClick={handleGetQuote}
+              className="px-4 py-1.5 bg-gradient-to-r from-orange-500 to-orange-600 text-white text-xs font-semibold rounded hover:from-orange-600 hover:to-orange-700 transition-all whitespace-nowrap cursor-pointer shadow-lg"
+            >
+              Make an Enquiry
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+  );
+};

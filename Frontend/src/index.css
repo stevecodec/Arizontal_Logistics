@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-size: 14px; /* Reduced from default 16px for more professional look */
+  }
+  
+  @media (min-width: 1024px) {
+    html {
+      font-size: 15px; /* Slightly larger on desktop */
+    }
+  }
+}

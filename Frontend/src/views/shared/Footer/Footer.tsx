@@ -1,0 +1,104 @@
+// Footer Component (View Layer)
+
+import { Link } from 'react-router-dom';
+import { CONTACT_INFO, FOOTER_LINKS, SOCIAL_LINKS } from '@/constants';
+import { getImageUrl } from '@/data/services/imageService';
+
+export const Footer = () => {
+  return (
+    <footer className="bg-[#1A2332] text-white relative overflow-hidden">
+      <div className="absolute bottom-0 left-0 right-0 text-[180px] font-bold text-white/5 text-center leading-none pb-8 select-none pointer-events-none">
+        ARIZONTAL
+      </div>
+
+      <div className="container mx-auto px-6 py-16 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+          <div>
+            <img
+              src={getImageUrl('logo')}
+              alt="Arizontal Logistics"
+              className="h-12 w-auto object-contain mb-4"
+            />
+            <p className="text-gray-400 text-sm leading-relaxed">
+              Trusted logistics solutions connecting North Carolina to the nation with reliable freight brokerage and carrier services.
+            </p>
+          </div>
+
+          <div>
+            <h4 className="text-white text-sm font-semibold mb-4 pb-2 border-b-2 border-[#FF6B35] inline-block">Quick Links</h4>
+            <ul className="space-y-2 mt-4">
+              {FOOTER_LINKS.quickLinks.map((link) => (
+                <li key={link.to}>
+                  <Link to={link.to} className="text-gray-400 hover:text-[#FF6B35] transition-colors text-sm cursor-pointer">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-white text-sm font-semibold mb-4 pb-2 border-b-2 border-[#FF6B35] inline-block">Contact Info</h4>
+            <ul className="space-y-3 mt-4">
+              <li className="flex items-start">
+                <i className="ri-phone-line text-[#FF6B35] mt-1 mr-3"></i>
+                <span className="text-gray-400 text-sm">{CONTACT_INFO.phone}</span>
+              </li>
+              <li className="flex items-start">
+                <i className="ri-mail-line text-[#FF6B35] mt-1 mr-3"></i>
+                <span className="text-gray-400 text-sm">{CONTACT_INFO.email}</span>
+              </li>
+              <li className="flex items-start">
+                <i className="ri-map-pin-line text-[#FF6B35] mt-1 mr-3"></i>
+                <span className="text-gray-400 text-sm">{CONTACT_INFO.address}</span>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-white text-sm font-semibold mb-4 pb-2 border-b-2 border-[#FF6B35] inline-block">Newsletter</h4>
+            <p className="text-gray-400 text-sm mb-4 mt-4">Stay updated with our latest news and offers</p>
+            <div className="flex">
+              <input
+                type="email"
+                placeholder="Your email"
+                className="flex-1 px-4 py-2 rounded-l-lg bg-white/10 border border-white/20 text-white text-sm focus:outline-none focus:border-[#FF6B35]"
+              />
+              <button className="bg-[#FF6B35] px-4 py-2 rounded-r-lg hover:bg-[#E55A28] transition-colors whitespace-nowrap cursor-pointer">
+                <i className="ri-send-plane-fill"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-gray-400 text-sm mb-4 md:mb-0">
+            © 2025 Arizontal Logistics. All rights reserved.
+          </p>
+          <div className="flex items-center space-x-2">
+            <div className="flex space-x-4">
+              <a href={SOCIAL_LINKS.linkedin} className="text-gray-400 hover:text-[#FF6B35] transition-colors cursor-pointer">
+                <i className="ri-linkedin-fill text-xl"></i>
+              </a>
+              <a href={SOCIAL_LINKS.facebook} className="text-gray-400 hover:text-[#FF6B35] transition-colors cursor-pointer">
+                <i className="ri-facebook-fill text-xl"></i>
+              </a>
+              <a href={SOCIAL_LINKS.twitter} className="text-gray-400 hover:text-[#FF6B35] transition-colors cursor-pointer">
+                <i className="ri-twitter-x-fill text-xl"></i>
+              </a>
+            </div>
+            <span className="text-gray-600 mx-3">|</span>
+            <a 
+              href="https://readdy.ai/?ref=logo" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-gray-400 hover:text-[#FF6B35] transition-colors text-sm cursor-pointer"
+            >
+              Powered by Readdy
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+};

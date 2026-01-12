@@ -1,0 +1,133 @@
+// Home Page Constants
+
+import { City, Service, ServiceCard, Stat } from '@/models/types';
+import intermodalTabsImage from '@/assets/images/intermodal-tabs.png';
+import truckloadTabsImage from '@/assets/images/truckload-tabs.png';
+import ltlTabsImage from '@/assets/images/ltl-tabs.png';
+import dcsTabsImage from '@/assets/images/dcs-tabs.png';
+import fmsTabsImage from '@/assets/images/fms-tabs.png';
+import specialTabsImage from '@/assets/images/special-tabs.png';
+import arizontal360RenderImage from '@/assets/images/arizontal360-render.png';
+import carrier360RenderImage from '@/assets/images/carrier360-render.png';
+
+// Cities for Trust Indicators Map
+export const CITIES: City[] = [
+  { name: 'Seattle', state: 'WA', left: '12%', top: '15%', color: 'orange' },
+  { name: 'Portland', state: 'OR', left: '10%', top: '22%', color: 'orange' },
+  { name: 'San Francisco', state: 'CA', left: '8%', top: '42%', color: 'orange' },
+  { name: 'Los Angeles', state: 'CA', left: '11%', top: '52%', color: 'orange' },
+  { name: 'Phoenix', state: 'AZ', left: '18%', top: '55%', color: 'orange' },
+  { name: 'Denver', state: 'CO', left: '28%', top: '42%', color: 'orange' },
+  { name: 'Dallas', state: 'TX', left: '40%', top: '60%', color: 'orange' },
+  { name: 'Houston', state: 'TX', left: '42%', top: '68%', color: 'orange' },
+  { name: 'Minneapolis', state: 'MN', left: '48%', top: '25%', color: 'orange' },
+  { name: 'Chicago', state: 'IL', left: '54%', top: '38%', color: 'orange' },
+  { name: 'Detroit', state: 'MI', left: '58%', top: '32%', color: 'orange' },
+  { name: 'Atlanta', state: 'GA', left: '62%', top: '58%', color: 'orange' },
+  { name: 'Miami', state: 'FL', left: '68%', top: '75%', color: 'orange' },
+  { name: 'Charlotte', state: 'NC', left: '66%', top: '52%', color: 'orange' },
+  { name: 'Washington DC', state: 'DC', left: '70%', top: '45%', color: 'orange' },
+  { name: 'Philadelphia', state: 'PA', left: '72%', top: '42%', color: 'orange' },
+  { name: 'New York', state: 'NY', left: '74%', top: '38%', color: 'orange' },
+  { name: 'Boston', state: 'MA', left: '76%', top: '32%', color: 'orange' },
+];
+
+// Capacity Services
+export const CAPACITY_SERVICES: Service[] = [
+  {
+    title: 'Intermodal',
+    description: 'Take advantage of the cost-effective and sustainable solutions from North America\'s leading intermodal provider.',
+    image: intermodalTabsImage,
+    link: '/arizontal-logistics',
+  },
+  {
+    title: 'Truckload',
+    description: 'Move over-the-road shipments with flexibility and efficiency through our drop-and-hook solution.',
+    image: truckloadTabsImage,
+    link: '/arizontal-logistics',
+  },
+  {
+    title: 'Less-Than-Truckload',
+    description: 'Receive access to nationwide reach, visibility into performance, streamline shipments and more with LTL.',
+    image: ltlTabsImage,
+    link: '/arizontal-logistics',
+  },
+  {
+    title: 'Dedicated Contract Services',
+    description: 'Get best-in-class safety, route planning and optimization capabilities for your dedicated fleet.',
+    image: dcsTabsImage,
+    link: '/arizontal-logistics',
+  },
+  {
+    title: 'Final Mile Services',
+    description: 'We\'ve got you covered from the first mile all the way through last-mile deliveries to homes and job sites.',
+    image: fmsTabsImage,
+    link: '/arizontal-logistics',
+  },
+  {
+    title: 'Brokerage Services',
+    description: 'Get the capacity you need for your over-the-road freight, supported by thousands of qualified carriers.',
+    image: specialTabsImage,
+    link: '/arizontal-logistics',
+  },
+];
+
+// Service Cards
+export const SERVICE_CARDS: ServiceCard[] = [
+  {
+    title: 'Arizontal 360°',
+    subtitle: 'For Shippers',
+    features: [
+      'Multimodal capacity options',
+      'Easily quote and book shipments',
+      'Access to thousands of qualified carriers',
+      '24/7 tracking',
+      'API and EDI integrations',
+    ],
+    image: arizontal360RenderImage,
+  },
+  {
+    title: 'Carrier 360®',
+    subtitle: 'For Carriers',
+    features: [
+      'Free load board',
+      'Quick pay',
+      'Personalized load recommendations',
+      'Visibility to shipper reviews',
+      'Robust rewards program',
+    ],
+    image: carrier360RenderImage,
+  },
+];
+
+// Statistics
+export const STATS: Stat[] = [
+  {
+    icon: 'ri-truck-line',
+    value: '500+',
+    label: 'Active Trucks',
+  },
+  {
+    icon: 'ri-map-pin-line',
+    value: '48',
+    label: 'States Covered',
+  },
+  {
+    icon: 'ri-time-line',
+    value: '24/7',
+    label: 'Support Available',
+  },
+  {
+    icon: 'ri-shield-check-line',
+    value: '100%',
+    label: 'Insured Cargo',
+  },
+];
+
+// Equipment Types for Quote Form
+export const EQUIPMENT_TYPES = [
+  'Dry Van',
+  'Flatbed',
+  'Reefer',
+  'Step Deck',
+] as const;
