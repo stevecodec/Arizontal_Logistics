@@ -1,4 +1,4 @@
-// Capacity Section Component (View Layer)
+// Why Choose Us Section Component (View Layer)
 
 import { useNavigation } from '@/hooks/useNavigation';
 import { CAPACITY_SERVICES } from '@/constants/home';
@@ -6,55 +6,49 @@ import { CAPACITY_SERVICES } from '@/constants/home';
 export const CapacitySection = () => {
   const { handleGetQuote } = useNavigation();
 
-  return (
-    <div className="py-16 bg-slate-900">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-xl lg:text-2xl font-bold text-white mb-4">
-            Capacity to Deliver
-          </h2>
-          <p className="text-sm text-slate-300 max-w-3xl mx-auto">
-            Make shipping your freight simple with our transportation expertise and multimodal services. You can get customized solutions that make sense for your business.
-          </p>
-        </div>
+  // Show first 3 services for the Why Choose Us section
+  const displayedServices = CAPACITY_SERVICES.slice(0, 3);
 
-        {/* Services Tabs */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {CAPACITY_SERVICES.map((service, index) => (
-            <div 
-              key={index}
-              className="group relative bg-slate-800 rounded-sm overflow-hidden hover:bg-slate-700 transition-all duration-300 cursor-pointer"
-            >
-              <div className="p-8">
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-base font-bold text-white">{service.title}</h3>
-                  <i className="ri-arrow-right-line text-white text-lg opacity-0 group-hover:opacity-100 transition-opacity"></i>
-                </div>
-                <p className="text-slate-300 text-sm mb-6 leading-relaxed">
-                  {service.description}
-                </p>
-                <div className="w-full h-32 flex items-center justify-center">
+  return (
+    <div className="py-8 bg-white border-t border-gray-200">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        {/* Two Column Layout */}
+        <div className="grid lg:grid-cols-2 gap-8 items-start">
+          {/* Left Column - Why Choose Us Content */}
+          <div className="lg:pt-[200px]">
+            <h2 className="text-2xl lg:text-3xl font-bold text-slate-900 mb-3">
+              <span className="border-b-2 border-theme-primary pb-1">Why Choose</span> Us?
+            </h2>
+            <p className="text-sm text-slate-600 mb-8">
+              Make shipping your freight simple with our transportation expertise and multimodal services. You can get customized solutions that make sense for your business.
+            </p>
+          </div>
+
+          {/* Right Column - Stacked Cards */}
+          <div className="space-y-4">
+            {displayedServices.map((service, index) => (
+              <div
+                key={index}
+                className="group relative rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+              >
+                <div className="relative h-48">
                   <img 
                     src={service.image}
                     alt={service.title}
-                    className="w-full h-full object-contain"
+                    className="w-full h-full object-cover"
                   />
+                  {/* Overlay with title */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent">
+                    <div className="absolute bottom-0 left-0 right-0 p-4">
+                      <h3 className="text-white text-lg font-bold">
+                        {service.title}
+                      </h3>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-theme-primary to-theme-dark transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
-            </div>
-          ))}
-        </div>
-
-        {/* CTA Button at Bottom */}
-        <div className="text-center">
-          <button 
-            onClick={handleGetQuote}
-            className="px-8 py-4 bg-gradient-to-r from-theme-primary to-theme-dark text-white font-semibold rounded-sm hover:from-theme-dark hover:to-theme-darker transition-all whitespace-nowrap cursor-pointer shadow-xl"
-          >
-            Ship with Us
-          </button>
+            ))}
+          </div>
         </div>
       </div>
     </div>
