@@ -3,7 +3,6 @@
 import { getImageUrl } from '@/data/services/imageService';
 
 export const TrustIndicators = () => {
-
   return (
     <div className="relative overflow-hidden">
       {/* Fixed Background Image */}

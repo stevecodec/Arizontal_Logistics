@@ -95,11 +95,11 @@ export const CareersTeaser = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-8">
-          <h2 className="text-2xl lg:text-3xl font-bold text-slate-900 mb-4">
-            People You Trust
+          <h2 className="text-xl lg:text-2xl font-bold text-slate-900 mb-4">
+            <span className="border-b-2 border-theme-primary pb-1">People You</span> Trust
           </h2>
           <p className="text-sm text-slate-600 max-w-3xl mx-auto mb-12">
-            Meet our top-rated drivers - highly disciplined and reliable professionals committed to delivering excellence on every route.
+            Meet our top-rated drivers - highly disciplined and reliable Carriers committed to delivering excellence on every route.
           </p>
         </div>
 

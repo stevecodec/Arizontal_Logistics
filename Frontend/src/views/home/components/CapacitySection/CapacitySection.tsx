@@ -39,7 +39,7 @@ export const CapacitySection = () => {
               <span className="border-b-2 border-theme-primary pb-1">Why Choose</span> Us?
             </h2>
             <p className="text-sm text-slate-600 mb-8">
-              Make shipping your freight simple with our transportation expertise and multimodal services. You can get customized solutions that make sense for your business.
+              Make shipping your freight simple with our coordinated carriers & optimized routes. Our trucking thrives on this <span className="text-theme-primary font-semibold">three pillars</span>.
             </p>
           </div>
 
