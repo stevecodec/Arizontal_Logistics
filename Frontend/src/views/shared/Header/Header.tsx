@@ -30,14 +30,14 @@ export const Header = () => {
               <a 
                 key={item.href}
                 href={item.href} 
-                className={`text-xs font-medium hover:text-orange-500 transition-colors whitespace-nowrap ${scrolled ? 'text-slate-900' : 'text-white'}`}
+                className={`text-xs font-medium hover:text-theme-primary transition-colors whitespace-nowrap ${scrolled ? 'text-slate-900' : 'text-white'}`}
               >
                 {item.label}
               </a>
             ))}
             <button 
               onClick={handleGetQuote}
-              className="px-4 py-1.5 bg-gradient-to-r from-orange-500 to-orange-600 text-white text-xs font-semibold rounded hover:from-orange-600 hover:to-orange-700 transition-all whitespace-nowrap cursor-pointer shadow-lg"
+              className="px-4 py-1.5 bg-gradient-to-r from-theme-primary to-theme-dark text-white text-xs font-semibold rounded hover:from-theme-dark hover:to-theme-darker transition-all whitespace-nowrap cursor-pointer shadow-lg"
             >
               Make an Enquiry
             </button>

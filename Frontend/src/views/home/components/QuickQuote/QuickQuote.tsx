@@ -7,7 +7,7 @@ export const QuickQuote = () => {
   const { formData, isSubmitting, equipmentTypes, updateFormField, handleSubmit } = useQuoteViewModel();
 
   return (
-    <section id={SECTION_IDS.QUICK_QUOTE} className="py-20 bg-gradient-to-br from-slate-50 to-orange-50">
+    <section id={SECTION_IDS.QUICK_QUOTE} className="py-20 bg-gradient-to-br from-slate-50 to-theme-bg-lighter">
       <div className="relative -mt-32 z-20">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="bg-white rounded shadow-2xl overflow-hidden">
@@ -33,7 +33,7 @@ export const QuickQuote = () => {
                         placeholder="Los Angeles, CA"
                         value={formData.originCity}
                         onChange={(e) => updateFormField('originCity', e.target.value)}
-                        className="w-full px-4 py-3 border border-slate-300 rounded-sm focus:outline-none focus:border-orange-500 text-sm"
+                        className="w-full px-4 py-3 border border-slate-300 rounded-sm focus:outline-none focus:border-theme-primary text-sm"
                         required
                       />
                     </div>
@@ -44,7 +44,7 @@ export const QuickQuote = () => {
                         placeholder="New York, NY"
                         value={formData.destinationCity}
                         onChange={(e) => updateFormField('destinationCity', e.target.value)}
-                        className="w-full px-4 py-3 border border-slate-300 rounded-sm focus:outline-none focus:border-orange-500 text-sm"
+                        className="w-full px-4 py-3 border border-slate-300 rounded-sm focus:outline-none focus:border-theme-primary text-sm"
                         required
                       />
                     </div>
@@ -56,7 +56,7 @@ export const QuickQuote = () => {
                       <select 
                         value={formData.equipmentType}
                         onChange={(e) => updateFormField('equipmentType', e.target.value)}
-                        className="w-full px-4 py-3 border border-slate-300 rounded-sm focus:outline-none focus:border-orange-500 text-sm"
+                        className="w-full px-4 py-3 border border-slate-300 rounded-sm focus:outline-none focus:border-theme-primary text-sm"
                         required
                       >
                         {equipmentTypes.map((type) => (
@@ -71,7 +71,7 @@ export const QuickQuote = () => {
                         placeholder="40,000"
                         value={formData.weight}
                         onChange={(e) => updateFormField('weight', e.target.value)}
-                        className="w-full px-4 py-3 border border-slate-300 rounded-sm focus:outline-none focus:border-orange-500 text-sm"
+                        className="w-full px-4 py-3 border border-slate-300 rounded-sm focus:outline-none focus:border-theme-primary text-sm"
                         required
                       />
                     </div>
@@ -80,7 +80,7 @@ export const QuickQuote = () => {
                   <button 
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full px-6 py-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold rounded-sm hover:from-orange-600 hover:to-orange-700 transition-all shadow-lg hover:shadow-xl whitespace-nowrap cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full px-6 py-4 bg-gradient-to-r from-theme-primary to-theme-dark text-white font-semibold rounded-sm hover:from-theme-dark hover:to-theme-darker transition-all shadow-lg hover:shadow-xl whitespace-nowrap cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? 'Submitting...' : 'Get Instant Quote'}
                   </button>
@@ -93,8 +93,8 @@ export const QuickQuote = () => {
                 
                 <div className="space-y-6">
                   <div className="flex items-start space-x-3">
-                    <div className="w-8 h-8 bg-orange-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <i className="ri-shield-check-line text-base text-orange-400"></i>
+                    <div className="w-8 h-8 bg-theme-primary/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <i className="ri-shield-check-line text-base text-theme-secondary"></i>
                     </div>
                     <div>
                       <h5 className="text-sm font-semibold mb-1">Fully Insured</h5>
@@ -103,8 +103,8 @@ export const QuickQuote = () => {
                   </div>
 
                   <div className="flex items-start space-x-3">
-                    <div className="w-8 h-8 bg-orange-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <i className="ri-time-line text-base text-orange-400"></i>
+                    <div className="w-8 h-8 bg-theme-primary/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <i className="ri-time-line text-base text-theme-secondary"></i>
                     </div>
                     <div>
                       <h5 className="text-sm font-semibold mb-1">On-Time Delivery</h5>
@@ -113,8 +113,8 @@ export const QuickQuote = () => {
                   </div>
 
                   <div className="flex items-start space-x-3">
-                    <div className="w-8 h-8 bg-orange-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <i className="ri-map-pin-line text-base text-orange-400"></i>
+                    <div className="w-8 h-8 bg-theme-primary/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <i className="ri-map-pin-line text-base text-theme-secondary"></i>
                     </div>
                     <div>
                       <h5 className="text-sm font-semibold mb-1">Real-Time Tracking</h5>
@@ -123,8 +123,8 @@ export const QuickQuote = () => {
                   </div>
 
                   <div className="flex items-start space-x-3">
-                    <div className="w-8 h-8 bg-orange-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <i className="ri-customer-service-2-line text-base text-orange-400"></i>
+                    <div className="w-8 h-8 bg-theme-primary/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <i className="ri-customer-service-2-line text-base text-theme-secondary"></i>
                     </div>
                     <div>
                       <h5 className="text-sm font-semibold mb-1">24/7 Support</h5>
@@ -135,7 +135,7 @@ export const QuickQuote = () => {
 
                 <div className="mt-8 pt-8 border-t border-slate-700">
                   <p className="text-xs text-slate-400">Need help? Call us at</p>
-                  <a href="tel:1-800-ARIZONTAL" className="text-lg font-bold text-orange-400 hover:text-orange-300 transition-colors">
+                  <a href="tel:1-800-ARIZONTAL" className="text-lg font-bold text-theme-secondary hover:text-theme-light transition-colors">
                     1-800-ARIZONTAL
                   </a>
                 </div>

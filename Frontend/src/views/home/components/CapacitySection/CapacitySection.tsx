@@ -42,7 +42,7 @@ export const CapacitySection = () => {
                   />
                 </div>
               </div>
-              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-orange-500 to-orange-600 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
+              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-theme-primary to-theme-dark transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
             </div>
           ))}
         </div>
@@ -51,7 +51,7 @@ export const CapacitySection = () => {
         <div className="text-center">
           <button 
             onClick={handleGetQuote}
-            className="px-8 py-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold rounded-sm hover:from-orange-600 hover:to-orange-700 transition-all whitespace-nowrap cursor-pointer shadow-xl"
+            className="px-8 py-4 bg-gradient-to-r from-theme-primary to-theme-dark text-white font-semibold rounded-sm hover:from-theme-dark hover:to-theme-darker transition-all whitespace-nowrap cursor-pointer shadow-xl"
           >
             Ship with Us
           </button>

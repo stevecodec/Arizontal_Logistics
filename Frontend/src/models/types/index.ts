@@ -46,3 +46,13 @@ export interface NavigationItem {
   label: string;
   href: string;
 }
+
+export interface AvailableLoad {
+  id: string;
+  origin: string;
+  destination: string;
+  equipmentType: string;
+  rate: string;
+  distance: string;
+  pickupDate: string;
+}

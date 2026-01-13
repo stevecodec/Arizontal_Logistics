@@ -30,7 +30,7 @@ export const WhyChooseUs = () => {
             {/* Text Content */}
             <div className="order-1 lg:order-2 lg:absolute lg:right-0 lg:top-1/2 lg:-translate-y-1/2 lg:w-[55%] lg:z-10">
               <div className="bg-white lg:shadow-2xl lg:rounded lg:p-10 lg:-ml-20 relative">
-                <div className="absolute top-8 left-10 text-4xl text-orange-500 opacity-20">
+                <div className="absolute top-8 left-10 text-4xl text-theme-primary opacity-20">
                   <i className="ri-double-quotes-l"></i>
                 </div>
                 <div className="relative">

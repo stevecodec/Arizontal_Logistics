@@ -1,5 +1,6 @@
 // Services Overview Component (View Layer)
 
+import { Link } from 'react-router-dom';
 import { SERVICE_CARDS } from '@/constants/home';
 
 export const ServicesOverview = () => {
@@ -8,10 +9,10 @@ export const ServicesOverview = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-8">
-          <h2 className="text-xl lg:text-2xl font-bold text-slate-900 mb-3">
-            Technology that Empowers
+          <h2 className="text-xl lg:text-2xl font-bold text-slate-900 mb-3 pb-2 border-b-2 border-theme-primary inline-block">
+            OUR SERVICES
           </h2>
-          <p className="text-sm text-slate-600 max-w-3xl mx-auto">
+          <p className="text-sm text-slate-600 max-w-3xl mx-auto mt-4">
             Change the way you do business with our platform. We're eliminating inefficiencies by creating one place for you to manage every step of the transportation process.
           </p>
         </div>
@@ -21,14 +22,14 @@ export const ServicesOverview = () => {
           {SERVICE_CARDS.map((service, index) => (
             <div 
               key={index}
-              className="group bg-white p-8 rounded-sm shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer border border-gray-100"
+              className="group bg-white p-8 rounded-sm shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 flex flex-col"
             >
               <div className="flex items-start justify-between mb-6">
-                <div>
+                <div className="flex-1">
                   <h3 className="text-lg font-bold text-slate-900 mb-2">{service.title}</h3>
                   <p className="text-slate-600 text-sm mb-6">{service.subtitle}</p>
                 </div>
-                <div className="w-20 h-20 flex items-center justify-center">
+                <div className="w-20 h-20 flex items-center justify-center flex-shrink-0 ml-4">
                   <img 
                     src={service.image}
                     alt={service.title}
@@ -37,10 +38,10 @@ export const ServicesOverview = () => {
                 </div>
               </div>
 
-              <div className="space-y-3 mb-8">
+              <div className="space-y-3 mb-8 flex-1">
                 {service.features.map((feature, featureIndex) => (
                   <div key={featureIndex} className="flex items-center space-x-3">
-                    <div className="w-5 h-5 flex items-center justify-center">
+                    <div className="w-5 h-5 flex items-center justify-center flex-shrink-0">
                       <i className="ri-checkbox-circle-fill text-green-500 text-xl"></i>
                     </div>
                     <span className="text-slate-700 text-sm">{feature}</span>
@@ -48,9 +49,15 @@ export const ServicesOverview = () => {
                 ))}
               </div>
 
-              <button className="px-6 py-3 text-orange-600 font-semibold rounded-lg hover:bg-orange-50 transition-all whitespace-nowrap cursor-pointer">
-                Learn More
-              </button>
+              <div className="mt-auto">
+                <Link 
+                  to="/signup"
+                  className="inline-flex items-center justify-center px-5 py-2.5 bg-gradient-to-r from-theme-primary to-theme-dark text-white text-sm font-semibold rounded-lg hover:from-theme-dark hover:to-theme-darker transition-all duration-300 shadow-md hover:shadow-lg whitespace-nowrap cursor-pointer"
+                >
+                  <span>Sign Up</span>
+                  <i className="ri-arrow-right-line ml-2 text-base"></i>
+                </Link>
+              </div>
             </div>
           ))}
         </div>

@@ -6,7 +6,7 @@ import { getImageUrl } from '@/data/services/imageService';
 
 export const Footer = () => {
   return (
-    <footer className="bg-[#1A2332] text-white relative overflow-hidden">
+    <footer className="bg-theme-footer text-white relative overflow-hidden">
       <div className="absolute bottom-0 left-0 right-0 text-[180px] font-bold text-white/5 text-center leading-none pb-8 select-none pointer-events-none">
         ARIZONTAL
       </div>
@@ -25,11 +25,11 @@ export const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-white text-sm font-semibold mb-4 pb-2 border-b-2 border-[#FF6B35] inline-block">Quick Links</h4>
+            <h4 className="text-white text-sm font-semibold mb-4 pb-2 border-b-2 border-theme-primary inline-block">Quick Links</h4>
             <ul className="space-y-2 mt-4">
               {FOOTER_LINKS.quickLinks.map((link) => (
                 <li key={link.to}>
-                  <Link to={link.to} className="text-gray-400 hover:text-[#FF6B35] transition-colors text-sm cursor-pointer">
+                  <Link to={link.to} className="text-gray-400 hover:text-theme-primary transition-colors text-sm cursor-pointer">
                     {link.label}
                   </Link>
                 </li>
@@ -41,15 +41,15 @@ export const Footer = () => {
             <h4 className="text-white text-sm font-semibold mb-4 pb-2 border-b-2 border-[#FF6B35] inline-block">Contact Info</h4>
             <ul className="space-y-3 mt-4">
               <li className="flex items-start">
-                <i className="ri-phone-line text-[#FF6B35] mt-1 mr-3"></i>
+                <i className="ri-phone-line text-theme-primary mt-1 mr-3"></i>
                 <span className="text-gray-400 text-sm">{CONTACT_INFO.phone}</span>
               </li>
               <li className="flex items-start">
-                <i className="ri-mail-line text-[#FF6B35] mt-1 mr-3"></i>
+                <i className="ri-mail-line text-theme-primary mt-1 mr-3"></i>
                 <span className="text-gray-400 text-sm">{CONTACT_INFO.email}</span>
               </li>
               <li className="flex items-start">
-                <i className="ri-map-pin-line text-[#FF6B35] mt-1 mr-3"></i>
+                <i className="ri-map-pin-line text-theme-primary mt-1 mr-3"></i>
                 <span className="text-gray-400 text-sm">{CONTACT_INFO.address}</span>
               </li>
             </ul>
@@ -62,7 +62,7 @@ export const Footer = () => {
               <input
                 type="email"
                 placeholder="Your email"
-                className="flex-1 px-4 py-2 rounded-l-lg bg-white/10 border border-white/20 text-white text-sm focus:outline-none focus:border-[#FF6B35]"
+                className="flex-1 px-4 py-2 rounded-l-lg bg-white/10 border border-white/20 text-white text-sm focus:outline-none focus:border-theme-primary"
               />
               <button className="bg-[#FF6B35] px-4 py-2 rounded-r-lg hover:bg-[#E55A28] transition-colors whitespace-nowrap cursor-pointer">
                 <i className="ri-send-plane-fill"></i>
@@ -77,13 +77,13 @@ export const Footer = () => {
           </p>
           <div className="flex items-center space-x-2">
             <div className="flex space-x-4">
-              <a href={SOCIAL_LINKS.linkedin} className="text-gray-400 hover:text-[#FF6B35] transition-colors cursor-pointer">
+              <a href={SOCIAL_LINKS.linkedin} className="text-gray-400 hover:text-theme-primary transition-colors cursor-pointer">
                 <i className="ri-linkedin-fill text-xl"></i>
               </a>
-              <a href={SOCIAL_LINKS.facebook} className="text-gray-400 hover:text-[#FF6B35] transition-colors cursor-pointer">
+              <a href={SOCIAL_LINKS.facebook} className="text-gray-400 hover:text-theme-primary transition-colors cursor-pointer">
                 <i className="ri-facebook-fill text-xl"></i>
               </a>
-              <a href={SOCIAL_LINKS.twitter} className="text-gray-400 hover:text-[#FF6B35] transition-colors cursor-pointer">
+              <a href={SOCIAL_LINKS.twitter} className="text-gray-400 hover:text-theme-primary transition-colors cursor-pointer">
                 <i className="ri-twitter-x-fill text-xl"></i>
               </a>
             </div>
