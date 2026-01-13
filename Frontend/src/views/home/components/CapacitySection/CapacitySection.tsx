@@ -6,7 +6,26 @@ import { CAPACITY_SERVICES } from '@/constants/home';
 export const CapacitySection = () => {
   const { handleGetQuote } = useNavigation();
 
-  // Show first 3 services for the Why Choose Us section
+  // Why Choose Us reasons
+  const whyChooseUsReasons = [
+    {
+      title: 'Connectivity',
+      description: 'Seamlessly connect with our extensive network of carriers and shippers for efficient freight management.',
+      shortDescription: 'Connect with extensive carrier network',
+    },
+    {
+      title: 'Transparency',
+      description: 'Get real-time visibility into your shipments with complete transparency throughout the entire process.',
+      shortDescription: 'Real-time visibility into shipments',
+    },
+    {
+      title: 'Timely',
+      description: 'Experience reliable and on-time deliveries with our commitment to meeting your deadlines.',
+      shortDescription: 'Reliable on-time delivery commitment',
+    },
+  ];
+
+  // Show first 3 services for the card images
   const displayedServices = CAPACITY_SERVICES.slice(0, 3);
 
   return (
@@ -40,9 +59,14 @@ export const CapacitySection = () => {
                   {/* Overlay with title */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent">
                     <div className="absolute bottom-0 left-0 right-0 p-4">
-                      <h3 className="text-white text-lg font-bold">
-                        {service.title}
+                      <h3 className="text-white text-lg font-bold mb-1">
+                        {whyChooseUsReasons[index]?.title || service.title}
                       </h3>
+                      {whyChooseUsReasons[index]?.shortDescription && (
+                        <p className="text-white/90 text-sm">
+                          {whyChooseUsReasons[index].shortDescription}
+                        </p>
+                      )}
                     </div>
                   </div>
                 </div>

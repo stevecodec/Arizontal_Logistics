@@ -56,3 +56,17 @@ export interface AvailableLoad {
   distance: string;
   pickupDate: string;
 }
+
+export interface Driver {
+  id: string;
+  name: string;
+  rating: number;
+  yearsExperience: number;
+  totalDeliveries: number;
+  onTimeRate: number;
+  specialties: string[];
+  role: string;
+  location: string;
+  description: string;
+  backgroundColor: string;
+}

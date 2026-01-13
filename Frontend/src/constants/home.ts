@@ -1,6 +1,6 @@
 // Home Page Constants
 
-import { City, Service, ServiceCard, Stat, AvailableLoad } from '@/models/types';
+import { City, Service, ServiceCard, Stat, AvailableLoad, Driver } from '@/models/types';
 import intermodalTabsImage from '@/assets/images/intermodal-tabs.png';
 import truckloadTabsImage from '@/assets/images/truckload-tabs.png';
 import ltlTabsImage from '@/assets/images/ltl-tabs.png';
@@ -159,5 +159,113 @@ export const AVAILABLE_LOADS: AvailableLoad[] = [
     rate: '$1,950',
     distance: '1,330 mi',
     pickupDate: 'Today',
+  },
+];
+
+// Top Rated Drivers
+export const TOP_DRIVERS: Driver[] = [
+  {
+    id: '1',
+    name: 'Michael Rodriguez',
+    rating: 5.0,
+    yearsExperience: 12,
+    totalDeliveries: 2847,
+    onTimeRate: 99.2,
+    specialties: ['Long Haul', 'Refrigerated'],
+    role: 'Senior Driver',
+    location: 'Los Angeles, CA',
+    description: 'Highly disciplined professional with exceptional reliability and commitment to on-time delivery excellence.',
+    backgroundColor: '#F5F5DC', // Beige
+  },
+  {
+    id: '2',
+    name: 'James Thompson',
+    rating: 5.0,
+    yearsExperience: 15,
+    totalDeliveries: 3421,
+    onTimeRate: 98.8,
+    specialties: ['Flatbed', 'Oversized'],
+    role: 'Master Driver',
+    location: 'Chicago, IL',
+    description: 'Proven track record of safe and efficient deliveries with unwavering dedication to customer satisfaction.',
+    backgroundColor: '#F5F5DC', // Beige
+  },
+  {
+    id: '3',
+    name: 'David Martinez',
+    rating: 4.9,
+    yearsExperience: 10,
+    totalDeliveries: 2156,
+    onTimeRate: 99.5,
+    specialties: ['Dry Van', 'Express'],
+    role: 'Elite Driver',
+    location: 'Dallas, TX',
+    description: 'Reliable and punctual driver known for maintaining the highest standards in freight transportation.',
+    backgroundColor: '#F5F5DC', // Beige
+  },
+  {
+    id: '4',
+    name: 'Robert Chen',
+    rating: 5.0,
+    yearsExperience: 18,
+    totalDeliveries: 4123,
+    onTimeRate: 99.1,
+    specialties: ['Intermodal', 'Cross Country'],
+    role: 'Veteran Driver',
+    location: 'New York, NY',
+    description: 'Experienced professional delivering consistent excellence across thousands of successful shipments.',
+    backgroundColor: '#F5F5DC', // Beige
+  },
+  {
+    id: '5',
+    name: 'Christopher Anderson',
+    rating: 4.9,
+    yearsExperience: 11,
+    totalDeliveries: 2654,
+    onTimeRate: 98.9,
+    specialties: ['Hazmat', 'Temperature Controlled'],
+    role: 'Specialized Driver',
+    location: 'Houston, TX',
+    description: 'Expert in handling specialized freight with meticulous attention to safety protocols and regulations.',
+    backgroundColor: '#F5F5DC', // Beige
+  },
+  {
+    id: '6',
+    name: 'William Johnson',
+    rating: 5.0,
+    yearsExperience: 14,
+    totalDeliveries: 3287,
+    onTimeRate: 99.3,
+    specialties: ['Team Driving', 'Expedited'],
+    role: 'Lead Driver',
+    location: 'Atlanta, GA',
+    description: 'Dedicated team driver specializing in expedited shipments with exceptional communication skills.',
+    backgroundColor: '#F5F5DC', // Beige
+  },
+  {
+    id: '7',
+    name: 'Thomas Wilson',
+    rating: 4.8,
+    yearsExperience: 9,
+    totalDeliveries: 1987,
+    onTimeRate: 98.5,
+    specialties: ['Regional', 'Local Delivery'],
+    role: 'Regional Driver',
+    location: 'Phoenix, AZ',
+    description: 'Reliable regional driver with deep knowledge of local routes and customer service excellence.',
+    backgroundColor: '#F5F5DC', // Beige
+  },
+  {
+    id: '8',
+    name: 'Daniel Brown',
+    rating: 5.0,
+    yearsExperience: 16,
+    totalDeliveries: 3892,
+    onTimeRate: 99.4,
+    specialties: ['Oversized Loads', 'Heavy Haul'],
+    role: 'Heavy Haul Specialist',
+    location: 'Denver, CO',
+    description: 'Specialized in oversized and heavy haul shipments with proven expertise in complex logistics.',
+    backgroundColor: '#F5F5DC', // Beige
   },
 ];
