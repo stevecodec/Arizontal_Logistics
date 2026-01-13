@@ -1,14 +1,15 @@
 // Hero Section Component (View Layer)
 
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useNavigation } from '@/hooks/useNavigation';
 import heroVideo from '@/assets/videos/herosection video.mp4';
-import { AVAILABLE_LOADS } from '@/constants/home';
 import { CONTACT_INFO } from '@/constants';
 
 export const HeroSection = () => {
   const { handleGetQuote } = useNavigation();
-  const [selectedLoad, setSelectedLoad] = useState<string>('');
+  // TODO: Load from backend API
+  const [availableLoadsCount] = useState<number>(0);
 
   return (
     <div className="relative h-screen w-full overflow-hidden">
@@ -102,28 +103,18 @@ export const HeroSection = () => {
             <div className="px-6 py-6">
               <div className="flex items-start space-x-3">
                 <i className="ri-truck-line text-white text-xl mt-1"></i>
-                <div className="flex-1">
-                  <h3 className="text-white font-bold text-sm uppercase mb-3">Available Loads</h3>
-                  <select
-                    value={selectedLoad}
-                    onChange={(e) => setSelectedLoad(e.target.value)}
-                    className="w-full px-4 py-3 border border-white rounded-none focus:outline-none focus:border-white text-sm bg-[#424242] text-white cursor-pointer appearance-none"
-                    style={{
-                      backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23ffffff' d='M6 9L1 4h10z'/%3E%3C/svg%3E")`,
-                      backgroundRepeat: 'no-repeat',
-                      backgroundPosition: 'right 12px center',
-                      paddingRight: '40px',
-                    }}
-                  >
-                    <option value="" style={{ backgroundColor: '#424242', color: '#ffffff' }}>
-                      Select a Load
-                    </option>
-                    {AVAILABLE_LOADS.map((load) => (
-                      <option key={load.id} value={load.id} style={{ backgroundColor: '#424242', color: '#ffffff' }}>
-                        {load.origin} → {load.destination} | {load.rate} | {load.equipmentType}
-                      </option>
-                    ))}
-                  </select>
+                <div>
+                  <h3 className="text-white font-bold text-sm uppercase mb-2">Available Loads</h3>
+                  <p className="text-white text-xs">
+                    {availableLoadsCount.toLocaleString()} loads.{' '}
+                    <Link 
+                      to="/login" 
+                      className="text-theme-primary font-semibold hover:text-theme-secondary hover:underline transition-colors"
+                    >
+                      Login
+                    </Link>{' '}
+                    to view more.
+                  </p>
                 </div>
               </div>
             </div>

@@ -52,10 +52,10 @@ export const ServicesOverview = () => {
               <div className="mt-auto">
                 <Link 
                   to="/signup"
-                  className="inline-flex items-center justify-center px-5 py-2.5 bg-gradient-to-r from-theme-primary to-theme-dark text-white text-sm font-semibold rounded-lg hover:from-theme-dark hover:to-theme-darker transition-all duration-300 shadow-md hover:shadow-lg whitespace-nowrap cursor-pointer"
+                  className="inline-flex items-center px-4 py-2 text-theme-primary text-sm font-medium border border-theme-primary rounded-lg hover:bg-theme-bg-lighter transition-all duration-200 whitespace-nowrap cursor-pointer"
                 >
                   <span>Sign Up</span>
-                  <i className="ri-arrow-right-line ml-2 text-base"></i>
+                  <i className="ri-arrow-right-line ml-2 text-sm"></i>
                 </Link>
               </div>
             </div>

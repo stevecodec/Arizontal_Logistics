@@ -30,7 +30,7 @@ export const Header = () => {
               <a 
                 key={item.href}
                 href={item.href} 
-                className={`text-xs font-medium hover:text-theme-primary transition-colors whitespace-nowrap ${scrolled ? 'text-slate-900' : 'text-white'}`}
+                className={`text-xs font-medium hover:text-theme-primary hover:underline hover:underline-offset-4 decoration-theme-primary transition-all whitespace-nowrap ${scrolled ? 'text-slate-900' : 'text-white'}`}
               >
                 {item.label}
               </a>
