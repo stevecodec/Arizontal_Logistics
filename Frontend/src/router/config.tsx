@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 import { RouteObject } from 'react-router-dom';
 
 const HomePage = lazy(() => import('@/views/home/HomePage'));
+const ContactPage = lazy(() => import('@/views/contact/ContactPage'));
 const NotFoundPage = lazy(() => import('@/views/not-found/NotFoundPage'));
 
 // Loading fallback component
@@ -20,6 +21,14 @@ const routes: RouteObject[] = [
     element: (
       <Suspense fallback={<LoadingFallback />}>
         <HomePage />
+      </Suspense>
+    ),
+  },
+  {
+    path: '/contact',
+    element: (
+      <Suspense fallback={<LoadingFallback />}>
+        <ContactPage />
       </Suspense>
     ),
   },

@@ -8,6 +8,7 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-i18next": "^15.6.0",
+    "react-phone-number-input": "^3.4.14",
     "react-router-dom": "^7.6.3",
     "recharts": "3.2.0"
   },

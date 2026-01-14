@@ -13,10 +13,10 @@ export const CONTACT_INFO = {
 
 // Navigation Links
 export const NAVIGATION_ITEMS = [
-  { label: 'Home', href: '/' },
-  { label: 'Services', href: '#services' },
-  { label: 'About', href: '#about' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Home', href: '/', isRoute: true },
+  { label: 'Services', href: '#services', isRoute: false },
+  { label: 'About', href: '#about', isRoute: false },
+  { label: 'Contact', href: '/contact', isRoute: true },
 ] as const;
 
 // Footer Links

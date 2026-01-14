@@ -45,6 +45,7 @@ export interface ContactInfo {
 export interface NavigationItem {
   label: string;
   href: string;
+  isRoute?: boolean;
 }
 
 export interface AvailableLoad {

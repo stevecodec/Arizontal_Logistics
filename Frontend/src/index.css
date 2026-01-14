@@ -23,4 +23,72 @@
   .scrollbar-hide::-webkit-scrollbar {
     display: none;  /* Chrome, Safari and Opera */
   }
+
+  .animate-slide-down {
+    animation: slideDown 0.3s ease-out;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -20px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+/* Phone Input Custom Styling */
+.phone-input-custom {
+  display: flex;
+  width: 100%;
+}
+
+.phone-input-custom .PhoneInputInput {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: 1px solid #d1d5db;
+  border-left: none;
+  border-radius: 0;
+  font-size: 0.75rem;
+  outline: none;
+}
+
+.phone-input-custom .PhoneInputInput:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+  border-color: transparent;
+}
+
+.phone-input-custom .PhoneInputCountry {
+  display: flex;
+  align-items: center;
+  padding: 0 0.5rem;
+  border: 1px solid #d1d5db;
+  border-right: none;
+  border-radius: 0;
+  background-color: #f9fafb;
+}
+
+.phone-input-custom .PhoneInputCountrySelect {
+  font-size: 0.75rem;
+  padding: 0.75rem 0.5rem;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.phone-input-custom .PhoneInputCountryIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0.5rem;
+}
+
+.phone-input-custom .PhoneInputCountrySelectArrow {
+  opacity: 0.5;
+  margin-left: 0.25rem;
+  width: 0.5rem;
+  height: 0.5rem;
 }
