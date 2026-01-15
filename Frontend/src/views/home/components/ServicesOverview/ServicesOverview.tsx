@@ -42,7 +42,7 @@ export const ServicesOverview = () => {
                 {service.features.map((feature, featureIndex) => (
                   <div key={featureIndex} className="flex items-center space-x-3">
                     <div className="w-5 h-5 flex items-center justify-center flex-shrink-0">
-                      <i className="ri-checkbox-circle-fill text-green-500 text-xl"></i>
+                      <i className="ri-checkbox-circle-fill text-[#f08524] text-xl"></i>
                     </div>
                     <span className="text-slate-700 text-sm">{feature}</span>
                   </div>
@@ -51,10 +51,10 @@ export const ServicesOverview = () => {
 
               <div className="mt-auto">
                 <Link 
-                  to="/signup"
+                  to={service.subtitle === 'For Carriers' ? '/careers' : '/contact'}
                   className="inline-flex items-center px-4 py-2 text-theme-primary text-sm font-medium border border-theme-primary rounded-lg hover:bg-theme-bg-lighter transition-all duration-200 whitespace-nowrap cursor-pointer"
                 >
-                  <span>Sign Up</span>
+                  <span>{service.subtitle === 'For Carriers' ? 'Apply Here' : 'Contact Us'}</span>
                   <i className="ri-arrow-right-line ml-2 text-sm"></i>
                 </Link>
               </div>

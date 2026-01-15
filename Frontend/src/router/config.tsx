@@ -3,6 +3,7 @@ import { RouteObject } from 'react-router-dom';
 
 const HomePage = lazy(() => import('@/views/home/HomePage'));
 const ContactPage = lazy(() => import('@/views/contact/ContactPage'));
+const CareersPage = lazy(() => import('@/views/carriers/CarriersPage'));
 const NotFoundPage = lazy(() => import('@/views/not-found/NotFoundPage'));
 
 // Loading fallback component
@@ -29,6 +30,14 @@ const routes: RouteObject[] = [
     element: (
       <Suspense fallback={<LoadingFallback />}>
         <ContactPage />
+      </Suspense>
+    ),
+  },
+  {
+    path: '/careers',
+    element: (
+      <Suspense fallback={<LoadingFallback />}>
+        <CareersPage />
       </Suspense>
     ),
   },

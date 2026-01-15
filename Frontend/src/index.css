@@ -4,13 +4,7 @@
 
 @layer base {
   html {
-    font-size: 14px; /* Reduced from default 16px for more professional look */
-  }
-  
-  @media (min-width: 1024px) {
-    html {
-      font-size: 15px; /* Slightly larger on desktop */
-    }
+    font-size: clamp(16px, 0.85vw + 12px, 18px); /* Balanced, readable across screens */
   }
 }
 
@@ -52,7 +46,7 @@
   border: 1px solid #d1d5db;
   border-left: none;
   border-radius: 0;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   outline: none;
 }
 
@@ -73,7 +67,7 @@
 }
 
 .phone-input-custom .PhoneInputCountrySelect {
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   padding: 0.75rem 0.5rem;
   border: none;
   background-color: transparent;

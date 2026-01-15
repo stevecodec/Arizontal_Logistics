@@ -6,6 +6,7 @@ import 'react-phone-number-input/style.css';
 import { Header } from '@/views/shared/Header';
 import { Footer } from '@/views/shared/Footer';
 import { CONTACT_INFO, SOCIAL_LINKS } from '@/constants';
+import posterImage from '@/assets/images/Arizontal_poster1.jpg';
 
 // US States list
 const US_STATES = [
@@ -89,12 +90,21 @@ const ContactPage = () => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (formData.message.length > 500) {
+    const requiredFields = [
+      formData.fullName,
+      formData.company,
+      formData.state,
+      formData.phone,
+      formData.email,
+      formData.message,
+    ];
+
+    if (requiredFields.some((field) => !field.trim())) {
+      setSubmitStatus('error');
       return;
     }
 
-    if (!formData.phone) {
-      setSubmitStatus('error');
+    if (formData.message.length > 500) {
       return;
     }
 
@@ -164,8 +174,7 @@ const ContactPage = () => {
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-2xl lg:text-3xl font-bold mb-4">Contact Us</h1>
             <p className="text-sm mb-12 leading-relaxed">
-              Arizontal Logistics would like to hear from you! Please share your comments, feedback,
-              personal interest. Please fill in your name, email address and comments. Thank you in advance!
+              Arizontal Logistics would like to do business with you! Let us know where we can pick your loads and we will get back to you with a quote. Thank you in advance!
             </p>
 
             {/* Contact Method Cards */}
@@ -230,14 +239,14 @@ const ContactPage = () => {
                   <i className="ri-twitter-x-line text-3xl text-white"></i>
                 </a>
               )}
-              {SOCIAL_LINKS.linkedin && (
+              {SOCIAL_LINKS.instagram && (
                 <a 
-                  href={SOCIAL_LINKS.linkedin} 
+                  href={SOCIAL_LINKS.instagram} 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="w-10 h-10 flex items-center justify-center hover:opacity-80 cursor-pointer transition-opacity"
                 >
-                  <i className="ri-linkedin-fill text-3xl text-white"></i>
+                  <i className="ri-instagram-fill text-3xl text-white"></i>
                 </a>
               )}
             </div>
@@ -245,18 +254,30 @@ const ContactPage = () => {
         </section>
 
         {/* Form Section - Light Background */}
-        <section className="bg-white py-16 px-4">
-          <div className="max-w-xl mx-auto">
-            <h2 className="text-xl lg:text-2xl font-bold text-gray-900 mb-8 text-center">
-              Online Contact Form
-            </h2>
+        <section className="bg-white py-16">
+          <div className="w-full">
+            <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] items-stretch">
+              <div className="order-2 lg:order-1 px-0">
+                <div className="relative overflow-hidden h-full shadow-lg">
+                  <img
+                    src={posterImage}
+                    alt="Arizontal Logistics"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
 
-            <form
-              onSubmit={handleSubmit}
-              data-readdy-form
-              id="contact-form"
-              className="p-8"
-            >
+              <div className="order-1 lg:order-2 h-full flex flex-col px-6 lg:px-10">
+                <h2 className="text-xl lg:text-2xl font-bold text-gray-900 mb-8 text-center lg:text-left">
+                  Online Contact Form
+                </h2>
+
+                <form
+                  onSubmit={handleSubmit}
+                  data-readdy-form
+                  id="contact-form"
+                  className="p-6 flex-1 w-full max-w-md"
+                >
               {/* Full Name Field */}
               <div className="mb-6">
                 <label htmlFor="fullName" className="block text-sm font-semibold text-gray-900 mb-2">
@@ -268,7 +289,6 @@ const ContactPage = () => {
                   name="fullName"
                   value={formData.fullName}
                   onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                  required
                   className="w-full px-4 py-3 border border-gray-300 rounded-none focus:outline-none focus:ring-2 focus:ring-theme-primary focus:border-transparent text-xs"
                 />
               </div>
@@ -284,7 +304,6 @@ const ContactPage = () => {
                   name="company"
                   value={formData.company}
                   onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                  required
                   className="w-full px-4 py-3 border border-gray-300 rounded-none focus:outline-none focus:ring-2 focus:ring-theme-primary focus:border-transparent text-xs"
                 />
               </div>
@@ -299,7 +318,6 @@ const ContactPage = () => {
                   name="state"
                   value={formData.state}
                   onChange={(e) => setFormData({ ...formData, state: e.target.value })}
-                  required
                   className="w-full px-4 py-3 border border-gray-300 rounded-none focus:outline-none focus:ring-2 focus:ring-theme-primary focus:border-transparent text-xs bg-white"
                 >
                   {US_STATES.map((state) => (
@@ -321,7 +339,6 @@ const ContactPage = () => {
                   value={formData.phone}
                   onChange={(value) => setFormData({ ...formData, phone: value || '' })}
                   className="phone-input-custom"
-                  required
                 />
                 <input
                   type="hidden"
@@ -341,7 +358,6 @@ const ContactPage = () => {
                   name="email"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  required
                   className="w-full px-4 py-3 border border-gray-300 rounded-none focus:outline-none focus:ring-2 focus:ring-theme-primary focus:border-transparent text-xs"
                 />
               </div>
@@ -356,7 +372,6 @@ const ContactPage = () => {
                   name="message"
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  required
                   rows={6}
                   maxLength={500}
                   className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-theme-primary focus:border-transparent text-xs resize-none"
@@ -375,7 +390,9 @@ const ContactPage = () => {
               >
                 {isSubmitting ? 'Submitting...' : 'Send Message'}
               </button>
-            </form>
+                </form>
+              </div>
+            </div>
           </div>
         </section>
       </main>

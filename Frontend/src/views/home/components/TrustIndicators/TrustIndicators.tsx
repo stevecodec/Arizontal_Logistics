@@ -8,7 +8,7 @@ export const TrustIndicators = () => {
       {/* Fixed Background Image */}
       <div className="absolute inset-0 w-full h-full">
         <img 
-          src={getImageUrl('trustIndicatorsBackground')}
+          src={getImageUrl('overlay1')}
           alt="Truck on Highway"
           className="w-full h-full object-cover fixed top-0 left-0"
           style={{ zIndex: -1 }}
@@ -20,13 +20,14 @@ export const TrustIndicators = () => {
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative">
           {/* Section Header */}
           <div className="text-center mb-8">
-            <h2 className="text-xl lg:text-2xl font-bold text-white mb-4">
+            <h2 className="text-xl lg:text-2xl font-bold text-white mb-2">
               Our Shipping Network
             </h2>
+            <div className="mx-auto h-1 w-24 rounded-full bg-theme-primary"></div>
           </div>
 
           {/* Map Container */}
-          <div className="relative w-full h-[400px] bg-slate-900/40 backdrop-blur-sm rounded overflow-hidden">
+          <div className="relative w-full h-[500px] bg-slate-900/40 backdrop-blur-sm rounded overflow-hidden">
             {/* US Map Background */}
             <div className="absolute inset-0 flex items-center justify-center">
               <img 

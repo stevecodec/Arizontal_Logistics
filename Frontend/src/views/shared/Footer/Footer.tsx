@@ -77,8 +77,8 @@ export const Footer = () => {
           </p>
           <div className="flex items-center space-x-2">
             <div className="flex space-x-4">
-              <a href={SOCIAL_LINKS.linkedin} className="text-gray-400 hover:text-theme-primary transition-colors cursor-pointer">
-                <i className="ri-linkedin-fill text-xl"></i>
+              <a href={SOCIAL_LINKS.instagram} className="text-gray-400 hover:text-theme-primary transition-colors cursor-pointer">
+                <i className="ri-instagram-fill text-xl"></i>
               </a>
               <a href={SOCIAL_LINKS.facebook} className="text-gray-400 hover:text-theme-primary transition-colors cursor-pointer">
                 <i className="ri-facebook-fill text-xl"></i>

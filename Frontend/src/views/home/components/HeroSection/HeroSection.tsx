@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigation } from '@/hooks/useNavigation';
-import heroVideo from '@/assets/videos/herosection video.mp4';
+import heroVideo from '@/assets/videos/herosection video1.mp4';
 import { CONTACT_INFO } from '@/constants';
 
 export const HeroSection = () => {

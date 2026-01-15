@@ -70,7 +70,7 @@ export const WhyChooseUs = () => {
                 <div className="absolute top-8 left-10 text-4xl text-theme-primary opacity-20">
                   <i className="ri-double-quotes-l"></i>
                 </div>
-                <div className="relative">
+                <div className="relative min-h-[200px] lg:min-h-[240px]">
                   <h3 className="text-lg font-bold text-slate-900 mb-4">
                     You Deserve the Best
                   </h3>

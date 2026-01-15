@@ -16,6 +16,7 @@ export const NAVIGATION_ITEMS = [
   { label: 'Home', href: '/', isRoute: true },
   { label: 'Services', href: '#services', isRoute: false },
   { label: 'About', href: '#about', isRoute: false },
+  { label: 'Careers', href: '/careers', isRoute: true },
   { label: 'Contact', href: '/contact', isRoute: true },
 ] as const;
 
@@ -24,15 +25,15 @@ export const FOOTER_LINKS = {
   quickLinks: [
     { label: 'Home', to: '/' },
     { label: 'Brokerage Services', to: '/arizontal-logistics' },
-    { label: 'Carrier Services', to: '/arizontal-cargo' },
+    { label: 'Careers', to: '/careers' },
   ],
 } as const;
 
 // Social Media Links
 export const SOCIAL_LINKS = {
-  linkedin: '#',
   facebook: '#',
   twitter: '#',
+  instagram: '#',
 } as const;
 
 // Section IDs
