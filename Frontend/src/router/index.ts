@@ -1,4 +1,4 @@
-import { useNavigate, type NavigateFunction } from "react-router-dom";
+import { useNavigate, type NavigateFunction, useLocation } from "react-router-dom";
 import { useRoutes } from "react-router-dom";
 import { useEffect } from "react";
 import routes from "@/router/config";
@@ -18,6 +18,7 @@ export const navigatePromise = new Promise<NavigateFunction>((resolve) => {
 export function AppRoutes() {
   const element = useRoutes(routes);
   const navigate = useNavigate();
+  const location = useLocation();
   
   useEffect(() => {
     window.REACT_APP_NAVIGATE = navigate;
@@ -32,6 +33,10 @@ export function AppRoutes() {
       }
     };
   }, [navigate]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
   
   return element;
 }

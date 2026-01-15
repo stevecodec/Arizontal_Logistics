@@ -3,41 +3,10 @@
 import { useEffect, useState, FormEvent } from 'react';
 import { Header } from '@/views/shared/Header';
 import { Footer } from '@/views/shared/Footer';
+import { CompanyLogos } from '@/views/home/components/CompanyLogos';
 import { CONTACT_INFO } from '@/constants';
 import { getImageUrl } from '@/data/services/imageService';
 
-const CAREER_BENEFITS = [
-  {
-    title: 'Competitive pay',
-    description: 'Strong compensation packages with predictable, steady miles.',
-    icon: 'ri-briefcase-4-line',
-  },
-  {
-    title: 'Flexible home time',
-    description: 'Routes and schedules that respect your time on and off the road.',
-    icon: 'ri-calendar-check-line',
-  },
-  {
-    title: 'Health & wellness',
-    description: 'Supportive benefits and a safety-first culture you can trust.',
-    icon: 'ri-heart-pulse-line',
-  },
-  {
-    title: 'Modern equipment',
-    description: 'Well-maintained trucks and equipment standards you can count on.',
-    icon: 'ri-truck-line',
-  },
-  {
-    title: 'Safety support',
-    description: 'Clear compliance guidance and proactive operations support.',
-    icon: 'ri-shield-check-line',
-  },
-  {
-    title: 'Strong community',
-    description: 'A professional team that values drivers and communication.',
-    icon: 'ri-team-line',
-  },
-];
 
 const US_STATES = [
   { value: '', label: 'Select a state' },
@@ -222,64 +191,21 @@ const CareersPage = () => {
             />
             <div className="absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-900/60 to-slate-900/85"></div>
           </div>
+          <div className="relative max-w-6xl mx-auto px-6 lg:px-8 py-32 lg:py-40"></div>
+        </section>
 
-          <div className="relative max-w-6xl mx-auto px-6 lg:px-8 py-16 lg:py-20">
-            <div className="bg-white text-slate-900 shadow-xl border border-slate-100 px-8 py-10 lg:px-12 lg:py-12 max-w-3xl mx-auto text-center">
-              <p className="text-xs uppercase tracking-[0.25em] text-slate-500 mb-4">
+        <section id="application" className="relative z-20 -mt-36 -mb-16 bg-transparent">
+          <div className="max-w-5xl mx-auto px-6 lg:px-8">
+            <div className="bg-white border border-slate-100 shadow-lg p-6 lg:p-8 max-w-3xl mx-auto">
+              <p className="text-xs uppercase tracking-[0.25em] text-slate-500 mb-3 text-center">
                 Careers at Arizontal Logistics
               </p>
-              <h1 className="text-3xl lg:text-4xl font-bold mb-4">Build what the road needs.</h1>
-              <p className="text-sm text-slate-600 leading-relaxed mb-6">
-                We move freight with precision, care, and accountability. If you&apos;re ready to drive with a
-                team that values safety, communication, and consistency, we&apos;d love to meet you.
-              </p>
-              <a
-                href="#application"
-                className="inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold text-white bg-theme-primary rounded-md hover:bg-theme-dark transition-colors"
-              >
-                See open roles
-              </a>
-            </div>
-          </div>
-        </section>
-
-        <section className="py-16 bg-white">
-          <div className="max-w-6xl mx-auto px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-2xl lg:text-3xl font-bold text-slate-900 mb-3">
-                Supported by exceptional benefits
-              </h2>
-              <p className="text-sm text-slate-600 max-w-2xl mx-auto">
-                Our team keeps the freight moving, and we invest in the people who keep it on time.
-              </p>
-            </div>
-
-            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {CAREER_BENEFITS.map((benefit) => (
-                <div key={benefit.title} className="border border-slate-100 bg-white p-6 shadow-sm">
-                  <div className="mb-4 text-theme-primary">
-                    <i className={`${benefit.icon} text-2xl`}></i>
-                  </div>
-                  <h3 className="text-base font-semibold text-slate-900 mb-2">{benefit.title}</h3>
-                  <p className="text-sm text-slate-600 leading-relaxed">{benefit.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section id="application" className="-mt-10 pb-16 bg-slate-50 relative z-10">
-          <div className="max-w-5xl mx-auto px-6 lg:px-8">
-            <div className="text-center mb-10">
-              <h2 className="text-2xl lg:text-3xl font-bold text-slate-900 mb-3">
+              <h2 className="text-2xl lg:text-3xl font-bold text-slate-900 mb-3 text-center">
                 Driver application
               </h2>
-              <p className="text-sm text-slate-600 max-w-2xl mx-auto">
+              <p className="text-sm text-slate-600 mb-6 text-center max-w-2xl mx-auto">
                 Share a few details and our recruiting team will contact you with the next steps.
               </p>
-            </div>
-
-            <div className="bg-white border border-slate-100 shadow-lg p-8 lg:p-10">
               {submitStatus !== 'idle' && (
                 <div className={`mb-6 rounded-md border px-4 py-3 text-sm ${
                   submitStatus === 'success'
@@ -292,8 +218,8 @@ const CareersPage = () => {
                 </div>
               )}
 
-              <form onSubmit={handleSubmit} data-readdy-form id="driver-application" className="grid gap-6">
-                <div className="grid gap-6 md:grid-cols-2">
+              <form onSubmit={handleSubmit} data-readdy-form id="driver-application" className="grid gap-4">
+                <div className="grid gap-4 md:grid-cols-2">
                   <div>
                     <label htmlFor="fullName" className="block text-sm font-semibold text-slate-900 mb-2">
                       Full name
@@ -322,7 +248,7 @@ const CareersPage = () => {
                   </div>
                 </div>
 
-                <div className="grid gap-6 md:grid-cols-2">
+                <div className="grid gap-4 md:grid-cols-2">
                   <div>
                     <label htmlFor="email" className="block text-sm font-semibold text-slate-900 mb-2">
                       Email
@@ -407,7 +333,7 @@ const CareersPage = () => {
                   </div>
                 </div>
 
-                <div className="grid gap-6 md:grid-cols-2">
+                <div className="grid gap-4 md:grid-cols-2">
                   <div>
                     <label htmlFor="addressLine2" className="block text-sm font-semibold text-slate-900 mb-2">
                       Address line 2
@@ -437,7 +363,7 @@ const CareersPage = () => {
                   </div>
                 </div>
 
-                <div className="grid gap-6 md:grid-cols-2">
+                <div className="grid gap-4 md:grid-cols-2">
                   <div>
                     <label htmlFor="state" className="block text-sm font-semibold text-slate-900 mb-2">
                       State
@@ -471,7 +397,7 @@ const CareersPage = () => {
                   </div>
                 </div>
 
-                <div className="grid gap-6 md:grid-cols-2">
+                <div className="grid gap-4 md:grid-cols-2">
                   <div>
                     <label htmlFor="experience" className="block text-sm font-semibold text-slate-900 mb-2">
                       Years of experience
@@ -536,6 +462,11 @@ const CareersPage = () => {
             </div>
           </div>
         </section>
+
+        <div className="mt-24">
+          <CompanyLogos />
+        </div>
+
       </main>
 
       <Footer />
