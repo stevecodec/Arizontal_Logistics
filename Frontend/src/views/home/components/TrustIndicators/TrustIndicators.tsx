@@ -139,7 +139,7 @@ export const TrustIndicators = () => {
                   <span className="text-slate-700">Operational Cities</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="w-2 h-3 bg-blue-500 rounded-sm"></div>
+                  <div className="w-3 h-3 bg-blue-500 rounded-full border-2 border-white shadow"></div>
                   <span className="text-slate-700">Head Office (Raleigh, NC)</span>
                 </div>
               </div>

@@ -42,7 +42,7 @@ export const ServicesOverview = () => {
                 {service.features.map((feature, featureIndex) => (
                   <div key={featureIndex} className="flex items-center space-x-3">
                     <div className="w-5 h-5 flex items-center justify-center flex-shrink-0">
-                      <i className="ri-checkbox-circle-fill text-[#f08524] text-xl"></i>
+                      <i className="ri-checkbox-circle-line text-theme-primary text-xl"></i>
                     </div>
                     <span className="text-slate-700 text-sm">{feature}</span>
                   </div>

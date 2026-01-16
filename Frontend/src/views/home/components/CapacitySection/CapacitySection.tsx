@@ -10,17 +10,14 @@ export const CapacitySection = () => {
   const whyChooseUsReasons = [
     {
       title: 'Connectivity',
-      description: 'Seamlessly connect with our extensive network of carriers and shippers for efficient freight management.',
       shortDescription: 'Connect with extensive carrier network',
     },
     {
       title: 'Transparency',
-      description: 'Get real-time visibility into your shipments with complete transparency throughout the entire process.',
       shortDescription: 'Real-time visibility into shipments',
     },
     {
       title: 'Timely',
-      description: 'Experience reliable and on-time deliveries with our commitment to meeting your deadlines.',
       shortDescription: 'Reliable on-time delivery commitment',
     },
   ];
@@ -30,6 +27,11 @@ export const CapacitySection = () => {
 
   return (
     <div className="py-8 bg-white border-t border-gray-200">
+      {/* Decorative divider bar */}
+      <div className="flex justify-end pb-8">
+        <div className="w-32 h-0.5 bg-theme-primary rounded-full"></div>
+      </div>
+      
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Two Column Layout */}
         <div className="grid lg:grid-cols-2 gap-8 items-start">
