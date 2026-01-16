@@ -3,13 +3,11 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useScroll } from '@/hooks/useScroll';
-import { useNavigation } from '@/hooks/useNavigation';
 import { APP_NAME, APP_SUBTITLE, NAVIGATION_ITEMS } from '@/constants';
 import { getImageUrl } from '@/data/services/imageService';
 
 export const Header = () => {
   const scrolled = useScroll();
-  const { handleGetQuote } = useNavigation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleNavClick = () => setIsMenuOpen(false);
@@ -50,12 +48,12 @@ export const Header = () => {
                 </a>
               )
             ))}
-            <button 
-              onClick={handleGetQuote}
+            <Link 
+              to="/contact"
               className="px-4 py-1.5 bg-gradient-to-r from-theme-primary to-theme-dark text-white text-sm font-semibold rounded hover:from-theme-dark hover:to-theme-darker transition-all whitespace-nowrap cursor-pointer shadow-lg"
             >
               Make an Enquiry
-            </button>
+            </Link>
           </div>
 
           <button
@@ -95,15 +93,13 @@ export const Header = () => {
                   </a>
                 )
               ))}
-              <button
-                onClick={() => {
-                  handleNavClick();
-                  handleGetQuote();
-                }}
-                className="mx-4 my-2 px-4 py-2 bg-gradient-to-r from-theme-primary to-theme-dark text-white text-sm font-semibold rounded hover:from-theme-dark hover:to-theme-darker transition-all shadow-lg"
+              <Link
+                to="/contact"
+                onClick={handleNavClick}
+                className="mx-4 my-2 px-4 py-2 bg-gradient-to-r from-theme-primary to-theme-dark text-white text-sm font-semibold rounded hover:from-theme-dark hover:to-theme-darker transition-all shadow-lg text-center"
               >
                 Make an Enquiry
-              </button>
+              </Link>
             </div>
           </div>
         </div>

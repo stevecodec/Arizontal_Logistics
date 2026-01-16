@@ -14,7 +14,7 @@ export const CONTACT_INFO = {
 // Navigation Links
 export const NAVIGATION_ITEMS = [
   { label: 'Home', href: '/', isRoute: true },
-  { label: 'Services', href: '#services', isRoute: false },
+  { label: 'Cargo', href: '#services', isRoute: false },
   { label: 'About', href: '#about', isRoute: false },
   { label: 'Careers', href: '/careers', isRoute: true },
   { label: 'Contact', href: '/contact', isRoute: true },
