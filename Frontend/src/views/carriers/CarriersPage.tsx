@@ -1,6 +1,8 @@
 // Careers Page View Component
 
 import { useEffect, useState, FormEvent } from 'react';
+import PhoneInput from 'react-phone-number-input';
+import 'react-phone-number-input/style.css';
 import { Header } from '@/views/shared/Header';
 import { Footer } from '@/views/shared/Footer';
 import { CompanyLogos } from '@/views/home/components/CompanyLogos';
@@ -83,6 +85,21 @@ const CareersPage = () => {
     { place_id: number; display_name: string; address: Record<string, string> }[]
   >([]);
   const [isAddressLoading, setIsAddressLoading] = useState(false);
+
+  const handlePhoneChange = (value?: string) => {
+    const digits = (value || '').replace(/\D/g, '');
+    setFormData((prev) => {
+      const prevDigits = (prev.phone || '').replace(/\D/g, '');
+      if (digits.length > 15 && prevDigits.length >= 15) {
+        return prev;
+      }
+      const limited = digits.slice(0, 15);
+      return {
+        ...prev,
+        phone: limited ? `+${limited}` : '',
+      };
+    });
+  };
 
   useEffect(() => {
     if (!addressQuery.trim() || addressQuery.trim().length < 3) {
@@ -237,13 +254,17 @@ const CareersPage = () => {
                     <label htmlFor="phone" className="block text-sm font-semibold text-slate-900 mb-2">
                       Phone
                     </label>
-                    <input
-                      id="phone"
-                      name="phone"
-                      type="tel"
+                    <PhoneInput
+                      international
+                      defaultCountry="US"
                       value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full border border-slate-300 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-theme-primary focus:border-transparent"
+                      onChange={handlePhoneChange}
+                      className="phone-input-custom"
+                    />
+                    <input
+                      type="hidden"
+                      name="phone"
+                      value={formData.phone || ''}
                     />
                   </div>
                 </div>
@@ -293,7 +314,8 @@ const CareersPage = () => {
                             <button
                               type="button"
                               key={suggestion.place_id}
-                              onClick={() => {
+                              onMouseDown={(event) => {
+                                event.preventDefault();
                                 const address = suggestion.address || {};
                                 const city =
                                   address.city ||

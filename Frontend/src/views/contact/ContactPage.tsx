@@ -75,6 +75,21 @@ const ContactPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
+  const handlePhoneChange = (value?: string) => {
+    const digits = (value || '').replace(/\D/g, '');
+    setFormData((prev) => {
+      const prevDigits = (prev.phone || '').replace(/\D/g, '');
+      if (digits.length > 15 && prevDigits.length >= 15) {
+        return prev;
+      }
+      const limited = digits.slice(0, 15);
+      return {
+        ...prev,
+        phone: limited ? `+${limited}` : '',
+      };
+    });
+  };
+
   // Auto-dismiss notification after 5 seconds
   useEffect(() => {
     if (submitStatus === 'success' || submitStatus === 'error') {
@@ -337,7 +352,7 @@ const ContactPage = () => {
                   international
                   defaultCountry="US"
                   value={formData.phone}
-                  onChange={(value) => setFormData({ ...formData, phone: value || '' })}
+                  onChange={handlePhoneChange}
                   className="phone-input-custom"
                 />
                 <input

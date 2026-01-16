@@ -38,8 +38,11 @@ export const WhyChooseUs = () => {
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-8">
-          <h2 className="text-xl lg:text-2xl font-bold text-slate-900 mb-4 border-b-2 border-theme-primary pb-1 inline-block">
-            The Arizontal Difference
+          <h2 className="text-xl lg:text-2xl font-bold text-slate-900 mb-4 pb-1 inline-block relative">
+            <span className="relative">
+              The Arizontal Difference
+              <span className="absolute bottom-0 right-0 w-1/2 h-0.5 bg-theme-primary"></span>
+            </span>
           </h2>
         </div>
 
