@@ -13,7 +13,7 @@ export const ServicesOverview = () => {
             OUR SERVICES
           </h2>
           <p className="text-sm text-slate-600 max-w-3xl mx-auto mt-4">
-            Change the way you do business with our platform. We're eliminating inefficiencies by creating one place for you to manage every step of the transportation process.
+          Our operations are built on industry standards, regulatory compliance, and customer satisfaction. Change the way you do business with our platform. 
           </p>
         </div>
 
@@ -22,7 +22,7 @@ export const ServicesOverview = () => {
           {SERVICE_CARDS.map((service, index) => (
             <div 
               key={index}
-              className="group bg-white p-8 rounded-sm shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 flex flex-col"
+              className="group bg-white p-8 rounded-sm shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-theme-primary hover:border-2 flex flex-col"
             >
               <div className="flex items-start justify-between mb-6">
                 <div className="flex-1">

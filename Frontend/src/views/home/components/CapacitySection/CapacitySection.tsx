@@ -1,11 +1,19 @@
 // Why Choose Us Section Component (View Layer)
 
-import { useNavigation } from '@/hooks/useNavigation';
-import { CAPACITY_SERVICES } from '@/constants/home';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export const CapacitySection = () => {
-  const { handleGetQuote } = useNavigation();
+  const [isVisible, setIsVisible] = useState(false);
 
+  useEffect(() => {
+    // Trigger button visibility animation on mount
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []);
   // Why Choose Us reasons
   const whyChooseUsReasons = [
     {
@@ -22,9 +30,6 @@ export const CapacitySection = () => {
     },
   ];
 
-  // Show first 3 services for the card images
-  const displayedServices = CAPACITY_SERVICES.slice(0, 3);
-
   return (
     <div className="py-8 bg-white border-t border-gray-200">
       {/* Decorative divider bar */}
@@ -32,7 +37,7 @@ export const CapacitySection = () => {
         <div className="w-32 h-0.5 bg-theme-primary rounded-full"></div>
       </div>
       
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 pb-16">
         {/* Two Column Layout */}
         <div className="grid lg:grid-cols-2 gap-8 items-start">
           {/* Left Column - Why Choose Us Content */}
@@ -43,33 +48,37 @@ export const CapacitySection = () => {
             <p className="text-sm text-slate-600 mb-8">
               Make shipping your freight simple with our coordinated carriers & optimized routes. Our trucking thrives on this <span className="text-theme-primary font-semibold">three pillars</span>.
             </p>
+            <Link
+              to="/about"
+              className={`inline-block px-8 py-3 border-2 border-slate-900 text-slate-900 text-sm font-semibold rounded-sm hover:bg-slate-900 hover:text-white transition-all whitespace-nowrap cursor-pointer ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              } transition-all duration-500`}
+            >
+              Read More
+            </Link>
           </div>
 
           {/* Right Column - Stacked Cards */}
           <div className="space-y-4">
-            {displayedServices.map((service, index) => (
+            {whyChooseUsReasons.map((reason, index) => (
               <div
                 key={index}
-                className="group relative rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer"
+                className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 cursor-pointer"
               >
-                <div className="relative h-48">
-                  <img 
-                    src={service.image}
-                    alt={service.title}
-                    className="w-full h-full object-cover"
-                  />
-                  {/* Overlay with title */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent">
-                    <div className="absolute bottom-0 left-0 right-0 p-4">
-                      <h3 className="text-white text-lg font-bold mb-1">
-                        {whyChooseUsReasons[index]?.title || service.title}
-                      </h3>
-                      {whyChooseUsReasons[index]?.shortDescription && (
-                        <p className="text-white/90 text-sm">
-                          {whyChooseUsReasons[index].shortDescription}
-                        </p>
-                      )}
-                    </div>
+                <div className="relative h-32 bg-gradient-to-r from-slate-900 to-slate-100 group-hover:from-theme-primary group-hover:to-white">
+                  {/* Number Badge */}
+                  <div className={`absolute ${index === 1 ? 'top-3 right-3' : 'top-3 left-3'} w-10 h-10 bg-white/20 backdrop-blur-sm border-2 border-white/40 rounded-lg flex items-center justify-center font-bold text-xl text-white group-hover:bg-white group-hover:text-theme-primary transition-all duration-300`}>
+                    {index + 1}
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="absolute inset-0 flex flex-col justify-end p-5">
+                    <h3 className="text-white text-lg font-bold mb-1">
+                      {reason.title}
+                    </h3>
+                    <p className="text-white/90 text-xs">
+                      {reason.shortDescription}
+                    </p>
                   </div>
                 </div>
               </div>

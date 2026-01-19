@@ -8,14 +8,14 @@ export const COMPANY_NAME = 'Arizontal Logistics';
 export const CONTACT_INFO = {
   phone: '(919) 555-0123',
   email: 'info@arizontallogistics.com',
-  address: 'Raleigh, North Carolina, USA',
+  address: '4037 E Independence Blvd, Suite 402, Charlotte, NC 28205',
 } as const;
 
 // Navigation Links
 export const NAVIGATION_ITEMS = [
   { label: 'Home', href: '/', isRoute: true },
-  { label: 'Cargo', href: '#services', isRoute: false },
-  { label: 'About', href: '#about', isRoute: false },
+  { label: 'Transportation', href: '/transportation', isRoute: true },
+  { label: 'About', href: '/about', isRoute: true },
   { label: 'Careers', href: '/careers', isRoute: true },
   { label: 'Contact', href: '/contact', isRoute: true },
 ] as const;

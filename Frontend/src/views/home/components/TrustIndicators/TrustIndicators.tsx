@@ -26,14 +26,14 @@ const headquartersPinIcon = new Icon({
 // Operational cities across North America
 const OPERATIONAL_CITIES = [
   // East Coast
-  { position: [35.7796, -78.6382] as [number, number], name: 'Raleigh, NC', isHQ: true },
+  { position: [35.2271, -80.8431] as [number, number], name: 'Charlotte, NC', isHQ: true },
   { position: [40.7128, -74.0060] as [number, number], name: 'New York, NY' },
   { position: [42.3601, -71.0589] as [number, number], name: 'Boston, MA' },
   { position: [39.9526, -75.1652] as [number, number], name: 'Philadelphia, PA' },
   { position: [38.9072, -77.0369] as [number, number], name: 'Washington, DC' },
   { position: [33.7490, -84.3880] as [number, number], name: 'Atlanta, GA' },
   { position: [25.7617, -80.1918] as [number, number], name: 'Miami, FL' },
-  { position: [35.2271, -80.8431] as [number, number], name: 'Charlotte, NC' },
+  { position: [35.7796, -78.6382] as [number, number], name: 'Raleigh, NC' },
   
   // South
   { position: [29.7604, -95.3698] as [number, number], name: 'Houston, TX' },
@@ -140,7 +140,7 @@ export const TrustIndicators = () => {
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 bg-blue-500 rounded-full border-2 border-white shadow"></div>
-                  <span className="text-slate-700">Head Office (Raleigh, NC)</span>
+                  <span className="text-slate-700">Head Office (4037 E Independence Blvd, Suite 402, Charlotte)</span>
                 </div>
               </div>
             </div>

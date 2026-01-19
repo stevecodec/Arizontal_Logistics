@@ -9,8 +9,16 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'display': ['Realtime Text', 'sans-serif'],
-        'body': ['Realtime Text', 'sans-serif'],
+        'sans': ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        'display': ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        'body': ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+      },
+      fontWeight: {
+        'thin': '300',
+        'normal': '300',
+        'medium': '300',
+        'semibold': '300',
+        'bold': '300',
       },
       colors: {
         'theme': {
