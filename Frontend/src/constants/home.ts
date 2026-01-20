@@ -85,6 +85,8 @@ export const SERVICE_CARDS: ServiceCard[] = [
       'Access to our 24/7 support team',
     ],
     image: arizontal360RenderImage,
+    link: '/contact',
+    buttonText: 'Contact Us',
   },
   {
     title: 'Arizontal Carriers',
@@ -96,6 +98,22 @@ export const SERVICE_CARDS: ServiceCard[] = [
       'Receive 5 star rating and get recommended for more shipments',
     ],
     image: carrier360RenderImage,
+    link: '/careers',
+    buttonText: 'Apply Here',
+  },
+  {
+    title: 'Owner-Operator Partnerships',
+    subtitle: 'For Owner-Operators',
+    features: [
+      'Competitive rates and consistent loads',
+      'Flexible partnership opportunities',
+      'Fuel discount programs available',
+      'Dedicated support team',
+      'Weekly settlements and transparent pay',
+    ],
+    image: truckloadTabsImage,
+    link: '/transportation',
+    buttonText: 'Read More',
   },
 ];
 

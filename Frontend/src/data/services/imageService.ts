@@ -2,7 +2,6 @@
 // Handles image URLs and CDN management
 
 import trustIndicatorsBackgroundImage from '@/assets/images/trustIndicatorsBackground.jpg';
-import trustIndicatorsMapImage from '@/assets/images/trustIndicatorsMap.jpg';
 import whyChooseUsImage from '@/assets/images/Arizontal-Poster.jpg';
 import careersTeaserImage from '@/assets/images/careersTeaser.jpg';
 import logoImage from '@/assets/images/logo.jpeg';
@@ -14,7 +13,6 @@ import truck4Image from '@/assets/images/Arizontal-poster2.jpg';
 
 export const IMAGE_URLS = {
   trustIndicatorsBackground: trustIndicatorsBackgroundImage,
-  trustIndicatorsMap: trustIndicatorsMapImage,
   whyChooseUs: whyChooseUsImage,
   careersTeaser: careersTeaserImage,
   logo: logoImage,

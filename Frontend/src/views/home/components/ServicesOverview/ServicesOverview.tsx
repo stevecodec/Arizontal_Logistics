@@ -51,10 +51,10 @@ export const ServicesOverview = () => {
 
               <div className="mt-auto">
                 <Link 
-                  to={service.subtitle === 'For Carriers' ? '/careers' : '/contact'}
+                  to={service.link || '/contact'}
                   className="inline-flex items-center px-4 py-2 text-theme-primary text-sm font-medium border border-theme-primary rounded-lg hover:bg-theme-bg-lighter transition-all duration-200 whitespace-nowrap cursor-pointer"
                 >
-                  <span>{service.subtitle === 'For Carriers' ? 'Apply Here' : 'Contact Us'}</span>
+                  <span>{service.buttonText || 'Contact Us'}</span>
                   <i className="ri-arrow-right-line ml-2 text-sm"></i>
                 </Link>
               </div>

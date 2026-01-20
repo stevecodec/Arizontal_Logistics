@@ -21,6 +21,7 @@ export interface ServiceCard {
   features: string[];
   image: string;
   link?: string;
+  buttonText?: string;
 }
 
 export interface Stat {

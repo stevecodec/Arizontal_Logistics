@@ -2,7 +2,7 @@
 
 export const HeroSection = () => {
   return (
-    <section className="relative h-[50vh] flex items-center justify-start">
+    <section className="relative h-[55vh] flex items-center justify-start">
       {/* Dark overlay for readability */}
       <div className="absolute inset-0 bg-slate-900/50"></div>
 

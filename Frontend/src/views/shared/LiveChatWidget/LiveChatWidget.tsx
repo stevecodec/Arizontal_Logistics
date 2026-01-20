@@ -103,7 +103,7 @@ export const LiveChatWidget = () => {
                     type="text"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-3 py-2 text-xs border border-slate-300 focus:outline-none focus:ring-2 focus:ring-theme-primary focus:border-transparent"
+                    className="w-full px-3 py-2 text-xs border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#d58630] focus:border-transparent"
                   />
                 </div>
                 <div>
@@ -123,7 +123,7 @@ export const LiveChatWidget = () => {
                     type="email"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-3 py-2 text-xs border border-slate-300 focus:outline-none focus:ring-2 focus:ring-theme-primary focus:border-transparent"
+                    className="w-full px-3 py-2 text-xs border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#d58630] focus:border-transparent"
                   />
                 </div>
                 <div>
@@ -138,8 +138,8 @@ export const LiveChatWidget = () => {
                         onClick={() => setFormData({ ...formData, role })}
                         className={`px-3 py-2 text-[11px] font-semibold border transition-colors ${
                           formData.role === role
-                            ? 'bg-theme-primary text-white border-theme-primary'
-                            : 'border-slate-300 text-slate-700 hover:border-theme-primary'
+                            ? 'bg-[#d58630] text-white border-[#d58630]'
+                            : 'border-slate-300 text-slate-700 hover:border-[#d58630]'
                         }`}
                       >
                         {role === 'carrier' ? 'Carrier' : 'Shipper'}
@@ -151,7 +151,7 @@ export const LiveChatWidget = () => {
                   type="button"
                   onClick={handleStartChat}
                   disabled={!isFormValid}
-                  className="w-full px-4 py-2 text-xs font-semibold rounded bg-theme-primary text-white disabled:opacity-50 disabled:cursor-not-allowed hover:bg-theme-dark transition-colors"
+                  className="w-full px-4 py-2 text-xs font-semibold rounded bg-[#d58630] text-white disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#b86f28] transition-colors"
                 >
                   Start chat
                 </button>
@@ -170,7 +170,7 @@ export const LiveChatWidget = () => {
                       <div
                         className={`max-w-[80%] px-3 py-2 rounded text-xs leading-relaxed ${
                           message.sender === 'user'
-                            ? 'bg-theme-primary text-white'
+                            ? 'bg-[#d58630] text-white'
                             : 'bg-slate-100 text-slate-700'
                         }`}
                       >
@@ -191,12 +191,12 @@ export const LiveChatWidget = () => {
                       }
                     }}
                     placeholder="Type your message..."
-                    className="flex-1 px-3 py-2 text-[11px] border border-slate-300 focus:outline-none focus:ring-2 focus:ring-theme-primary focus:border-transparent"
+                    className="flex-1 px-3 py-2 text-[11px] border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#d58630] focus:border-transparent"
                   />
                   <button
                     type="button"
                     onClick={handleSendMessage}
-                    className="px-3 py-2 text-[11px] font-semibold bg-theme-primary text-white hover:bg-theme-dark transition-colors"
+                    className="px-3 py-2 text-[11px] font-semibold bg-[#d58630] text-white hover:bg-[#b86f28] transition-colors"
                   >
                     Send
                   </button>
@@ -209,7 +209,7 @@ export const LiveChatWidget = () => {
         <button
           type="button"
           onClick={() => setIsOpen((open) => !open)}
-          className="flex items-center justify-center h-12 w-12 rounded-full bg-theme-primary text-white shadow-xl hover:bg-theme-dark transition-colors flex-shrink-0"
+          className="flex items-center justify-center h-12 w-12 rounded-full bg-[#d58630] text-white shadow-xl hover:bg-[#b86f28] transition-colors flex-shrink-0"
           aria-label={isOpen ? "Close chat" : "Open chat"}
         >
           <i className={`${isOpen ? 'ri-message-3-fill' : 'ri-message-3-line'} text-md`}></i>

@@ -1,6 +1,6 @@
 // Hero Section Component (View Layer)
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigation } from '@/hooks/useNavigation';
 import { getImageUrl } from '@/data/services/imageService';
@@ -11,6 +11,15 @@ export const HeroSection = () => {
   const { handleGetQuote } = useNavigation();
   // TODO: Load from backend API
   const [availableLoadsCount] = useState<number>(0);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    // Trigger animation on mount
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div className="relative h-screen w-full overflow-hidden">
@@ -33,30 +42,31 @@ export const HeroSection = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60"></div>
 
       {/* Hero Content */}
-      <div className="relative z-10 h-full flex items-center justify-center pt-16">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full text-center">
-          <div className="max-w-4xl mx-auto">
-            {/* Main Headline */}
-            <h2 className="text-2xl lg:text-3xl font-bold text-white mb-4 leading-tight">
-              From Coast to Coast<sup className="text-base">®</sup>
+      <div className="relative z-10 h-full flex items-center pt-16">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full">
+          {/* Content Card */}
+          <div 
+            className={`bg-gradient-to-r from-[#d58630] to-theme-primary backdrop-blur-sm p-8 lg:p-12 max-w-2xl shadow-2xl transition-all duration-1000 ease-out delay-300 ${
+              isVisible 
+                ? 'opacity-100 translate-x-0' 
+                : 'opacity-0 -translate-x-20'
+            }`}
+          >
+            <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6 leading-tight">
+              From Coast to Coast<sup className="text-xl">®</sup>
             </h2>
 
-            <p className="text-sm lg:text-base text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-              Delivering exceptional logistics services, tailored freight solutions designed for your success.
+            <p className="text-base lg:text-lg text-white/95 mb-8 leading-relaxed">
+              Delivering exceptional logistics services and tailored freight solutions.
             </p>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <button 
-                onClick={handleGetQuote}
-                className="px-6 py-2.5 bg-gradient-to-r from-theme-primary to-theme-dark text-white text-sm font-semibold rounded-sm hover:from-theme-dark hover:to-theme-darker transition-all whitespace-nowrap cursor-pointer shadow-xl"
-              >
-                Get Instant Quote
-              </button>
-              <button className="px-6 py-2.5 bg-white text-slate-900 text-sm font-semibold rounded-sm hover:bg-slate-100 transition-all whitespace-nowrap cursor-pointer shadow-xl">
-                Let's Connect
-              </button>
-            </div>
+            {/* CTA Button */}
+            <Link 
+              to="/contact"
+              className="inline-block px-8 py-3 bg-white text-[#d58630] text-base font-bold border-2 border-transparent hover:border-theme-primary hover:bg-slate-100 transition-all whitespace-nowrap cursor-pointer shadow-xl"
+            >
+              Get Instant Quote
+            </Link>
           </div>
         </div>
       </div>
@@ -86,7 +96,14 @@ export const HeroSection = () => {
                 <div>
                   <h3 className="text-white font-bold text-sm uppercase mb-2">Are You a Driver?</h3>
                   <p className="text-white text-xs">
-                    We're hiring! Learn more about our driving opportunities.
+                    We're hiring!{' '}
+                    <Link 
+                      to="/careers" 
+                      className="text-theme-primary font-semibold hover:text-theme-secondary hover:underline transition-colors"
+                    >
+                      Learn more
+                    </Link>{' '}
+                    about our driving opportunities.
                   </p>
                 </div>
               </div>
@@ -112,12 +129,12 @@ export const HeroSection = () => {
                   <p className="text-white text-xs">
                     {availableLoadsCount.toLocaleString()} loads.{' '}
                     <Link 
-                      to="/login" 
+                      to="/careers" 
                       className="text-theme-primary font-semibold hover:text-theme-secondary hover:underline transition-colors"
                     >
-                      Login
+                      Apply
                     </Link>{' '}
-                    to view more.
+                    to work with us.
                   </p>
                 </div>
               </div>
