@@ -4,12 +4,12 @@ import { getImageUrl } from '@/data/services/imageService';
 
 export const CompanyProfile = () => {
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-white/95 backdrop-blur-sm">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
-            <div className="inline-block px-4 py-1 bg-theme-primary/10 border-l-4 border-theme-primary mb-6">
-              <span className="text-sm font-semibold text-theme-primary">COMPANY PROFILE</span>
+            <div className="inline-block px-4 py-1 bg-[#d58630]/10 border-l-4 border-[#d58630] mb-6">
+              <span className="text-sm font-semibold text-[#d58630]">WHO WE ARE</span>
             </div>
             <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-6">
               Licensed & Insured Motor Carrier
@@ -24,7 +24,7 @@ export const CompanyProfile = () => {
             </p>
           </div>
           
-          <div className="relative h-96">
+          <div className="relative h-96 shadow-xl">
             <img
               src={getImageUrl('truck1')}
               alt="Arizontal fleet"

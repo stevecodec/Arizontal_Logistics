@@ -24,8 +24,10 @@ export const NAVIGATION_ITEMS = [
 export const FOOTER_LINKS = {
   quickLinks: [
     { label: 'Home', to: '/' },
-    { label: 'Brokerage Services', to: '/arizontal-logistics' },
+    { label: 'Transportation', to: '/transportation' },
+    { label: 'About Us', to: '/about' },
     { label: 'Careers', to: '/careers' },
+    { label: 'Contact', to: '/contact' },
   ],
 } as const;
 

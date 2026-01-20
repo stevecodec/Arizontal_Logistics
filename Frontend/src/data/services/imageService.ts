@@ -3,7 +3,7 @@
 
 import trustIndicatorsBackgroundImage from '@/assets/images/trustIndicatorsBackground.jpg';
 import trustIndicatorsMapImage from '@/assets/images/trustIndicatorsMap.jpg';
-import whyChooseUsImage from '@/assets/images/Arizontal Poster.jpg';
+import whyChooseUsImage from '@/assets/images/Arizontal-Poster.jpg';
 import careersTeaserImage from '@/assets/images/careersTeaser.jpg';
 import logoImage from '@/assets/images/logo.jpeg';
 import overlay1Image from '@/assets/images/overlay1.jpg';

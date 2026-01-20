@@ -185,30 +185,30 @@ const ContactPage = () => {
 
       <main className="flex-1">
         {/* Hero Section - Dark Blue Background */}
-        <section className="bg-gradient-to-t from-[#2C4A6D] to-slate-100 py-20 px-4">
-          <div className="max-w-4xl mx-auto text-center py-12">
-            <h1 className="text-2xl lg:text-3xl font-bold mb-4 text-slate-900">Contact Us</h1>
-            <p className="text-sm mb-12 leading-relaxed text-slate-700">
+        <section className="bg-gradient-to-t from-[#2C4A6D] to-slate-100 py-12 px-4">
+          <div className="max-w-4xl mx-auto text-center py-6">
+            <h1 className="text-2xl lg:text-3xl font-bold mb-3 text-slate-900">Contact Us</h1>
+            <p className="text-sm mb-8 leading-relaxed text-slate-700">
               Arizontal Logistics would like to do business with you! Let us know where we can pick your loads and we will get back to you with a quote. Thank you in advance!
             </p>
 
             {/* Contact Method Cards */}
-            <div className="grid md:grid-cols-3 gap-8 mb-12">
+            <div className="grid md:grid-cols-3 gap-8 mb-6">
               {/* By Mail */}
               <div className="flex flex-col items-center">
-                <div className="w-20 h-20 mb-4 flex items-center justify-center">
-                  <i className="ri-mail-line text-5xl text-[#2C4A6D]"></i>
+                <div className="w-16 h-16 mb-3 flex items-center justify-center">
+                  <i className="ri-mail-line text-4xl text-[#2C4A6D]"></i>
                 </div>
-                <h3 className="font-bold text-base mb-2 text-slate-900">By Mail</h3>
+                <h3 className="font-bold text-base mb-1 text-slate-900">By Mail</h3>
                 <p className="text-xs text-slate-700">{CONTACT_INFO.address}</p>
               </div>
 
               {/* Phone */}
               <div className="flex flex-col items-center">
-                <div className="w-20 h-20 mb-4 flex items-center justify-center">
-                  <i className="ri-phone-line text-5xl text-[#2C4A6D]"></i>
+                <div className="w-16 h-16 mb-3 flex items-center justify-center">
+                  <i className="ri-phone-line text-4xl text-[#2C4A6D]"></i>
                 </div>
-                <h3 className="font-bold text-base mb-2 text-slate-900">Phone</h3>
+                <h3 className="font-bold text-base mb-1 text-slate-900">Phone</h3>
                 <a 
                   href={`tel:${CONTACT_INFO.phone}`}
                   className="text-xs hover:underline text-slate-700"
@@ -219,13 +219,13 @@ const ContactPage = () => {
 
               {/* Email */}
               <div className="flex flex-col items-center">
-                <div className="w-20 h-20 mb-4 flex items-center justify-center">
-                  <i className="ri-mail-send-line text-5xl text-[#2C4A6D]"></i>
+                <div className="w-16 h-16 mb-3 flex items-center justify-center">
+                  <i className="ri-mail-send-line text-4xl text-[#2C4A6D]"></i>
                 </div>
-                <h3 className="font-bold text-base mb-2 text-slate-900">Email</h3>
+                <h3 className="font-bold text-base mb-1 text-slate-900">Email</h3>
                 <a 
                   href={`mailto:${CONTACT_INFO.email}`}
-                  className="text-theme-primary hover:text-theme-dark cursor-pointer transition-colors text-xs"
+                  className="hover:text-theme-dark cursor-pointer transition-colors text-xs"
                 >
                   {CONTACT_INFO.email}
                 </a>
@@ -239,9 +239,9 @@ const ContactPage = () => {
                   href={SOCIAL_LINKS.facebook} 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="w-10 h-10 flex items-center justify-center hover:opacity-80 cursor-pointer transition-opacity"
+                  className="w-10 h-10 flex items-center justify-center group cursor-pointer transition-all"
                 >
-                  <i className="ri-facebook-fill text-3xl text-[#2C4A6D]"></i>
+                  <i className="ri-facebook-fill text-3xl text-[#2C4A6D] group-hover:text-theme-primary transition-colors"></i>
                 </a>
               )}
               {SOCIAL_LINKS.twitter && (
@@ -249,9 +249,9 @@ const ContactPage = () => {
                   href={SOCIAL_LINKS.twitter} 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="w-10 h-10 flex items-center justify-center hover:opacity-80 cursor-pointer transition-opacity"
+                  className="w-10 h-10 flex items-center justify-center group cursor-pointer transition-all"
                 >
-                  <i className="ri-twitter-x-line text-3xl text-[#2C4A6D]"></i>
+                  <i className="ri-twitter-x-line text-3xl text-[#2C4A6D] group-hover:text-theme-primary transition-colors"></i>
                 </a>
               )}
               {SOCIAL_LINKS.instagram && (
@@ -259,9 +259,9 @@ const ContactPage = () => {
                   href={SOCIAL_LINKS.instagram} 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="w-10 h-10 flex items-center justify-center hover:opacity-80 cursor-pointer transition-opacity"
+                  className="w-10 h-10 flex items-center justify-center group cursor-pointer transition-all"
                 >
-                  <i className="ri-instagram-fill text-3xl text-[#2C4A6D]"></i>
+                  <i className="ri-instagram-fill text-3xl text-[#2C4A6D] group-hover:text-theme-primary transition-colors"></i>
                 </a>
               )}
             </div>
@@ -269,9 +269,9 @@ const ContactPage = () => {
         </section>
 
         {/* Form Section - Light Background */}
-        <section className="bg-white py-12">
+        <section className="bg-white py-8">
           <div className="w-full">
-            <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] items-stretch">
+            <div className="grid gap-4 lg:grid-cols-[0.9fr_1.1fr] items-stretch">
               <div className="order-2 lg:order-1 px-0">
                 <div className="relative overflow-hidden h-full shadow-lg">
                   <img
@@ -297,7 +297,7 @@ const ContactPage = () => {
                   className="p-6 flex-1 w-full max-w-md"
                 >
               {/* Full Name Field */}
-              <div className="mb-6">
+              <div className="mb-4">
                 <label htmlFor="fullName" className="block text-sm font-semibold text-gray-900 mb-2">
                   Full Name
                 </label>
@@ -312,7 +312,7 @@ const ContactPage = () => {
               </div>
 
               {/* Company Field */}
-              <div className="mb-6">
+              <div className="mb-4">
                 <label htmlFor="company" className="block text-sm font-semibold text-gray-900 mb-2">
                   Company
                 </label>
@@ -327,7 +327,7 @@ const ContactPage = () => {
               </div>
 
               {/* State Field */}
-              <div className="mb-6">
+              <div className="mb-4">
                 <label htmlFor="state" className="block text-sm font-semibold text-gray-900 mb-2">
                   State
                 </label>
@@ -347,7 +347,7 @@ const ContactPage = () => {
               </div>
 
               {/* Phone Field */}
-              <div className="mb-6">
+              <div className="mb-4">
                 <label htmlFor="phone" className="block text-sm font-semibold text-gray-900 mb-2">
                   Phone
                 </label>
@@ -366,7 +366,7 @@ const ContactPage = () => {
               </div>
 
               {/* Email Field */}
-              <div className="mb-6">
+              <div className="mb-4">
                 <label htmlFor="email" className="block text-sm font-semibold text-gray-900 mb-2">
                   Email
                 </label>
@@ -381,7 +381,7 @@ const ContactPage = () => {
               </div>
 
               {/* Message Field */}
-              <div className="mb-6">
+              <div className="mb-4">
                 <label htmlFor="message" className="block text-sm font-semibold text-gray-900 mb-2">
                   Message
                 </label>
