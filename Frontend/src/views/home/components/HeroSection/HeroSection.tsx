@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigation } from '@/hooks/useNavigation';
 import { getImageUrl } from '@/data/services/imageService';
-import heroVideo from '@/assets/videos/herosection video1.mp4';
+// import heroVideo from '@/assets/videos/herosection video1.mp4';
 import { CONTACT_INFO } from '@/constants';
 
 export const HeroSection = () => {
