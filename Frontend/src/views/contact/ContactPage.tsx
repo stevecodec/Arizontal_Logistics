@@ -184,8 +184,8 @@ const ContactPage = () => {
       )}
 
       <main className="flex-1">
-        {/* Hero Section - Dark Blue Background */}
-        <section className="bg-gradient-to-t from-[#2C4A6D] to-slate-100 py-12 px-4">
+        {/* Hero Section - Secondary Color Fade */}
+        <section className="bg-gradient-to-t from-[#d58630] to-slate-100 py-20 px-4">
           <div className="max-w-4xl mx-auto text-center py-6">
             <h1 className="text-2xl lg:text-3xl font-bold mb-3 text-slate-900">Contact Us</h1>
             <p className="text-sm mb-8 leading-relaxed text-slate-700">
@@ -197,7 +197,7 @@ const ContactPage = () => {
               {/* By Mail */}
               <div className="flex flex-col items-center">
                 <div className="w-16 h-16 mb-3 flex items-center justify-center">
-                  <i className="ri-mail-line text-4xl text-[#2C4A6D]"></i>
+                  <i className="ri-mail-line text-4xl text-[#d58630]"></i>
                 </div>
                 <h3 className="font-bold text-base mb-1 text-slate-900">By Mail</h3>
                 <p className="text-xs text-slate-700">{CONTACT_INFO.address}</p>
@@ -206,7 +206,7 @@ const ContactPage = () => {
               {/* Phone */}
               <div className="flex flex-col items-center">
                 <div className="w-16 h-16 mb-3 flex items-center justify-center">
-                  <i className="ri-phone-line text-4xl text-[#2C4A6D]"></i>
+                  <i className="ri-phone-line text-4xl text-[#d58630]"></i>
                 </div>
                 <h3 className="font-bold text-base mb-1 text-slate-900">Phone</h3>
                 <a 
@@ -220,12 +220,12 @@ const ContactPage = () => {
               {/* Email */}
               <div className="flex flex-col items-center">
                 <div className="w-16 h-16 mb-3 flex items-center justify-center">
-                  <i className="ri-mail-send-line text-4xl text-[#2C4A6D]"></i>
+                  <i className="ri-mail-send-line text-4xl text-[#d58630]"></i>
                 </div>
                 <h3 className="font-bold text-base mb-1 text-slate-900">Email</h3>
                 <a 
                   href={`mailto:${CONTACT_INFO.email}`}
-                  className="hover:text-theme-dark cursor-pointer transition-colors text-xs"
+                  className="hover:text-[#d58630] cursor-pointer transition-colors text-xs"
                 >
                   {CONTACT_INFO.email}
                 </a>
@@ -241,7 +241,7 @@ const ContactPage = () => {
                   rel="noopener noreferrer" 
                   className="w-10 h-10 flex items-center justify-center group cursor-pointer transition-all"
                 >
-                  <i className="ri-facebook-fill text-3xl text-[#2C4A6D] group-hover:text-theme-primary transition-colors"></i>
+                  <i className="ri-facebook-fill text-3xl text-[#d58630] group-hover:text-theme-primary transition-colors"></i>
                 </a>
               )}
               {SOCIAL_LINKS.twitter && (
@@ -251,7 +251,7 @@ const ContactPage = () => {
                   rel="noopener noreferrer" 
                   className="w-10 h-10 flex items-center justify-center group cursor-pointer transition-all"
                 >
-                  <i className="ri-twitter-x-line text-3xl text-[#2C4A6D] group-hover:text-theme-primary transition-colors"></i>
+                  <i className="ri-twitter-x-line text-3xl text-[#d58630] group-hover:text-theme-primary transition-colors"></i>
                 </a>
               )}
               {SOCIAL_LINKS.instagram && (
@@ -261,7 +261,7 @@ const ContactPage = () => {
                   rel="noopener noreferrer" 
                   className="w-10 h-10 flex items-center justify-center group cursor-pointer transition-all"
                 >
-                  <i className="ri-instagram-fill text-3xl text-[#2C4A6D] group-hover:text-theme-primary transition-colors"></i>
+                  <i className="ri-instagram-fill text-3xl text-[#d58630] group-hover:text-theme-primary transition-colors"></i>
                 </a>
               )}
             </div>
@@ -287,7 +287,7 @@ const ContactPage = () => {
                   <h2 className="text-xl lg:text-2xl font-bold text-gray-900 mb-2 text-center lg:text-left">
                     Online Contact Form
                   </h2>
-                  <div className="w-1/4 h-0.5 bg-theme-primary"></div>
+                  <div className="w-1/4 h-0.5 bg-[#d58630]"></div>
                 </div>
 
                 <form
@@ -307,7 +307,7 @@ const ContactPage = () => {
                   name="fullName"
                   value={formData.fullName}
                   onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-none focus:outline-none focus:ring-2 focus:ring-theme-primary focus:border-transparent text-xs"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-none focus:outline-none focus:ring-2 focus:ring-[#d58630] focus:border-transparent text-xs"
                 />
               </div>
 
@@ -322,7 +322,7 @@ const ContactPage = () => {
                   name="company"
                   value={formData.company}
                   onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-none focus:outline-none focus:ring-2 focus:ring-theme-primary focus:border-transparent text-xs"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-none focus:outline-none focus:ring-2 focus:ring-[#d58630] focus:border-transparent text-xs"
                 />
               </div>
 
@@ -336,7 +336,7 @@ const ContactPage = () => {
                   name="state"
                   value={formData.state}
                   onChange={(e) => setFormData({ ...formData, state: e.target.value })}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-none focus:outline-none focus:ring-2 focus:ring-theme-primary focus:border-transparent text-xs bg-white"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-none focus:outline-none focus:ring-2 focus:ring-[#d58630] focus:border-transparent text-xs bg-white"
                 >
                   {US_STATES.map((state) => (
                     <option key={state.value} value={state.value}>
@@ -376,7 +376,7 @@ const ContactPage = () => {
                   name="email"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-none focus:outline-none focus:ring-2 focus:ring-theme-primary focus:border-transparent text-xs"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-none focus:outline-none focus:ring-2 focus:ring-[#d58630] focus:border-transparent text-xs"
                 />
               </div>
 
@@ -392,7 +392,7 @@ const ContactPage = () => {
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   rows={6}
                   maxLength={500}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-theme-primary focus:border-transparent text-xs resize-none"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#d58630] focus:border-transparent text-xs resize-none"
                   placeholder="Please share your comments, feedback, or questions..."
                 />
                 <p className="mt-2 text-xs text-gray-500">
@@ -404,7 +404,7 @@ const ContactPage = () => {
               <button
                 type="submit"
                 disabled={isSubmitting || formData.message.length > 500}
-                className="w-full px-6 py-3 bg-gradient-to-r from-theme-primary to-theme-dark text-white text-xs font-semibold rounded-md hover:from-theme-dark hover:to-theme-darker transition-all shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full px-6 py-3 bg-gradient-to-r from-[#d58630] to-theme-primary text-white text-xs font-semibold rounded-md hover:from-[#b86f28] hover:to-theme-dark transition-all shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? 'Submitting...' : 'Send Message'}
               </button>
