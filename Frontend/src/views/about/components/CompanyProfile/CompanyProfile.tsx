@@ -1,8 +1,35 @@
 // Company Profile Component
 
+import { useEffect, useRef, useState } from 'react';
 import { getImageUrl } from '@/data/services/imageService';
 
 export const CompanyProfile = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const imageRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      {
+        threshold: 0.2,
+      }
+    );
+
+    if (imageRef.current) {
+      observer.observe(imageRef.current);
+    }
+
+    return () => {
+      if (imageRef.current) {
+        observer.unobserve(imageRef.current);
+      }
+    };
+  }, []);
+
   return (
     <section className="py-20 bg-white/95 backdrop-blur-sm">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -24,7 +51,14 @@ export const CompanyProfile = () => {
             </p>
           </div>
           
-          <div className="relative h-96 shadow-xl">
+          <div 
+            ref={imageRef}
+            className={`relative h-96 shadow-xl transition-all duration-1000 ease-out ${
+              isVisible 
+                ? 'opacity-100 translate-x-0' 
+                : 'opacity-0 translate-x-20'
+            }`}
+          >
             <img
               src={getImageUrl('truck1')}
               alt="Arizontal fleet"
