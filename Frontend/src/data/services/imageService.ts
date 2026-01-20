@@ -10,6 +10,7 @@ import overlay1Image from '@/assets/images/overlay1.jpg';
 import truck1Image from '@/assets/images/truck1.jpg';
 import truck2Image from '@/assets/images/truck2.jpg';
 import truck3Image from '@/assets/images/truck3.jpg';
+import truck4Image from '@/assets/images/Arizontal-poster2.jpg';
 
 export const IMAGE_URLS = {
   trustIndicatorsBackground: trustIndicatorsBackgroundImage,
@@ -21,6 +22,7 @@ export const IMAGE_URLS = {
   truck1: truck1Image,
   truck2: truck2Image,
   truck3: truck3Image,
+  truck4: truck4Image,
 } as const;
 
 /**

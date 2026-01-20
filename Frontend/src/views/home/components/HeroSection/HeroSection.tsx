@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigation } from '@/hooks/useNavigation';
+import { getImageUrl } from '@/data/services/imageService';
 import heroVideo from '@/assets/videos/herosection video1.mp4';
 import { CONTACT_INFO } from '@/constants';
 
@@ -13,14 +14,17 @@ export const HeroSection = () => {
 
   return (
     <div className="relative h-screen w-full overflow-hidden">
-      {/* Background Video */}
+      {/* Background Image */}
       <div className="absolute inset-0">
-        <video 
+        {/* <video 
           src={heroVideo}
           autoPlay
           loop
           muted
-          playsInline
+          playsInline/> */}
+        <img 
+          src={getImageUrl('truck4')}
+          alt="Arizontal Logistics"
           className="w-full h-full object-cover"
         />
       </div>

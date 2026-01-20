@@ -6,36 +6,19 @@ export const ContactCTA = () => {
   return (
     <section className="py-20 bg-slate-900/95 backdrop-blur-sm text-white">
       <div className="max-w-4xl mx-auto px-6 lg:px-8 text-center">
-        <h2 className="text-3xl lg:text-4xl font-bold mb-6">
+        <h2 className="text-2xl lg:text-3xl font-bold mb-2">
+          Arizontal Logistics Inc.
+        </h2>
+        <p className="text-xl lg:text-2xl text-white/90 mb-8">
           Let's Move Your Freight Today!
-        </h2>        
-        <div className="grid md:grid-cols-3 gap-8 mb-12 py-4">
-          <div>
-            <p className="text-sm text-white/60 mb-1">Dispatch</p>
-            <a href={`tel:${CONTACT_INFO.phone}`} className="text-white font-semibold hover:text-[#d58630] transition-colors">
-              {CONTACT_INFO.phone}
-            </a>
-          </div>
-          <div>
-            <p className="text-sm text-white/60 mb-1">Email</p>
-            <a href={`mailto:${CONTACT_INFO.email}`} className="text-white font-semibold hover:text-[#d58630] transition-colors break-all">
-              {CONTACT_INFO.email}
-            </a>
-          </div>
-          <div>
-            <p className="text-sm text-white/60 mb-1">Head Office</p>
-            <p className="text-white font-semibold">
-              {CONTACT_INFO.address}
-            </p>
-          </div>
-        </div>
-
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        </p>
+        
+        <div className="flex justify-center">
           <a
-            href="/contact"
-            className="px-8 py-3 bg-[#d58630] text-white font-semibold hover:bg-[#d58630]/90 transition-all"
+            href={`tel:${CONTACT_INFO.phone}`}
+            className="px-8 py-3 border-2 border-white text-white font-semibold hover:border-[#d58630] transition-all duration-300"
           >
-            Request Capacity
+            {CONTACT_INFO.phone}
           </a>
         </div>
       </div>
