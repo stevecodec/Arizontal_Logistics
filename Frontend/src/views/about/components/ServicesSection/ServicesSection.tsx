@@ -22,10 +22,10 @@ const services = [
 
 export const ServicesSection = () => {
   return (
-    <section className="py-8">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="text-center mb-10">
-          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4 inline-block relative pb-2">
+    <section className="py-8 sm:py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-8 sm:mb-10">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 inline-block relative pb-2">
             Transportation Services
             <span className="absolute bottom-0 left-0 w-1/4 h-0.5 bg-[#d58630]"></span>
           </h2>
@@ -48,14 +48,14 @@ export const ServicesSection = () => {
                 >
                   {/* Service card */}
                   <div
-                    className={`group w-full md:w-[calc(50%-2rem)] bg-white p-5 shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 border-l-4 border-[#d58630] ${
+                    className={`group w-full md:w-[calc(50%-2rem)] bg-white p-4 sm:p-5 shadow-md hover:shadow-xl transition-all duration-300 hover:scale-105 border-l-4 border-[#d58630] ${
                       isLeft ? 'mr-auto md:mr-8' : 'ml-auto md:ml-8'
                     }`}
                   >
-                    <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-[#d58630] transition-colors">
+                    <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-2 group-hover:text-[#d58630] transition-colors">
                       {service.title}
                     </h3>
-                    <p className="text-slate-600 leading-relaxed">{service.description}</p>
+                    <p className="text-sm sm:text-base text-slate-600 leading-relaxed">{service.description}</p>
                   </div>
 
                   {/* Center dot on the vertical line */}

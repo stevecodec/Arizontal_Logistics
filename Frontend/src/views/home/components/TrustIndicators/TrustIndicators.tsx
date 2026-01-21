@@ -78,18 +78,18 @@ export const TrustIndicators = () => {
       </div>
 
       {/* Scrollable Content */}
-      <div className="relative z-10 py-12">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative">
+      <div className="relative z-10 py-8 sm:py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           {/* Section Header */}
-          <div className="text-center mb-8">
-            <h2 className="text-xl lg:text-2xl font-bold text-white mb-2">
+          <div className="text-center mb-6 sm:mb-8">
+            <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-2">
               Our Shipping Network
             </h2>
-            <div className="mx-auto h-1 w-24 rounded-full bg-theme-primary"></div>
+            <div className="mx-auto h-1 w-20 sm:w-24 rounded-full bg-theme-primary"></div>
           </div>
 
           {/* Map Container */}
-          <div className="relative w-full h-[500px] bg-slate-900/40 backdrop-blur-sm rounded overflow-hidden shadow-2xl">
+          <div className="relative w-full h-[350px] sm:h-[450px] lg:h-[500px] bg-slate-900/40 backdrop-blur-sm rounded overflow-hidden shadow-2xl">
             <MapContainer
               center={[39.8283, -98.5795]} // Center of USA
               zoom={4}
@@ -132,15 +132,16 @@ export const TrustIndicators = () => {
             </MapContainer>
             
             {/* Legend */}
-            <div className="absolute bottom-4 left-4 bg-white/95 backdrop-blur-sm p-3 rounded shadow-lg z-[1000]">
-              <div className="space-y-2 text-xs">
-                <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 bg-[#FF6B35] rounded-full border-2 border-white shadow"></div>
+            <div className="absolute bottom-2 sm:bottom-4 left-2 sm:left-4 bg-white/95 backdrop-blur-sm p-2 sm:p-3 rounded shadow-lg z-[1000] max-w-[calc(100%-1rem)] sm:max-w-none">
+              <div className="space-y-1 sm:space-y-2 text-[10px] sm:text-xs">
+                <div className="flex items-center gap-1 sm:gap-2">
+                  <div className="w-2 h-2 sm:w-3 sm:h-3 bg-[#FF6B35] rounded-full border-2 border-white shadow flex-shrink-0"></div>
                   <span className="text-slate-700">Operational Cities</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 bg-blue-500 rounded-full border-2 border-white shadow"></div>
-                  <span className="text-slate-700">Head Office (4037 E Independence Blvd, Suite 402, Charlotte)</span>
+                <div className="flex items-center gap-1 sm:gap-2">
+                  <div className="w-2 h-2 sm:w-3 sm:h-3 bg-blue-500 rounded-full border-2 border-white shadow flex-shrink-0"></div>
+                  <span className="text-slate-700 hidden sm:inline">Head Office (4037 E Independence Blvd, Suite 402, Charlotte)</span>
+                  <span className="text-slate-700 sm:hidden">Head Office - Charlotte, NC</span>
                 </div>
               </div>
             </div>

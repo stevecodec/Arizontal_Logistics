@@ -34,11 +34,11 @@ export const WhyChooseUs = () => {
   }, []);
 
   return (
-    <section className="pt-2 pb-12 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section className="pt-2 pb-8 sm:pb-12 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-8">
-          <h2 className="text-xl lg:text-2xl font-bold text-slate-900 mb-4 pb-1 inline-block relative">
+        <div className="text-center mb-6 sm:mb-8">
+          <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-slate-900 mb-4 pb-1 inline-block relative">
             <span className="relative">
               The Arizontal Difference
               <span className="absolute bottom-0 right-0 w-1/2 h-0.5 bg-theme-primary"></span>
@@ -47,11 +47,11 @@ export const WhyChooseUs = () => {
         </div>
 
         {/* CEO Quote Section */}
-        <div className="relative mb-8">
-          <div className="grid lg:grid-cols-2 gap-8 items-center">
+        <div className="relative mb-6 sm:mb-8">
+          <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 items-center">
             {/* Image */}
             <div className="order-2 lg:order-1">
-              <div className="relative h-96 rounded overflow-hidden">
+              <div className="relative h-64 sm:h-80 lg:h-96 rounded overflow-hidden">
                 <img 
                   src={getImageUrl('whyChooseUs')}
                   alt="Team collaboration"
@@ -64,20 +64,20 @@ export const WhyChooseUs = () => {
             <div className="order-1 lg:order-2 lg:absolute lg:right-0 lg:top-1/2 lg:-translate-y-1/2 lg:w-[55%] lg:z-10">
               <div 
                 ref={ceoCardRef}
-                className={`bg-white lg:shadow-2xl lg:rounded lg:p-10 lg:-ml-20 relative transition-all duration-1000 ease-out ${
+                className={`bg-white lg:shadow-2xl lg:rounded p-6 sm:p-8 lg:p-10 lg:-ml-20 relative transition-all duration-1000 ease-out ${
                   isVisible 
                     ? 'opacity-100 translate-y-0 translate-x-0' 
                     : 'opacity-0 translate-y-8 translate-x-8'
                 }`}
               >
-                <div className="absolute top-8 left-10 text-4xl text-theme-primary opacity-20">
+                <div className="absolute top-4 sm:top-8 left-4 sm:left-10 text-2xl sm:text-4xl text-theme-primary opacity-20">
                   <i className="ri-double-quotes-l"></i>
                 </div>
-                <div className="relative min-h-[200px] lg:min-h-[240px]">
-                  <h3 className="text-lg font-bold text-slate-900 mb-4">
+                <div className="relative min-h-[180px] sm:min-h-[200px] lg:min-h-[240px]">
+                  <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-3 sm:mb-4">
                     You Deserve the Best
                   </h3>
-                  <p className="text-sm text-slate-600 mb-4 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-slate-600 mb-3 sm:mb-4 leading-relaxed">
                     Our people, customers, carriers, investors and communities all deserve the best from us. That's why we have a passionate pursuit of excellence and are always striving for more. We listen, innovate and invest in order to provide you with excellence. Arizontal is driven for you.
                   </p>
                   <div className="text-xs text-slate-600 font-semibold italic">

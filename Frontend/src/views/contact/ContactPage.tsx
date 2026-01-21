@@ -185,10 +185,10 @@ const ContactPage = () => {
 
       <main className="flex-1">
         {/* Hero Section - Secondary Color Fade */}
-        <section className="bg-gradient-to-t from-[#d58630] to-slate-100 py-20 px-4">
-          <div className="max-w-4xl mx-auto text-center py-6">
-            <h1 className="text-2xl lg:text-3xl font-bold mb-3 text-slate-900">Contact Us</h1>
-            <p className="text-sm mb-8 leading-relaxed text-slate-700">
+        <section className="bg-gradient-to-t from-[#d58630] to-slate-100 py-12 sm:py-16 lg:py-20 px-4">
+          <div className="max-w-4xl mx-auto text-center py-4 sm:py-6">
+            <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-3 text-slate-900">Contact Us</h1>
+            <p className="text-xs sm:text-sm mb-6 sm:mb-8 leading-relaxed text-slate-700">
               Arizontal Logistics would like to do business with you! Let us know where we can pick your loads and we will get back to you with a quote. Thank you in advance!
             </p>
 
@@ -269,11 +269,11 @@ const ContactPage = () => {
         </section>
 
         {/* Form Section - Light Background */}
-        <section className="bg-white py-8">
+        <section className="bg-white py-6 sm:py-8">
           <div className="w-full">
-            <div className="grid gap-4 lg:grid-cols-[0.9fr_1.1fr] items-stretch">
+            <div className="grid gap-4 lg:gap-6 lg:grid-cols-[0.9fr_1.1fr] items-stretch">
               <div className="order-2 lg:order-1 px-0">
-                <div className="relative overflow-hidden h-full shadow-lg">
+                <div className="relative overflow-hidden h-64 sm:h-80 lg:h-full shadow-lg">
                   <img
                     src={posterImage}
                     alt="Arizontal Logistics"
@@ -282,19 +282,19 @@ const ContactPage = () => {
                 </div>
               </div>
 
-              <div className="order-1 lg:order-2 h-full flex flex-col px-6 lg:px-10">
-                <div className="mb-8">
-                  <h2 className="text-xl lg:text-2xl font-bold text-gray-900 mb-2 text-center lg:text-left">
+              <div className="order-1 lg:order-2 h-full flex flex-col px-4 sm:px-6 lg:px-10">
+                <div className="mb-6 sm:mb-8">
+                  <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-2 text-center lg:text-left">
                     Online Contact Form
                   </h2>
-                  <div className="w-1/4 h-0.5 bg-[#d58630]"></div>
+                  <div className="w-1/4 h-0.5 bg-[#d58630] mx-auto lg:mx-0"></div>
                 </div>
 
                 <form
                   onSubmit={handleSubmit}
                   data-readdy-form
                   id="contact-form"
-                  className="p-6 flex-1 w-full max-w-md"
+                  className="px-2 sm:px-6 flex-1 w-full max-w-md mx-auto lg:mx-0"
                 >
               {/* Full Name Field */}
               <div className="mb-4">

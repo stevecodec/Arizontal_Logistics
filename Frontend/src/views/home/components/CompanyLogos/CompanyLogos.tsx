@@ -99,14 +99,14 @@ export const CompanyLogos = () => {
   }, []);
 
   return (
-    <section className="py-12 bg-gray-50 relative z-10">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section className="py-8 sm:py-12 bg-gray-50 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div 
           ref={logoSliderRef}
           className="overflow-x-hidden scrollbar-hide w-full relative"
           style={{ scrollBehavior: 'auto' }}
         >
-          <div className="flex gap-8 items-center" style={{ width: 'max-content', minHeight: '100px' }}>
+          <div className="flex gap-6 sm:gap-8 items-center" style={{ width: 'max-content', minHeight: '80px' }}>
             {duplicatedLogos.map((company, index) => (
               <div
                 key={`${company.id}-${index}`}
@@ -115,7 +115,7 @@ export const CompanyLogos = () => {
                 <img 
                   src={company.logo}
                   alt={company.name}
-                  className="h-16 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
+                  className="h-12 sm:h-16 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0"
                   loading="lazy"
                 />
               </div>

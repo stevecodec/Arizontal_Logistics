@@ -7,12 +7,12 @@ import { getImageUrl } from '@/data/services/imageService';
 export const Footer = () => {
   return (
     <footer className="bg-theme-footer text-white relative overflow-hidden">
-      <div className="absolute bottom-0 left-0 right-0 text-[180px] font-bold text-white/5 text-center leading-none pb-8 select-none pointer-events-none">
+      <div className="absolute bottom-0 left-0 right-0 text-[80px] sm:text-[120px] lg:text-[180px] font-bold text-white/5 text-center leading-none pb-4 sm:pb-8 select-none pointer-events-none">
         ARIZONTAL
       </div>
 
-      <div className="container mx-auto px-6 py-16 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+      <div className="container mx-auto px-4 sm:px-6 py-12 sm:py-16 relative z-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 mb-8 sm:mb-12">
           <div>
             <img
               src={getImageUrl('logo')}
@@ -57,15 +57,15 @@ export const Footer = () => {
 
           <div>
             <h4 className="text-white text-sm font-semibold mb-4 pb-2 border-b-2 border-[#FF6B35] inline-block">Newsletter</h4>
-            <p className="text-gray-400 text-sm mb-4 mt-4">Stay updated with our latest news and offers</p>
-            <div className="flex">
+            <p className="text-gray-400 text-xs sm:text-sm mb-4 mt-4">Stay updated with our latest news and offers</p>
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-0">
               <input
                 type="email"
                 placeholder="Your email"
-                className="flex-1 px-4 py-2 rounded-l-lg bg-white/10 border border-white/20 text-white text-sm focus:outline-none focus:border-theme-primary"
+                className="flex-1 px-3 sm:px-4 py-2 sm:rounded-l-lg rounded-lg sm:rounded-r-none bg-white/10 border border-white/20 text-white text-xs sm:text-sm focus:outline-none focus:border-theme-primary"
               />
-              <button className="bg-[#FF6B35] px-4 py-2 rounded-r-lg hover:bg-[#E55A28] transition-colors whitespace-nowrap cursor-pointer">
-                <i className="ri-send-plane-fill"></i>
+              <button className="bg-[#FF6B35] px-4 py-2 sm:rounded-r-lg rounded-lg sm:rounded-l-none hover:bg-[#E55A28] transition-colors whitespace-nowrap cursor-pointer text-sm">
+                <i className="ri-send-plane-fill"></i> <span className="sm:hidden">Subscribe</span>
               </button>
             </div>
           </div>
