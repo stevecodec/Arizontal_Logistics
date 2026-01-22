@@ -5,12 +5,10 @@ import { Footer } from '@/views/shared/Footer';
 import {
   HeroSection,
   PartnershipOverview,
-  WhatWeOffer,
+  PartnerRegistrationForm,
   RequirementsSection,
-  SafetyCompliance,
   IndependentContractor,
-  WhyPartner,
-  CTASection,
+  LetUsPartner,
 } from './components';
 
 const TransportationPage = () => {
@@ -21,12 +19,10 @@ const TransportationPage = () => {
       <main className="flex-1">
         <HeroSection />
         <PartnershipOverview />
-        <WhatWeOffer />
+        <PartnerRegistrationForm />
         <RequirementsSection />
-        <SafetyCompliance />
         <IndependentContractor />
-        <WhyPartner />
-        <CTASection />
+        <LetUsPartner />
       </main>
 
       <Footer />

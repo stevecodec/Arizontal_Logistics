@@ -1,1 +1,0 @@
-export { WhatWeOffer } from './WhatWeOffer';

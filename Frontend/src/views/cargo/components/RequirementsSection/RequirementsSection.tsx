@@ -10,39 +10,66 @@ const requirements = [
   'Operate in compliance with all federal and state regulations',
 ];
 
+const openLiveChat = () => {
+  // Find and click the live chat button
+  const chatButton = document.querySelector('[aria-label="Open chat"]') as HTMLButtonElement;
+  if (chatButton) {
+    chatButton.click();
+  }
+};
+
 export const RequirementsSection = () => {
   return (
-    <section className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="relative h-96 order-2 lg:order-1">
-            <img
-              src={getImageUrl('truck3')}
-              alt="Safety Standards"
-              className="w-full h-full object-cover shadow-xl"
-            />
-          </div>
-          
-          <div className="order-1 lg:order-2">
-            <div className="inline-block px-4 py-1 bg-theme-primary/10 border-l-4 border-theme-primary mb-6">
-              <span className="text-sm font-semibold text-theme-primary">OUR EXPECTATIONS</span>
+    <section className="relative overflow-hidden bg-white py-12 sm:py-16 lg:py-20">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative flex items-center">
+          {/* C-Shaped Content - Left Side */}
+          <div className="relative z-20 w-full lg:w-[55%]">
+            <div className="bg-gradient-to-br from-theme-dark to-slate-900 text-white py-8 sm:py-10 lg:py-12 px-6 sm:px-8 lg:px-12 rounded-r-[200px] shadow-2xl">
+              <div className="max-w-xl">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 leading-tight">
+                  Let's connect
+                </h2>
+                
+                <p className="text-sm sm:text-base text-white/90 mb-4 sm:mb-6 leading-relaxed">
+                  We're here to help with all your logistics needs. Reach out to us for personalized solutions and expert advice.
+                </p>
+
+                {/* Requirements List - Simplified with ticks */}
+                <ul className="space-y-1.5 sm:space-y-2 mb-4 sm:mb-6">
+                  {requirements.map((req, index) => (
+                    <li key={index} className="flex items-start text-xs sm:text-sm">
+                      <i className="ri-check-line text-theme-secondary text-base sm:text-lg mr-2 mt-0.5 flex-shrink-0"></i>
+                      <span className="text-white/90">{req}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                {/* CTA Button */}
+                <div className="flex justify-start">
+                  <button
+                    onClick={openLiveChat}
+                    className="inline-flex items-center justify-center px-4 sm:px-6 py-2 sm:py-2.5 border-2 border-white/40 text-white text-xs sm:text-sm font-semibold hover:border-theme-secondary hover:bg-white/10 transition-all group"
+                  >
+                    <span>Talk to us</span>
+                    <i className="ri-arrow-right-line ml-2 group-hover:translate-x-1 transition-transform"></i>
+                  </button>
+                </div>
+              </div>
             </div>
-            <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-6">
-              Safety & Service Standards
-            </h2>
-            <p className="text-slate-600 mb-6">
-              To maintain service and safety standards, partnering owner-operators must:
-            </p>
-            <ul className="space-y-4">
-              {requirements.map((req, index) => (
-                <li key={index} className="flex items-start">
-                  <div className="w-6 h-6 bg-slate-900 text-white flex items-center justify-center mr-3 mt-0.5 flex-shrink-0 font-bold text-xs">
-                    {index + 1}
-                  </div>
-                  <span className="text-slate-700">{req}</span>
-                </li>
-              ))}
-            </ul>
+          </div>
+
+          {/* Image - Right Side (hidden under left side of C-shape) */}
+          <div className="absolute inset-y-0 left-0 right-0 z-10 flex items-center">
+            <div className="w-full h-full flex justify-end">
+              <div className="w-full lg:w-[70%] h-full">
+                <img
+                  src={getImageUrl('truck3')}
+                  alt="Professional team collaboration"
+                  className="w-full h-full object-cover rounded-lg"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>

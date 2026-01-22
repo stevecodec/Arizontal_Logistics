@@ -1,0 +1,1 @@
+export { PartnerRegistrationForm } from './PartnerRegistrationForm';

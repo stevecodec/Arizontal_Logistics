@@ -1,43 +1,44 @@
 // Hero Section Component
 
-import { Link } from 'react-router-dom';
 import { getImageUrl } from '@/data/services/imageService';
-import { CONTACT_INFO } from '@/constants';
 
 export const HeroSection = () => {
   return (
-    <section className="relative bg-slate-900 text-white py-24">
+    <section className="relative bg-slate-900 text-white min-h-[500px] sm:min-h-[600px] flex items-center">
       <div className="absolute inset-0">
         <img
           src={getImageUrl('truck1')}
           alt="Owner-Operator Partnership"
-          className="w-full h-full object-cover opacity-30"
+          className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/95 to-slate-900/80"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#1e3a8a]/90 via-transparent via-40% to-transparent"></div>
       </div>
       
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="max-w-3xl">
-          <h1 className="text-4xl lg:text-5xl font-bold mb-6">
-            Owner-Operator Partnerships
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-20 sm:py-24">
+        <div className="max-w-2xl">
+          {/* Yellow accent line */}
+          <div className="w-12 sm:w-16 h-1 bg-[#fbbf24] mb-4 sm:mb-6"></div>
+          
+          <h1 className="text-3xl sm:text-4xl lg:text-4xl font-bold mb-4 sm:mb-5 leading-tight">
+            Together.
           </h1>
-          <p className="text-xl text-white/90 mb-8 leading-relaxed">
-            Arizontal Transportation partners with qualified owner-operators to expand capacity while maintaining high standards of safety, compliance, and service excellence. We value professionalism, transparency, and long-term relationships with independent contractors who operate their own businesses.
+          
+          <p className="text-base sm:text-lg lg:text-xl text-white mb-6 sm:mb-8 leading-relaxed">
+            Because you have the truck and we have the load.
           </p>
-          <div className="flex gap-4">
-            <Link
-              to="/contact"
-              className="px-8 py-3 bg-theme-primary text-white font-semibold hover:bg-theme-dark transition-all"
-            >
-              Partner With Us
-            </Link>
-            <a
-              href={`tel:${CONTACT_INFO.phone}`}
-              className="px-8 py-3 bg-white/10 backdrop-blur-sm text-white font-semibold border border-white/20 hover:bg-white/20 transition-all"
-            >
-              Call Dispatch
-            </a>
-          </div>
+          
+          <button
+            onClick={() => {
+              document.getElementById('registration-form')?.scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+              });
+            }}
+            className="inline-flex items-center px-5 sm:px-6 py-2.5 sm:py-3 border-2 border-white text-white text-sm font-semibold hover:border-[#d58630] transition-all group"
+          >
+            <span>Become a partner now</span>
+            <i className="ri-arrow-right-line ml-2 group-hover:translate-x-1 transition-transform"></i>
+          </button>
         </div>
       </div>
     </section>
