@@ -60,7 +60,7 @@ export const CompanyProfile = () => {
             }`}
           >
             <img
-              src={getImageUrl('truck1')}
+              src={getImageUrl('outdoor')}
               alt="Arizontal fleet"
               className="w-full h-full object-cover"
             />
