@@ -42,8 +42,8 @@ export const HeroSection = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60"></div>
 
       {/* Hero Content */}
-      <div className="relative z-10 h-full flex items-center pt-16 pb-32 sm:pb-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <div className="relative z-10 h-full flex items-center pt-16 pb-36 sm:pb-24">
+        <div className="max-w-7xl mx-auto w-full pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))] sm:pl-6 sm:pr-6 lg:pl-8 lg:pr-8">
           {/* Content Card */}
           <div 
             className={`bg-gradient-to-r from-[#d58630] to-theme-primary backdrop-blur-sm p-6 sm:p-8 lg:p-12 max-w-2xl shadow-2xl transition-all duration-1000 ease-out delay-300 ${
@@ -143,10 +143,10 @@ export const HeroSection = () => {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
+      {/* Scroll Indicator - above bottom bar on mobile (bar ~4 rows stacked), at bottom on sm+ */}
+      <div className="absolute bottom-[11rem] sm:bottom-8 left-1/2 -translate-x-1/2 z-10 pointer-events-none">
         <div className="flex flex-col items-center space-y-2 animate-bounce">
-          <i className="ri-arrow-down-line text-white text-lg"></i>
+          <i className="ri-arrow-down-line text-white text-lg" aria-hidden></i>
         </div>
       </div>
     </div>

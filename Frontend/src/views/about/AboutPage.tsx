@@ -8,8 +8,6 @@ import {
   CompanyProfile,
   ServicesSection,
   FleetOperations,
-  SafetyCompliance,
-  WhyPartner,
   IndustriesProcess,
   ContactCTA,
 } from './components';
@@ -36,8 +34,6 @@ const AboutPage = () => {
         <CompanyProfile />
         <ServicesSection />
         <FleetOperations />
-        {/* <SafetyCompliance /> */}
-        {/* <WhyPartner /> */}
         <IndustriesProcess />
         <ContactCTA />
       </main>

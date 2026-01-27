@@ -1,1 +1,0 @@
-export { SafetyCompliance } from './SafetyCompliance';

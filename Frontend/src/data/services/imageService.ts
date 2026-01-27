@@ -11,6 +11,7 @@ import truck2Image from '@/assets/images/truck2.jpg';
 import truck3Image from '@/assets/images/truck3.jpg';
 import truck4Image from '@/assets/images/Arizontal-poster2.jpg';
 import outdoorImage from '@/assets/images/arizontal_outdoor.jpg';
+import logo1Image from '@/assets/images/logo_1.jpeg';
 
 export const IMAGE_URLS = {
   trustIndicatorsBackground: trustIndicatorsBackgroundImage,
@@ -23,6 +24,7 @@ export const IMAGE_URLS = {
   truck3: truck3Image,
   truck4: truck4Image,
   outdoor: outdoorImage,
+  logo1: logo1Image,
 } as const;
 
 /**

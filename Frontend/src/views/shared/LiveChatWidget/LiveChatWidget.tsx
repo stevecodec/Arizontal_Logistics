@@ -75,9 +75,15 @@ export const LiveChatWidget = () => {
         }
       `}</style>
       
-      <div className="fixed bottom-6 right-6 z-[60] flex flex-col items-end gap-2">
+      <div 
+        className="fixed z-[60] flex flex-col items-end gap-2"
+        style={{ 
+          right: 'max(1rem, env(safe-area-inset-right, 0px))',
+          bottom: 'max(1rem, env(safe-area-inset-bottom, 0px))'
+        }}
+      >
         {isOpen && (
-          <div className="w-[280px] sm:w-[320px] bg-white shadow-2xl border border-slate-200 rounded-lg overflow-hidden">
+          <div className="w-[280px] sm:w-[320px] max-w-[calc(100vw-2rem)] bg-white shadow-2xl border border-slate-200 rounded-lg overflow-hidden">
             <div className="px-4 py-3 bg-slate-900 text-white flex items-center justify-between">
               <div>
                 <p className="text-sm font-semibold">Live Chat</p>

@@ -1,18 +1,17 @@
 // Company Logos Slider Component (View Layer)
 
 import { useEffect, useRef } from 'react';
-import jbhuntLogo from '@/assets/images/jbhunt_patners.png';
+import huberLogo from '@/assets/images/huber_patners.svg';
+import atlasLogo from '@/assets/images/atlas_patners.png';
 
 // Company logos - using actual partner logo
 const COMPANY_LOGOS = [
-  { id: '1', name: 'JB Hunt', logo: jbhuntLogo },
-  { id: '2', name: 'JB Hunt', logo: jbhuntLogo },
-  { id: '3', name: 'JB Hunt', logo: jbhuntLogo },
-  { id: '4', name: 'JB Hunt', logo: jbhuntLogo },
-  { id: '5', name: 'JB Hunt', logo: jbhuntLogo },
-  { id: '6', name: 'JB Hunt', logo: jbhuntLogo },
-  { id: '7', name: 'JB Hunt', logo: jbhuntLogo },
-  { id: '8', name: 'JB Hunt', logo: jbhuntLogo },
+  { id: '1', name: 'Huber', logo: huberLogo },
+  { id: '2', name: 'Atlas', logo: atlasLogo },
+  { id: '3', name: 'Huber', logo: huberLogo },
+  { id: '4', name: 'Atlas', logo: atlasLogo },
+  { id: '5', name: 'Huber', logo: huberLogo },
+  { id: '6', name: 'Atlas', logo: atlasLogo },  
 ];
 
 export const CompanyLogos = () => {

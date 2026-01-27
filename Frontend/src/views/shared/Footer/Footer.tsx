@@ -49,8 +49,8 @@ export const Footer = () => {
                 <span className="text-gray-400 text-sm">{CONTACT_INFO.email}</span>
               </li>
               <li className="flex items-start">
-                <i className="ri-map-pin-line text-theme-primary mt-1 mr-3"></i>
-                <span className="text-gray-400 text-sm">{CONTACT_INFO.address}</span>
+                <i className="ri-map-pin-line text-theme-primary mt-1 mr-3 flex-shrink-0"></i>
+                <span className="text-gray-400 text-sm break-words">{CONTACT_INFO.address}</span>
               </li>
             </ul>
           </div>

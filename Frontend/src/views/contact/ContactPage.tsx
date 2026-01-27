@@ -166,8 +166,8 @@ const ContactPage = () => {
       
       {/* Notification Toast - Fixed at Top */}
       {(submitStatus === 'success' || submitStatus === 'error') && (
-        <div className="fixed top-20 left-1/2 -translate-x-1/2 z-50 animate-slide-down">
-          <div className={`p-4 rounded-md shadow-lg min-w-[300px] max-w-md ${
+        <div className="fixed top-20 left-1/2 -translate-x-1/2 z-50 animate-slide-down w-[calc(100vw-2rem)] max-w-md">
+          <div className={`p-4 rounded-md shadow-lg ${
             submitStatus === 'success' 
               ? 'bg-green-50 border border-green-200' 
               : 'bg-red-50 border border-red-200'
@@ -193,14 +193,14 @@ const ContactPage = () => {
             </p>
 
             {/* Contact Method Cards */}
-            <div className="grid md:grid-cols-3 gap-8 mb-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 mb-6">
               {/* By Mail */}
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center px-2">
                 <div className="w-16 h-16 mb-3 flex items-center justify-center">
                   <i className="ri-mail-line text-4xl text-[#d58630]"></i>
                 </div>
                 <h3 className="font-bold text-base mb-1 text-slate-900">By Mail</h3>
-                <p className="text-xs text-slate-700">{CONTACT_INFO.address}</p>
+                <p className="text-xs text-slate-700 text-center break-words max-w-full">{CONTACT_INFO.address}</p>
               </div>
 
               {/* Phone */}

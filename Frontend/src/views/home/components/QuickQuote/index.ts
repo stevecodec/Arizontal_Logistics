@@ -1,1 +1,0 @@
-export { QuickQuote } from './QuickQuote';

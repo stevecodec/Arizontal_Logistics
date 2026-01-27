@@ -5,24 +5,24 @@ import { SERVICE_CARDS } from '@/constants/home';
 
 export const ServicesOverview = () => {
   return (
-    <div className="py-12 bg-white">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <div className="py-8 sm:py-12 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-8">
-          <h2 className="text-xl lg:text-2xl font-bold text-slate-900 mb-3 pb-2 border-b-2 border-theme-primary inline-block">
+        <div className="text-center mb-6 sm:mb-8">
+          <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-slate-900 mb-3 pb-2 border-b-2 border-theme-primary inline-block">
             OUR SERVICES
           </h2>
-          <p className="text-sm text-slate-600 max-w-3xl mx-auto mt-4">
+          <p className="text-xs sm:text-sm text-slate-600 max-w-3xl mx-auto mt-4 px-1">
           Our operations are built on industry standards, regulatory compliance, and customer satisfaction. Change the way you do business with our platform. 
           </p>
         </div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {SERVICE_CARDS.map((service, index) => (
             <div 
               key={index}
-              className="group bg-white p-8 rounded-sm shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-theme-primary hover:border-2 flex flex-col"
+              className="group bg-white p-4 sm:p-6 lg:p-8 rounded-sm shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-theme-primary hover:border-2 flex flex-col"
             >
               <div className="flex items-start justify-between mb-6">
                 <div className="flex-1">

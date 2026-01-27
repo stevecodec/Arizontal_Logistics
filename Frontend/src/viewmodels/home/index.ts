@@ -1,4 +1,2 @@
 // Home ViewModels Exports
-
-export { useHomeViewModel } from './useHomeViewModel';
-export { useQuoteViewModel } from './useQuoteViewModel';
+// Note: All viewmodels have been removed as they were unused
