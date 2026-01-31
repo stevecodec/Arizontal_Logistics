@@ -78,7 +78,7 @@ export const WhyChooseUs = () => {
                     You Deserve the Best
                   </h3>
                   <p className="text-xs sm:text-sm text-slate-600 mb-3 sm:mb-4 leading-relaxed">
-                    Our people, customers, carriers, investors and communities all deserve the best from us. That's why we have a passionate pursuit of excellence and are always striving for more. We listen, innovate and invest in order to provide you with excellence. Arizontal is driven for you.
+                    Our people, customers, carriers, operators and our employees all deserve the best from us. That's why we have a passionate pursuit of excellence and are always striving for more. We hear you and deliver. Arizontal is driven for you.
                   </p>
                   <div className="text-xs text-slate-600 font-semibold italic">
                     — CEO, Arizontal

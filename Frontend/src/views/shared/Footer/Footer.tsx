@@ -25,7 +25,7 @@ export const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-white text-sm font-semibold mb-4 pb-2 border-b-2 border-theme-primary inline-block">Quick Links</h4>
+            <h4 className="text-white text-sm font-semibold mb-4 pb-2 border-b-2 border-[#d48634] inline-block">Quick Links</h4>
             <ul className="space-y-2 mt-4">
               {FOOTER_LINKS.quickLinks.map((link) => (
                 <li key={link.to}>
@@ -38,7 +38,7 @@ export const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-white text-sm font-semibold mb-4 pb-2 border-b-2 border-[#FF6B35] inline-block">Contact Info</h4>
+            <h4 className="text-white text-sm font-semibold mb-4 pb-2 border-b-2 border-[#d48634] inline-block">Contact Info</h4>
             <ul className="space-y-3 mt-4">
               <li className="flex items-start">
                 <i className="ri-phone-line text-theme-primary mt-1 mr-3"></i>
@@ -56,7 +56,7 @@ export const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-white text-sm font-semibold mb-4 pb-2 border-b-2 border-[#FF6B35] inline-block">Newsletter</h4>
+            <h4 className="text-white text-sm font-semibold mb-4 pb-2 border-b-2 border-[#d48634] inline-block">Newsletter</h4>
             <p className="text-gray-400 text-xs sm:text-sm mb-4 mt-4">Stay updated with our latest news and offers</p>
             <div className="flex flex-col sm:flex-row gap-2 sm:gap-0">
               <input
@@ -64,7 +64,7 @@ export const Footer = () => {
                 placeholder="Your email"
                 className="flex-1 px-3 sm:px-4 py-2 sm:rounded-l-lg rounded-lg sm:rounded-r-none bg-white/10 border border-white/20 text-white text-xs sm:text-sm focus:outline-none focus:border-theme-primary"
               />
-              <button className="bg-[#FF6B35] px-4 py-2 sm:rounded-r-lg rounded-lg sm:rounded-l-none hover:bg-[#E55A28] transition-colors whitespace-nowrap cursor-pointer text-sm">
+              <button className="bg-[#d48634] px-4 py-2 sm:rounded-r-lg rounded-lg sm:rounded-l-none hover:bg-[#E55A28] transition-colors whitespace-nowrap cursor-pointer text-sm border-b-2 border-[#d48634]">
                 <i className="ri-send-plane-fill"></i> <span className="sm:hidden">Subscribe</span>
               </button>
             </div>

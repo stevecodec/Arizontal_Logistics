@@ -79,11 +79,11 @@ export const DocumentUploadStep = ({ formData, updateFormData, onPrevious, onSub
         <p className="text-xs text-slate-500">* Mandatory field</p>
       </div>
 
-      {/* Proof of Identity */}
+      {/* Copy of CDL */}
       <div className="mb-5">
-        <h3 className="text-sm font-semibold text-slate-800 mb-1">Proof of identity*</h3>
+        <h3 className="text-sm font-semibold text-slate-800 mb-1">Copy of CDL*</h3>
         <p className="text-xs text-slate-600 mb-2">
-          Passport or ID card 
+          Commercial Driver's License
         </p>
         <div className="border-2 border-dashed border-slate-300 p-4 text-center">
           <label className="cursor-pointer">
@@ -114,9 +114,9 @@ export const DocumentUploadStep = ({ formData, updateFormData, onPrevious, onSub
         )}
       </div>
 
-      {/* CMR Insurance Policy */}
+      {/* Motor Vehicle Record (MVR) */}
       <div className="mb-5">
-        <h3 className="text-sm font-semibold text-slate-800 mb-1">CMR insurance policy*</h3>
+        <h3 className="text-sm font-semibold text-slate-800 mb-1">Motor Vehicle Record (MVR)*</h3>
         <div className="border-2 border-dashed border-slate-300 p-4 text-center">
           <label className="cursor-pointer">
             <input
@@ -146,9 +146,9 @@ export const DocumentUploadStep = ({ formData, updateFormData, onPrevious, onSub
         )}
       </div>
 
-      {/* Operators Licence */}
+      {/* Truck Lease or Finance Agreement */}
       <div className="mb-5">
-        <h3 className="text-sm font-semibold text-slate-800 mb-1">Operators licence*</h3>
+        <h3 className="text-sm font-semibold text-slate-800 mb-1">Truck Lease or Finance Agreement (if applicable)</h3>
         <div className="border-2 border-dashed border-slate-300 p-4 text-center">
           <label className="cursor-pointer">
             <input

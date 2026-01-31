@@ -81,7 +81,7 @@ export const PartnerRegistrationForm = () => {
   return (
     <section id="registration-form" className="py-8 sm:py-12 bg-slate-50">
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
-        <div className="bg-white shadow-lg border-t-4 border-theme-primary">
+        <div className="bg-white shadow-lg">
           {/* Progress Indicator */}
           <div className="bg-slate-100 px-4 py-3">
             <div className="flex items-center justify-between">

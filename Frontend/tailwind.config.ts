@@ -25,7 +25,7 @@ export default {
       colors: {
         'theme': {
           'primary': '#007AFF',
-          'secondary': '#46AFFF',
+          'secondary': '#d48634',
           'light': '#B4E1FF',
           'dark': '#0066CC',
           'darker': '#0052A3',

@@ -22,24 +22,24 @@ export const RequirementsSection = () => {
   return (
     <section className="relative overflow-hidden bg-white py-12 sm:py-16 lg:py-20">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative flex items-center">
+        <div className="relative flex items-center min-h-[400px] sm:min-h-[450px] lg:min-h-[500px]">
           {/* C-Shaped Content - Left Side */}
           <div className="relative z-20 w-full lg:w-[55%]">
-            <div className="bg-gradient-to-br from-theme-dark to-slate-900 text-white py-8 sm:py-10 lg:py-12 px-6 sm:px-8 lg:px-12 rounded-r-[200px] shadow-2xl">
+            <div className="bg-gradient-to-br from-theme-dark to-slate-900 text-white py-8 sm:py-10 lg:py-12 px-6 sm:px-8 lg:px-12 rounded-r-[80px] sm:rounded-r-[120px] lg:rounded-r-[200px] shadow-2xl">
               <div className="max-w-xl">
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 sm:mb-4 leading-tight">
+                <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-3 sm:mb-4 leading-tight">
                   Let's connect
                 </h2>
                 
-                <p className="text-sm sm:text-base text-white/90 mb-4 sm:mb-6 leading-relaxed">
+                <p className="text-xs sm:text-sm lg:text-base text-white/90 mb-4 sm:mb-6 leading-relaxed">
                   We're here to help with all your logistics needs. Reach out to us for personalized solutions and expert advice.
                 </p>
 
                 {/* Requirements List - Simplified with ticks */}
                 <ul className="space-y-1.5 sm:space-y-2 mb-4 sm:mb-6">
                   {requirements.map((req, index) => (
-                    <li key={index} className="flex items-start text-xs sm:text-sm">
-                      <i className="ri-check-line text-theme-secondary text-base sm:text-lg mr-2 mt-0.5 flex-shrink-0"></i>
+                    <li key={index} className="flex items-start text-[10px] sm:text-xs lg:text-sm">
+                      <i className="ri-check-line text-theme-secondary text-sm sm:text-base lg:text-lg mr-2 mt-0.5 flex-shrink-0"></i>
                       <span className="text-white/90">{req}</span>
                     </li>
                   ))}
@@ -59,10 +59,10 @@ export const RequirementsSection = () => {
             </div>
           </div>
 
-          {/* Image - Right Side (hidden under left side of C-shape) */}
+          {/* Image - Right Side (positioned behind the C-shape) */}
           <div className="absolute inset-y-0 left-0 right-0 z-10 flex items-center">
             <div className="w-full h-full flex justify-end">
-              <div className="w-full lg:w-[70%] h-full">
+              <div className="w-[70%] sm:w-[65%] lg:w-[70%] h-full min-h-[400px] sm:min-h-[450px] lg:min-h-[500px]">
                 <img
                   src={getImageUrl('truck3')}
                   alt="Professional team collaboration"
