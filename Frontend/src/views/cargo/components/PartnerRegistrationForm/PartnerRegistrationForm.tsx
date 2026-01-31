@@ -3,9 +3,14 @@ import { useState } from 'react';
 import { CompanyDetailsStep } from './CompanyDetailsStep';
 import { FleetDetailsStep } from './FleetDetailsStep';
 import { DocumentUploadStep } from './DocumentUploadStep';
+import { useScrollAnimation } from '../../../../hooks';
 
 export const PartnerRegistrationForm = () => {
   const [currentStep, setCurrentStep] = useState(1);
+  const [formRef, isVisible] = useScrollAnimation<HTMLDivElement>({ 
+    threshold: 0.2, 
+    triggerOnce: true 
+  });
   const [formData, setFormData] = useState({
     // Company Details
     companyName: '',
@@ -81,9 +86,16 @@ export const PartnerRegistrationForm = () => {
   return (
     <section id="registration-form" className="py-8 sm:py-12 bg-slate-50">
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
-        <div className="bg-white shadow-lg">
+        <div 
+          ref={formRef}
+          className={`bg-white shadow-lg transition-all duration-1000 ease-out ${
+            isVisible 
+              ? 'opacity-100 translate-x-0' 
+              : 'opacity-0 -translate-x-20'
+          }`}
+        >
           {/* Progress Indicator */}
-          <div className="bg-slate-100 px-4 py-3">
+          <div className="bg-gradient-to-r from-[#d48634]/20 to-[#d48634]/5 px-4 py-3">
             <div className="flex items-center justify-between">
               <div className={`flex items-center ${currentStep >= 1 ? 'text-theme-primary' : 'text-slate-400'}`}>
                 <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold ${currentStep >= 1 ? 'bg-theme-primary text-white' : 'bg-slate-300 text-slate-600'}`}>
