@@ -38,11 +38,11 @@ export const CompanyProfile = () => {
             <div className="inline-block px-3 sm:px-4 py-1 bg-[#d58630]/10 border-l-4 border-[#d58630] mb-4 sm:mb-6">
               <span className="text-xs sm:text-sm font-semibold text-[#d58630]">WHO WE ARE</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 mb-4 sm:mb-6">
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-slate-900 mb-4 sm:mb-6">
               Licensed & Insured Motor Carrier
             </h2>
             <p className="text-sm sm:text-base text-slate-600 mb-4 leading-relaxed">
-              Arizontal Transportation is a licensed and insured motor carrier dedicated to safe 
+              Arizontal Transportation is a licensed and insured freight broker dedicated to safe 
               and efficient freight transportation. As an asset-based company, we maintain direct 
               control over our equipment and drivers, ensuring consistent service quality and accountability.
             </p>

@@ -38,7 +38,7 @@ export const IndustriesProcess = () => {
         <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center justify-items-center">
           {/* Industries We Serve */}
           <div className="w-full max-w-md px-4 sm:px-0">
-            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-6 sm:mb-8">
+            <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-6 sm:mb-8">
               Industries We Serve
             </h2>
             <ul className="space-y-3 sm:space-y-4">
@@ -53,7 +53,7 @@ export const IndustriesProcess = () => {
 
           {/* How We Work */}
           <div className="w-full max-w-md px-4 sm:px-0">
-            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-6 sm:mb-8">
+            <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-white mb-6 sm:mb-8">
               How We Work
             </h2>
             <div className="space-y-4 sm:space-y-6">

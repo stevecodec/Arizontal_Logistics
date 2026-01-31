@@ -61,13 +61,13 @@ export const WhyChooseUs = () => {
             </div>
 
             {/* Text Content */}
-            <div className="order-1 lg:order-2 lg:absolute lg:right-0 lg:top-1/2 lg:-translate-y-1/2 lg:w-[55%] lg:z-10">
+            <div className="order-1 lg:order-2 lg:absolute lg:right-0 lg:top-1/2 lg:-translate-y-1/2 lg:w-[55%] lg:z-10 lg:pr-4">
               <div 
                 ref={ceoCardRef}
-                className={`bg-white lg:shadow-2xl lg:rounded p-6 sm:p-8 lg:p-10 lg:-ml-20 relative transition-all duration-1000 ease-out ${
+                className={`bg-white lg:shadow-2xl lg:rounded p-6 sm:p-8 lg:p-10 relative transition-all duration-1000 ease-out ${
                   isVisible 
-                    ? 'opacity-100 translate-y-0 translate-x-0' 
-                    : 'opacity-0 translate-y-8 translate-x-8'
+                    ? 'opacity-100 translate-y-0' 
+                    : 'opacity-0 translate-y-8'
                 }`}
               >
                 <div className="absolute top-4 sm:top-8 left-4 sm:left-10 text-2xl sm:text-4xl text-theme-primary opacity-20">

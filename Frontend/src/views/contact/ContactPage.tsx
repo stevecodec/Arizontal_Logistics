@@ -3,10 +3,22 @@
 import { useState, FormEvent, useEffect } from 'react';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
+import { MapContainer, TileLayer, Marker, Tooltip } from 'react-leaflet';
+import { Icon } from 'leaflet';
+import 'leaflet/dist/leaflet.css';
 import { Header } from '@/views/shared/Header';
 import { Footer } from '@/views/shared/Footer';
 import { CONTACT_INFO, SOCIAL_LINKS } from '@/constants';
-import posterImage from '@/assets/images/Arizontal_poster1.jpg';
+
+// Custom marker icon for office location
+const officeMarkerIcon = new Icon({
+  iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
+  iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
+  shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  shadowSize: [41, 41],
+});
 
 // US States list
 const US_STATES = [
@@ -184,231 +196,235 @@ const ContactPage = () => {
       )}
 
       <main className="flex-1">
-        {/* Hero Section - Secondary Color Fade */}
-        <section className="bg-gradient-to-t from-[#d58630] to-slate-100 py-12 sm:py-16 lg:py-20 px-4">
-          <div className="max-w-4xl mx-auto text-center py-4 sm:py-6">
-            <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-3 text-slate-900">Contact Us</h1>
-            <p className="text-xs sm:text-sm mb-6 sm:mb-8 leading-relaxed text-slate-700">
-              Arizontal Logistics would like to do business with you! Let us know where we can pick your loads and we will get back to you with a quote. Thank you in advance!
-            </p>
+        {/* Hero Section - Compact Professional */}
+        <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden">
+          {/* Subtle overlay pattern */}
+          <div className="pointer-events-none absolute inset-0 opacity-40 mix-blend-soft-light bg-[radial-gradient(circle_at_top,_rgba(213,134,48,0.32)_0,_transparent_55%),radial-gradient(circle_at_bottom,_rgba(15,23,42,0.9)_0,_transparent_65%)]" />
 
-            {/* Contact Method Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 mb-6">
-              {/* By Mail */}
-              <div className="flex flex-col items-center px-2">
-                <div className="w-16 h-16 mb-3 flex items-center justify-center">
-                  <i className="ri-mail-line text-4xl text-[#d58630]"></i>
+          <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+            <div className="text-center max-w-3xl mx-auto">         
+
+              {/* Contact highlights - horizontal row */}
+              <div className="mt-6 sm:mt-8 flex flex-wrap justify-center gap-4 sm:gap-6">
+                {/* Phone */}
+                <div className="flex items-center gap-2 text-xs sm:text-sm">
+                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-amber-400/10 text-amber-300">
+                    <i className="ri-phone-line text-base" />
+                  </span>
+                  <a
+                    href={`tel:${CONTACT_INFO.phone}`}
+                    className="font-semibold text-amber-200 hover:text-amber-100"
+                  >
+                    {CONTACT_INFO.phone}
+                  </a>
                 </div>
-                <h3 className="font-bold text-base mb-1 text-slate-900">By Mail</h3>
-                <p className="text-xs text-slate-700 text-center break-words max-w-full">{CONTACT_INFO.address}</p>
-              </div>
 
-              {/* Phone */}
-              <div className="flex flex-col items-center">
-                <div className="w-16 h-16 mb-3 flex items-center justify-center">
-                  <i className="ri-phone-line text-4xl text-[#d58630]"></i>
+                {/* Email */}
+                <div className="flex items-center gap-2 text-xs sm:text-sm">
+                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-amber-400/10 text-amber-300">
+                    <i className="ri-mail-send-line text-base" />
+                  </span>
+                  <a
+                    href={`mailto:${CONTACT_INFO.email}`}
+                    className="font-semibold text-amber-200 hover:text-amber-100"
+                  >
+                    {CONTACT_INFO.email}
+                  </a>
                 </div>
-                <h3 className="font-bold text-base mb-1 text-slate-900">Phone</h3>
-                <a 
-                  href={`tel:${CONTACT_INFO.phone}`}
-                  className="text-xs hover:underline text-slate-700"
-                >
-                  {CONTACT_INFO.phone}
-                </a>
-              </div>
 
-              {/* Email */}
-              <div className="flex flex-col items-center">
-                <div className="w-16 h-16 mb-3 flex items-center justify-center">
-                  <i className="ri-mail-send-line text-4xl text-[#d58630]"></i>
+                {/* Social links */}
+                <div className="flex items-center gap-2">
+                  {SOCIAL_LINKS.facebook && (
+                    <a
+                      href={SOCIAL_LINKS.facebook}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex h-8 w-8 items-center justify-center rounded-full bg-white/5 text-amber-200 hover:bg-amber-300 hover:text-slate-900 transition-colors"
+                    >
+                      <i className="ri-facebook-fill text-lg" />
+                    </a>
+                  )}
+                  {SOCIAL_LINKS.twitter && (
+                    <a
+                      href={SOCIAL_LINKS.twitter}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex h-8 w-8 items-center justify-center rounded-full bg-white/5 text-amber-200 hover:bg-amber-300 hover:text-slate-900 transition-colors"
+                    >
+                      <i className="ri-twitter-x-line text-lg" />
+                    </a>
+                  )}
+                  {SOCIAL_LINKS.instagram && (
+                    <a
+                      href={SOCIAL_LINKS.instagram}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex h-8 w-8 items-center justify-center rounded-full bg-white/5 text-amber-200 hover:bg-amber-300 hover:text-slate-900 transition-colors"
+                    >
+                      <i className="ri-instagram-fill text-lg" />
+                    </a>
+                  )}
                 </div>
-                <h3 className="font-bold text-base mb-1 text-slate-900">Email</h3>
-                <a 
-                  href={`mailto:${CONTACT_INFO.email}`}
-                  className="hover:text-[#d58630] cursor-pointer transition-colors text-xs"
-                >
-                  {CONTACT_INFO.email}
-                </a>
               </div>
-            </div>
-
-            {/* Social Media Icons */}
-            <div className="flex justify-center space-x-6">
-              {SOCIAL_LINKS.facebook && (
-                <a 
-                  href={SOCIAL_LINKS.facebook} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="w-10 h-10 flex items-center justify-center group cursor-pointer transition-all"
-                >
-                  <i className="ri-facebook-fill text-3xl text-[#d58630] group-hover:text-theme-primary transition-colors"></i>
-                </a>
-              )}
-              {SOCIAL_LINKS.twitter && (
-                <a 
-                  href={SOCIAL_LINKS.twitter} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="w-10 h-10 flex items-center justify-center group cursor-pointer transition-all"
-                >
-                  <i className="ri-twitter-x-line text-3xl text-[#d58630] group-hover:text-theme-primary transition-colors"></i>
-                </a>
-              )}
-              {SOCIAL_LINKS.instagram && (
-                <a 
-                  href={SOCIAL_LINKS.instagram} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="w-10 h-10 flex items-center justify-center group cursor-pointer transition-all"
-                >
-                  <i className="ri-instagram-fill text-3xl text-[#d58630] group-hover:text-theme-primary transition-colors"></i>
-                </a>
-              )}
             </div>
           </div>
         </section>
 
-        {/* Form Section - Light Background */}
-        <section className="bg-white py-6 sm:py-8">
-          <div className="w-full">
-            <div className="grid gap-4 lg:gap-6 lg:grid-cols-[0.9fr_1.1fr] items-stretch">
-              <div className="order-2 lg:order-1 px-0">
-                <div className="relative overflow-hidden h-64 sm:h-80 lg:h-full shadow-lg">
-                  <img
-                    src={posterImage}
-                    alt="Arizontal Logistics"
-                    className="w-full h-full object-cover"
-                  />
+        {/* Map + Form Section */}
+        <section className="bg-gray-50 py-8 sm:py-12 lg:py-16">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+            <div className="grid gap-6 sm:gap-6 lg:gap-6 lg:grid-cols-[1.2fr_1fr] items-stretch">
+              {/* Left: Map */}
+              <div className="order-2 lg:order-1 lg:ml-4">
+                <div className="relative overflow-hidden rounded lg:rounded-l-none shadow-xl h-full min-h-[350px] sm:min-h-[450px] lg:min-h-[500px] z-0">
+                  <MapContainer
+                    center={[35.2271, -80.8431]} // Charlotte, NC - Office location
+                    zoom={15}
+                    scrollWheelZoom={false}
+                    dragging={true}
+                    zoomControl={true}
+                    doubleClickZoom={false}
+                    touchZoom={false}
+                    attributionControl={false}
+                    style={{ height: '100%', width: '100%', position: 'relative', zIndex: 0 }}
+                  >
+                    <TileLayer
+                      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    />
+                    <Marker 
+                      position={[35.2271, -80.8431]} 
+                      icon={officeMarkerIcon}
+                      eventHandlers={{
+                        click: () => {
+                          window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(CONTACT_INFO.address)}`, '_blank');
+                        },
+                      }}
+                    >
+                      <Tooltip 
+                        direction="top" 
+                        offset={[0, -35]}
+                        opacity={0.95}
+                        permanent={true}
+                      >
+                        <div className="text-xs font-semibold cursor-pointer">
+                          <div>Arizontal</div>
+                          <div className="text-[10px] font-normal text-slate-600">{CONTACT_INFO.address}</div>
+                          <div className="text-[9px] text-blue-600 mt-0.5">Click to open in Google Maps</div>
+                        </div>
+                      </Tooltip>
+                    </Marker>
+                  </MapContainer>
                 </div>
               </div>
 
-              <div className="order-1 lg:order-2 h-full flex flex-col px-4 sm:px-6 lg:px-10">
-                <div className="mb-6 sm:mb-8">
-                  <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-2 text-center lg:text-left">
-                    Online Contact Form
-                  </h2>
-                  <div className="w-1/4 h-0.5 bg-[#d58630] mx-auto lg:mx-0"></div>
+              {/* Right: Contact Form */}
+              <div className="order-1 lg:order-2 lg:mr-4">
+                <div className="bg-white rounded shadow-xl p-4 sm:p-6 h-auto flex flex-col max-w-lg mx-auto lg:mx-0 w-full">
+                  <div className="mb-3 sm:mb-4">
+                    <h2 className="text-sm sm:text-base lg:text-lg font-bold text-gray-900 mb-0.5">
+                      Online Contact Form
+                    </h2>
+                    <p className="text-[10px] sm:text-[11px] text-gray-500 mb-2">We will respond as soon as possible</p>
+                    <div className="w-10 sm:w-12 h-0.5 bg-gradient-to-r from-[#d58630] to-amber-400"></div>
+                  </div>
+
+                  <form
+                    onSubmit={handleSubmit}
+                    data-readdy-form
+                    id="contact-form"
+                    className="space-y-2.5 sm:space-y-3 flex flex-col"
+                  >
+                    {/* Full Name */}
+                    <input
+                      type="text"
+                      id="fullName"
+                      name="fullName"
+                      value={formData.fullName}
+                      onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                      placeholder="Full Name*"
+                      className="w-full px-3 sm:px-4 py-3 sm:py-3.5 bg-gray-50 border-0 rounded-sm focus:outline-none focus:bg-gray-100 text-xs placeholder:text-theme-primary"
+                    />
+
+                    {/* Company */}
+                    <input
+                      type="text"
+                      id="company"
+                      name="company"
+                      value={formData.company}
+                      onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                      placeholder="Company Name*"
+                      className="w-full px-3 sm:px-4 py-3 sm:py-3.5 bg-gray-50 border-0 rounded-sm focus:outline-none focus:bg-gray-100 text-xs placeholder:text-theme-primary"
+                    />
+
+                    {/* State */}
+                    <select
+                      id="state"
+                      name="state"
+                      value={formData.state}
+                      onChange={(e) => setFormData({ ...formData, state: e.target.value })}
+                      className="w-full px-3 sm:px-4 py-3 sm:py-3.5 bg-gray-50 border-0 rounded-sm focus:outline-none focus:bg-gray-100 text-xs text-theme-primary"
+                    >
+                      {US_STATES.map((state) => (
+                        <option key={state.value} value={state.value}>
+                          {state.label}
+                        </option>
+                      ))}
+                    </select>
+
+                    {/* Phone */}
+                    <PhoneInput
+                      international
+                      defaultCountry="US"
+                      value={formData.phone}
+                      onChange={handlePhoneChange}
+                      placeholder="Phone Number*"
+                      className="phone-input-custom"
+                    />
+                    <input
+                      type="hidden"
+                      name="phone"
+                      value={formData.phone || ''}
+                    />
+
+                    {/* Email */}
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      placeholder="Email Address*"
+                      className="w-full px-3 sm:px-4 py-3 sm:py-3.5 bg-gray-50 border-0 rounded-sm focus:outline-none focus:bg-gray-100 text-xs placeholder:text-theme-primary"
+                    />
+
+                    {/* Message */}
+                    <div>
+                      <textarea
+                        id="message"
+                        name="message"
+                        value={formData.message}
+                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                        maxLength={500}
+                        placeholder="Your message...*"
+                        rows={5}
+                        className="w-full px-3 sm:px-4 py-3 sm:py-3.5 bg-gray-50 border-0 rounded-sm focus:outline-none focus:bg-gray-100 text-xs resize-none placeholder:text-theme-primary"
+                      />
+                      <p className="mt-0.5 text-[10px] text-gray-400">
+                        {formData.message.length}/500
+                      </p>
+                    </div>
+
+                    {/* Submit Button */}
+                    <button
+                      type="submit"
+                      disabled={isSubmitting || formData.message.length > 500}
+                      className="self-start px-5 sm:px-6 py-2 bg-gradient-to-r from-[#d58630] to-theme-primary text-white text-xs font-semibold rounded-sm hover:from-[#b86f28] hover:to-theme-dark transition-all shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      {isSubmitting ? 'Submitting...' : 'Submit'}
+                    </button>
+                  </form>
                 </div>
-
-                <form
-                  onSubmit={handleSubmit}
-                  data-readdy-form
-                  id="contact-form"
-                  className="px-2 sm:px-6 flex-1 w-full max-w-md mx-auto lg:mx-0"
-                >
-              {/* Full Name Field */}
-              <div className="mb-4">
-                <label htmlFor="fullName" className="block text-sm font-semibold text-gray-900 mb-2">
-                  Full Name
-                </label>
-                <input
-                  type="text"
-                  id="fullName"
-                  name="fullName"
-                  value={formData.fullName}
-                  onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-none focus:outline-none focus:ring-2 focus:ring-[#d58630] focus:border-transparent text-xs"
-                />
-              </div>
-
-              {/* Company Field */}
-              <div className="mb-4">
-                <label htmlFor="company" className="block text-sm font-semibold text-gray-900 mb-2">
-                  Company
-                </label>
-                <input
-                  type="text"
-                  id="company"
-                  name="company"
-                  value={formData.company}
-                  onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-none focus:outline-none focus:ring-2 focus:ring-[#d58630] focus:border-transparent text-xs"
-                />
-              </div>
-
-              {/* State Field */}
-              <div className="mb-4">
-                <label htmlFor="state" className="block text-sm font-semibold text-gray-900 mb-2">
-                  State
-                </label>
-                <select
-                  id="state"
-                  name="state"
-                  value={formData.state}
-                  onChange={(e) => setFormData({ ...formData, state: e.target.value })}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-none focus:outline-none focus:ring-2 focus:ring-[#d58630] focus:border-transparent text-xs bg-white"
-                >
-                  {US_STATES.map((state) => (
-                    <option key={state.value} value={state.value}>
-                      {state.label}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              {/* Phone Field */}
-              <div className="mb-4">
-                <label htmlFor="phone" className="block text-sm font-semibold text-gray-900 mb-2">
-                  Phone
-                </label>
-                <PhoneInput
-                  international
-                  defaultCountry="US"
-                  value={formData.phone}
-                  onChange={handlePhoneChange}
-                  className="phone-input-custom"
-                />
-                <input
-                  type="hidden"
-                  name="phone"
-                  value={formData.phone || ''}
-                />
-              </div>
-
-              {/* Email Field */}
-              <div className="mb-4">
-                <label htmlFor="email" className="block text-sm font-semibold text-gray-900 mb-2">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-none focus:outline-none focus:ring-2 focus:ring-[#d58630] focus:border-transparent text-xs"
-                />
-              </div>
-
-              {/* Message Field */}
-              <div className="mb-4">
-                <label htmlFor="message" className="block text-sm font-semibold text-gray-900 mb-2">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  rows={6}
-                  maxLength={500}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#d58630] focus:border-transparent text-xs resize-none"
-                  placeholder="Please share your comments, feedback, or questions..."
-                />
-                <p className="mt-2 text-xs text-gray-500">
-                  {formData.message.length}/500 characters
-                </p>
-              </div>
-
-              {/* Submit Button */}
-              <button
-                type="submit"
-                disabled={isSubmitting || formData.message.length > 500}
-                className="w-full px-6 py-3 bg-gradient-to-r from-[#d58630] to-theme-primary text-white text-xs font-semibold rounded-md hover:from-[#b86f28] hover:to-theme-dark transition-all shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {isSubmitting ? 'Submitting...' : 'Send Message'}
-              </button>
-                </form>
               </div>
             </div>
           </div>

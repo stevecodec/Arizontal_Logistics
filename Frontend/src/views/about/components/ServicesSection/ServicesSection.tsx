@@ -25,7 +25,7 @@ export const ServicesSection = () => {
     <section className="py-8 sm:py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8 sm:mb-10">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 inline-block relative pb-2">
+          <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-4 inline-block relative pb-2">
             Transportation Services
             <span className="absolute bottom-0 left-0 w-1/4 h-0.5 bg-[#d58630]"></span>
           </h2>

@@ -8,12 +8,12 @@ export const HeroSection = () => {
 
       {/* Hero Content */}
       <div className="relative text-white max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 z-20 mt-16 sm:mt-24">
-        <p className="text-lg sm:text-xl lg:text-2xl mb-3 sm:mb-4 drop-shadow-md">Welcome to</p>
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-2 drop-shadow-lg inline-block relative pb-3">
+        <p className="text-base sm:text-lg lg:text-xl mb-3 sm:mb-4 drop-shadow-md">Welcome to</p>
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-2 drop-shadow-lg inline-block relative pb-3">
           Arizontal Logistics
           <span className="absolute bottom-0 left-0 w-1/4 h-0.5 bg-[#d58630]"></span>
         </h1>
-        <p className="text-base sm:text-lg lg:text-xl text-white/90 mt-4 sm:mt-6 drop-shadow-md">Charlotte, NC</p>
+        <p className="text-sm sm:text-base lg:text-lg text-white/90 mt-4 sm:mt-6 drop-shadow-md">Charlotte, NC</p>
       </div>
     </section>
   );

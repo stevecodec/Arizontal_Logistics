@@ -7,11 +7,11 @@ import { getImageUrl } from '@/data/services/imageService';
 export const Footer = () => {
   return (
     <footer className="bg-theme-footer text-white relative overflow-hidden">
-      <div className="absolute bottom-0 left-0 right-0 text-[80px] sm:text-[120px] lg:text-[180px] font-bold text-white/5 text-center leading-none pb-4 sm:pb-8 select-none pointer-events-none">
+      <div className="absolute bottom-0 left-0 right-0 text-[80px] sm:text-[120px] lg:text-[180px] font-bold text-white/5 text-center leading-none pb-4 sm:pb-8 select-none pointer-events-none whitespace-nowrap">
         ARIZONTAL
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 py-12 sm:py-16 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 py-12 sm:py-16 relative z-10 max-w-7xl">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 mb-8 sm:mb-12">
           <div>
             <img

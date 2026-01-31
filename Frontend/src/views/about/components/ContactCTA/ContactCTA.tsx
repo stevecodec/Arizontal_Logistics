@@ -6,10 +6,10 @@ export const ContactCTA = () => {
   return (
     <section className="py-12 sm:py-16 lg:py-20 bg-slate-900/95 backdrop-blur-sm text-white">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-2">
-          Arizontal Logistics Inc.
+        <h2 className="text-lg sm:text-xl lg:text-2xl font-bold mb-2">
+          Arizontal Logistics LLC.
         </h2>
-        <p className="text-lg sm:text-xl lg:text-2xl text-white/90 mb-6 sm:mb-8">
+        <p className="text-base sm:text-lg lg:text-xl text-white/90 mb-6 sm:mb-8">
           Let's Move Your Freight Today!
         </p>
         

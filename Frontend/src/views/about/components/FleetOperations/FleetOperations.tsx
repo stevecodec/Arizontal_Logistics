@@ -65,7 +65,7 @@ export const FleetOperations = () => {
             <div className="inline-block px-3 sm:px-4 py-1 bg-[#d58630]/10 border-l-4 border-[#d58630] mb-4 sm:mb-6">
               <span className="text-xs sm:text-sm font-semibold text-[#d58630]">OUR FLEET</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 mb-4 sm:mb-6">
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-slate-900 mb-4 sm:mb-6">
               Fleet & Operations
             </h2>
             <p className="text-sm sm:text-base text-slate-600 mb-4 sm:mb-6">
