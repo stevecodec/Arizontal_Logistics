@@ -2,7 +2,7 @@
 
 import { ServiceCard } from '@/models/types';
 import arizontal360RenderImage from '@/assets/images/arizontal360-render.png';
-import carrier360RenderImage from '@/assets/images/carrier360-render.png';
+import trustIndicatorsBackground from '@/assets/images/trustIndicatorsBackground.png';
 import truckloadTabsImage from '@/assets/images/truckload-tabs.png';
 
 // Service Cards
@@ -30,7 +30,7 @@ export const SERVICE_CARDS: ServiceCard[] = [
       'Receive guaranteed payments within days of delivery',
       'Receive 5 star rating and get recommended for more shipments',
     ],
-    image: carrier360RenderImage,
+    image: trustIndicatorsBackground,
     link: '/careers',
     buttonText: 'Apply Here',
   },

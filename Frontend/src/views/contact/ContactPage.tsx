@@ -75,6 +75,47 @@ const US_STATES = [
   { value: 'WY', label: 'Wyoming' },
 ];
 
+// FAQ Item Component
+interface FAQItemProps {
+  question: string;
+  answer: string;
+  number: number;
+  isOpen: boolean;
+  onToggle: () => void;
+}
+
+const FAQItem = ({ question, answer, number, isOpen, onToggle }: FAQItemProps) => {
+  return (
+    <div 
+      className={`rounded-none overflow-hidden mb-4 transition-colors duration-300 ${
+        isOpen ? 'bg-[#d48634]' : 'bg-gray-700'
+      }`}
+    >
+      <div className="px-6 sm:px-8 py-5">
+        <button
+          onClick={onToggle}
+          className="w-full flex items-start gap-4"
+        >
+          <span className="flex-shrink-0 text-white text-xl sm:text-2xl font-bold">
+            {number}
+          </span>
+          <span className="flex-1 text-left text-base sm:text-lg font-semibold text-white pr-4">
+            {question}
+          </span>
+          <span className="flex-shrink-0 w-6 h-6 flex items-center justify-center text-white text-2xl font-light">
+            {isOpen ? '−' : '+'}
+          </span>
+        </button>
+        {isOpen && (
+          <div className="mt-4 pl-8 sm:pl-10">
+            <p className="text-sm sm:text-base text-white leading-relaxed">{answer}</p>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
 const ContactPage = () => {
   const [formData, setFormData] = useState({
     fullName: '',
@@ -86,6 +127,7 @@ const ContactPage = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [openFAQIndex, setOpenFAQIndex] = useState<number | null>(null);
 
   const handlePhoneChange = (value?: string) => {
     const digits = (value || '').replace(/\D/g, '');
@@ -426,6 +468,64 @@ const ContactPage = () => {
                   </form>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="bg-gray-900 py-12 sm:py-16 lg:py-20">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Section Header */}
+            <div className="mb-8 sm:mb-12">
+              <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-2">
+                Frequently asked questions
+              </h2>
+            </div>
+
+            {/* FAQ Items */}
+            <div>
+              <FAQItem
+                number={1}
+                question="What types of freight do you transport?"
+                answer="We specialize in full truckload (FTL), less-than-truckload (LTL), intermodal, and specialized freight transportation. Our fleet is equipped to handle a wide variety of cargo, including temperature-controlled, oversized, and time-sensitive shipments across the United States."
+                isOpen={openFAQIndex === 1}
+                onToggle={() => setOpenFAQIndex(openFAQIndex === 1 ? null : 1)}
+              />
+              <FAQItem
+                number={2}
+                question="What areas do you service?"
+                answer="We provide transportation services across all 48 contiguous United States. Our network of carriers and strategic partnerships enable us to offer comprehensive coverage from coast to coast, with expedited service available for time-critical shipments."
+                isOpen={openFAQIndex === 2}
+                onToggle={() => setOpenFAQIndex(openFAQIndex === 2 ? null : 2)}
+              />
+              <FAQItem
+                number={3}
+                question="How do I get a quote?"
+                answer="You can request a quote by filling out the contact form above, calling us directly at our phone number, or emailing us. We typically respond to quote requests within 2-4 business hours. For faster service, having your shipment details ready (origin, destination, weight, dimensions) will help us provide an accurate quote quickly."
+                isOpen={openFAQIndex === 3}
+                onToggle={() => setOpenFAQIndex(openFAQIndex === 3 ? null : 3)}
+              />
+              <FAQItem
+                number={4}
+                question="Do you offer real-time tracking?"
+                answer="Yes, we provide real-time GPS tracking for all shipments. Once your freight is picked up, you'll receive tracking credentials that allow you to monitor your shipment's location and estimated delivery time 24/7 through our online portal."
+                isOpen={openFAQIndex === 4}
+                onToggle={() => setOpenFAQIndex(openFAQIndex === 4 ? null : 4)}
+              />
+              <FAQItem
+                number={5}
+                question="What are your payment terms?"
+                answer="We offer flexible payment terms based on your business needs. New customers typically start with prepayment or COD terms. After establishing a relationship, we can extend net-30 terms to qualified accounts. We accept all major payment methods including credit cards, ACH transfers, and checks."
+                isOpen={openFAQIndex === 5}
+                onToggle={() => setOpenFAQIndex(openFAQIndex === 5 ? null : 5)}
+              />
+              <FAQItem
+                number={6}
+                question="How do I become a carrier partner?"
+                answer="If you're interested in becoming a carrier partner, please visit our Carriers page or contact our carrier relations team. We look for reliable carriers with proper insurance, safety ratings, and equipment to join our network. Our team will guide you through the application and onboarding process."
+                isOpen={openFAQIndex === 6}
+                onToggle={() => setOpenFAQIndex(openFAQIndex === 6 ? null : 6)}
+              />
             </div>
           </div>
         </section>

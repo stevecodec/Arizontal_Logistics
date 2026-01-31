@@ -13,7 +13,7 @@ export const ServicesOverview = () => {
             OUR SERVICES
           </h2>
           <p className="text-xs sm:text-sm text-slate-600 max-w-3xl mx-auto mt-4 px-1">
-          Our operations are built on industry standards, regulatory compliance, and customer satisfaction. Change the way you do business with our platform. 
+          Our operations are built on industry standards, regulatory compliance, and customer satisfaction. Change the way your freight is handled by doing business with us today. 
           </p>
         </div>
 
