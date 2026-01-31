@@ -24,9 +24,13 @@
   }
 
   /* Default font for all elements - enforce with !important */
-  *,
-  *::before,
-  *::after {
+  * {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif !important;
+  }
+
+  /* Allow icon fonts to work correctly by not overriding pseudo-elements used for icons */
+  *:not([class^="ri-"]):not([class*=" ri-"])::before,
+  *:not([class^="ri-"]):not([class*=" ri-"])::after {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif !important;
   }
 
