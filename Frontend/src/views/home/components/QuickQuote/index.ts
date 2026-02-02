@@ -1,0 +1,1 @@
+export { QuickQuote } from './QuickQuote';
