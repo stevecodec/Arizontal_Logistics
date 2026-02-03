@@ -115,4 +115,18 @@ return [
         'name' => env('MAIL_FROM_NAME', 'Example'),
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Admin & Department Email Addresses
+    |--------------------------------------------------------------------------
+    |
+    | Configure email addresses for different departments to receive
+    | notifications from form submissions and registrations.
+    |
+    */
+
+    'admin_email' => env('MAIL_ADMIN_EMAIL', 'admin@example.com'),
+    'sales_email' => env('MAIL_SALES_EMAIL', 'sales@example.com'),
+    'partners_email' => env('MAIL_PARTNERS_EMAIL', 'partners@example.com'),
+
 ];

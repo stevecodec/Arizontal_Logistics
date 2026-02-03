@@ -1,5 +1,6 @@
 // About Page - Arizontal Transportation
 
+import { TopBar } from '@/views/shared/TopBar';
 import { Header } from '@/views/shared/Header';
 import { Footer } from '@/views/shared/Footer';
 import { getImageUrl } from '@/data/services/imageService';
@@ -15,6 +16,7 @@ import {
 const AboutPage = () => {
   return (
     <div className="min-h-screen flex flex-col">
+      <TopBar />
       <Header />
       
       {/* Fixed Background Image */}

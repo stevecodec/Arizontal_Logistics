@@ -1,16 +1,18 @@
 // Quick Quote Component (View Layer)
 
 import { useQuoteViewModel } from '@/viewmodels/home/useQuoteViewModel';
+import { useToast } from '@/contexts/ToastContext';
+import { ValidationErrorList } from '@/components/ValidationErrorList';
 import { SECTION_IDS } from '@/constants';
 
 export const QuickQuote = () => {
-  const { formData, isSubmitting, equipmentTypes, updateFormField, handleSubmit } = useQuoteViewModel();
+  const { showToast } = useToast();
+  const { formData, isSubmitting, validationErrors, equipmentTypes, updateFormField, handleSubmit } = useQuoteViewModel(showToast);
 
   return (
     <section id={SECTION_IDS.QUICK_QUOTE} className="py-20 bg-gradient-to-br from-slate-50 to-theme-bg-lighter">
-      <div className="relative -mt-32 z-20">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="bg-white rounded shadow-2xl overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="bg-white rounded shadow-2xl overflow-hidden">
             <div className="grid md:grid-cols-2 gap-0">
               {/* Left Side - Form */}
               <div className="p-10 lg:p-12">
@@ -23,6 +25,9 @@ export const QuickQuote = () => {
                     <p className="text-xs text-slate-600">Get instant pricing for your shipment</p>
                   </div>
                 </div>
+
+                {/* Validation Errors */}
+                <ValidationErrorList errors={validationErrors} className="mb-4" />
 
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="grid grid-cols-2 gap-4">
@@ -143,7 +148,6 @@ export const QuickQuote = () => {
             </div>
           </div>
         </div>
-      </div>
     </section>
   );
 };

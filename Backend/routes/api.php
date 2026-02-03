@@ -18,18 +18,29 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Contact form submission
-Route::post('/contact', [ContactController::class, 'store']);
+// Public API routes with rate limiting
+Route::middleware(['throttle:api'])->group(function () {
+    // Contact form submission - stricter rate limit
+    Route::middleware(['throttle:contact'])->group(function () {
+        Route::post('/contact', [ContactController::class, 'store']);
+    });
 
-// Partner/Carrier registration
-Route::post('/partners/register', [PartnerRegistrationController::class, 'store']);
+    // Partner/Carrier registration - stricter rate limit
+    Route::middleware(['throttle:registration'])->group(function () {
+        Route::post('/partners/register', [PartnerRegistrationController::class, 'store']);
+    });
 
-// Driver applications
-Route::post('/careers/apply', [DriverApplicationController::class, 'store']);
+    // Driver applications - stricter rate limit
+    Route::middleware(['throttle:registration'])->group(function () {
+        Route::post('/careers/apply', [DriverApplicationController::class, 'store']);
+    });
 
-// Quote requests
-Route::post('/quotes/request', [QuoteRequestController::class, 'store']);
+    // Quote requests - stricter rate limit
+    Route::middleware(['throttle:quotes'])->group(function () {
+        Route::post('/quotes/request', [QuoteRequestController::class, 'store']);
+    });
 
-// Loads
-Route::get('/loads/count', [LoadController::class, 'count']);
-Route::get('/loads', [LoadController::class, 'index']);
+    // Loads - public read-only
+    Route::get('/loads/count', [LoadController::class, 'count']);
+    Route::get('/loads', [LoadController::class, 'index']);
+});

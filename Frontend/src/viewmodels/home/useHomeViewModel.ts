@@ -19,7 +19,7 @@ export const useHomeViewModel = () => {
   const handleServiceClick = (link: string) => {
     // Future: Navigate to service page or handle service selection
     // TODO: Implement navigation logic
-    if (process.env.NODE_ENV === 'development') {
+    if (import.meta.env.DEV) {
       console.log('Service clicked:', link);
     }
   };

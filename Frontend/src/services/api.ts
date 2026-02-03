@@ -1,6 +1,8 @@
 // API Service for Laravel Backend
 // Handles all HTTP requests to the backend API
 
+import { formatValidationErrors, getValidationErrorSummary } from '@/utils/errorHandling';
+
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000/api';
 
 interface RequestOptions {
@@ -9,11 +11,13 @@ interface RequestOptions {
   headers?: Record<string, string>;
 }
 
-interface ApiResponse<T = unknown> {
+export interface ApiResponse<T = unknown> {
   success: boolean;
   data?: T;
   message?: string;
   errors?: Record<string, string[]>;
+  /** Formatted error messages for display */
+  errorMessages?: string[];
 }
 
 class ApiService {
@@ -47,10 +51,14 @@ class ApiService {
       const data = await response.json();
 
       if (!response.ok) {
+        const errors = data.errors;
+        const errorMessages = formatValidationErrors(errors);
+        
         return {
           success: false,
-          message: data.message || 'An error occurred',
-          errors: data.errors,
+          message: data.message || (errorMessages.length > 0 ? 'Please fix the following errors:' : 'An error occurred'),
+          errors,
+          errorMessages,
         };
       }
 
@@ -60,7 +68,11 @@ class ApiService {
         message: data.message,
       };
     } catch (error) {
-      console.error('API Request Error:', error);
+      // Log only in development
+      if (import.meta.env.DEV) {
+        console.error('API Request Error:', error);
+      }
+      // TODO: Send to error tracking service (Sentry) in production
       return {
         success: false,
         message: error instanceof Error ? error.message : 'Network error occurred',
@@ -70,9 +82,11 @@ class ApiService {
 
   // Contact Form Submission
   async submitContact(data: {
-    name: string;
+    fullName: string;
+    company: string;
+    state: string;
+    phone: string;
     email: string;
-    phone?: string;
     message: string;
   }) {
     return this.request('/contact', {
@@ -82,65 +96,28 @@ class ApiService {
   }
 
   // Partner/Carrier Registration
-  async registerPartner(data: {
-    company_name: string;
-    contact_name: string;
-    email: string;
-    phone: string;
-    mc_number?: string;
-    dot_number?: string;
-    insurance_amount?: string;
-    equipment_types?: string[];
-    service_areas?: string[];
-    message?: string;
-  }) {
-    return this.request('/partners/register', {
-      method: 'POST',
-      body: data,
-    });
-  }
-
-  // Driver Application
-  async submitDriverApplication(data: {
-    first_name: string;
-    last_name: string;
-    email: string;
-    phone: string;
-    license_number: string;
-    license_state: string;
-    experience_years: number;
-    cdl_type?: string;
-    endorsements?: string[];
-    resume?: File;
-  }) {
-    // For file uploads, we'll use FormData
-    const formData = new FormData();
-    Object.entries(data).forEach(([key, value]) => {
-      if (value instanceof File) {
-        formData.append(key, value);
-      } else if (Array.isArray(value)) {
-        value.forEach((item) => formData.append(`${key}[]`, item));
-      } else if (value !== undefined && value !== null) {
-        formData.append(key, value.toString());
-      }
-    });
-
+  async registerPartner(data: FormData) {
     try {
-      const response = await fetch(`${this.baseUrl}/careers/apply`, {
+      const response = await fetch(`${this.baseUrl}/partners/register`, {
         method: 'POST',
-        body: formData,
+        body: data,
         headers: {
           'Accept': 'application/json',
+          // Don't set Content-Type for FormData - browser will set it with boundary
         },
       });
 
       const responseData = await response.json();
 
       if (!response.ok) {
+        const errors = responseData.errors;
+        const errorMessages = formatValidationErrors(errors);
+        
         return {
           success: false,
-          message: responseData.message || 'An error occurred',
-          errors: responseData.errors,
+          message: responseData.message || (errorMessages.length > 0 ? 'Please fix the following errors:' : 'An error occurred'),
+          errors,
+          errorMessages,
         };
       }
 
@@ -150,7 +127,11 @@ class ApiService {
         message: responseData.message,
       };
     } catch (error) {
-      console.error('API Request Error:', error);
+      // Log only in development
+      if (import.meta.env.DEV) {
+        console.error('API Request Error:', error);
+      }
+      // TODO: Send to error tracking service (Sentry) in production
       return {
         success: false,
         message: error instanceof Error ? error.message : 'Network error occurred',
@@ -158,19 +139,32 @@ class ApiService {
     }
   }
 
+  // Driver Application
+  async submitDriverApplication(data: {
+    fullName: string;
+    phone: string;
+    email: string;
+    experience: string;
+    cdlType: string;
+    addressLine1: string;
+    addressLine2?: string;
+    city: string;
+    state: string;
+    zip: string;
+    message?: string;
+  }) {
+    return this.request('/careers/apply', {
+      method: 'POST',
+      body: data,
+    });
+  }
+
   // Quote Request
   async requestQuote(data: {
-    pickup_location: string;
-    delivery_location: string;
-    pickup_date?: string;
-    delivery_date?: string;
-    cargo_type?: string;
-    weight?: number;
-    dimensions?: string;
-    special_requirements?: string;
-    contact_name: string;
-    contact_email: string;
-    contact_phone: string;
+    originCity: string;
+    destinationCity: string;
+    equipmentType: string;
+    weight: string;
   }) {
     return this.request('/quotes/request', {
       method: 'POST',

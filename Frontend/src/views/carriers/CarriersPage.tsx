@@ -3,12 +3,14 @@
 import { useEffect, useState, FormEvent } from 'react';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
+import { TopBar } from '@/views/shared/TopBar';
 import { Header } from '@/views/shared/Header';
 import { Footer } from '@/views/shared/Footer';
 import { CompanyLogos } from '@/views/home/components/CompanyLogos';
 import { CONTACT_INFO } from '@/constants';
 import { getImageUrl } from '@/data/services/imageService';
 import { useToast } from '@/contexts/ToastContext';
+import { ValidationErrorList } from '@/components/ValidationErrorList';
 import api from '@/services/api';
 
 
@@ -86,6 +88,7 @@ const CareersPage = () => {
     { place_id: number; display_name: string; address: Record<string, string> }[]
   >([]);
   const [isAddressLoading, setIsAddressLoading] = useState(false);
+  const [validationErrors, setValidationErrors] = useState<string[]>([]);
   const { showToast } = useToast();
 
   const handlePhoneChange = (value?: string) => {
@@ -139,6 +142,9 @@ const CareersPage = () => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    // Clear previous validation errors
+    setValidationErrors([]);
+
     const requiredFields = [
       formData.fullName,
       formData.phone,
@@ -152,6 +158,7 @@ const CareersPage = () => {
     ];
 
     if (requiredFields.some((field) => !field.trim())) {
+      setValidationErrors(['Please fill in all required fields']);
       showToast('Please fill in all required fields', 'error');
       return;
     }
@@ -159,36 +166,23 @@ const CareersPage = () => {
     setIsSubmitting(true);
 
     try {
-      // Parse names
-      const nameParts = formData.fullName.trim().split(' ');
-      const firstName = nameParts[0] || '';
-      const lastName = nameParts.slice(1).join(' ') || '';
-
-      // Parse experience years
-      const experienceYears = parseInt(formData.experience) || 0;
-
-      // Build full address
-      const fullAddress = [
-        formData.addressLine1,
-        formData.addressLine2,
-        formData.city,
-        formData.state,
-        formData.zip,
-      ].filter(Boolean).join(', ');
-
       const response = await api.submitDriverApplication({
-        first_name: firstName,
-        last_name: lastName,
-        email: formData.email,
+        fullName: formData.fullName,
         phone: formData.phone,
-        license_number: '', // Not collected in this form
-        license_state: formData.state,
-        experience_years: experienceYears,
-        cdl_type: formData.cdlType,
+        email: formData.email,
+        experience: formData.experience,
+        cdlType: formData.cdlType,
+        addressLine1: formData.addressLine1,
+        addressLine2: formData.addressLine2,
+        city: formData.city,
+        state: formData.state,
+        zip: formData.zip,
+        message: formData.message,
       });
 
       if (response.success) {
         showToast('Application received. Our team will reach out shortly.', 'success');
+        setValidationErrors([]);
         setFormData({
           fullName: '',
           phone: '',
@@ -203,7 +197,15 @@ const CareersPage = () => {
           message: '',
         });
       } else {
-        showToast(response.message || 'There was an error submitting your application. Please try again.', 'error');
+        // Display validation errors professionally
+        if (response.errorMessages && response.errorMessages.length > 0) {
+          setValidationErrors(response.errorMessages);
+          showToast(response.message || 'Please correct the errors below', 'error');
+          // Scroll to top to show validation errors
+          document.getElementById('application')?.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          showToast(response.message || 'There was an error submitting your application. Please try again.', 'error');
+        }
       }
     } catch (error) {
       showToast('Network error. Please check your connection and try again.', 'error');
@@ -214,6 +216,7 @@ const CareersPage = () => {
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col">
+      <TopBar />
       <Header />
 
       <main className="flex-1 pt-16">
@@ -241,6 +244,9 @@ const CareersPage = () => {
               <p className="text-sm text-slate-600 mb-6 text-center max-w-2xl mx-auto">
                 Share a few details and our recruiting team will contact you with the next steps.
               </p>
+
+              {/* Validation Errors */}
+              <ValidationErrorList errors={validationErrors} />
 
               <form onSubmit={handleSubmit} id="driver-application" className="grid gap-4">
                 <div className="grid gap-4 md:grid-cols-2">

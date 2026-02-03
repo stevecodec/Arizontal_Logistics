@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { QuoteFormData } from '@/models/types';
 import { EQUIPMENT_TYPES } from '@/constants/home';
-import api from '@/services/api';
+import api, { ApiResponse } from '@/services/api';
 
 /**
  * ViewModel for Quick Quote Form
@@ -18,6 +18,7 @@ export const useQuoteViewModel = (showToast: (message: string, type: 'success' |
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [validationErrors, setValidationErrors] = useState<string[]>([]);
 
   const updateFormField = <K extends keyof QuoteFormData>(
     field: K,
@@ -26,17 +27,22 @@ export const useQuoteViewModel = (showToast: (message: string, type: 'success' |
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent, contactInfo: { name: string; email: string; phone: string }) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Clear previous validation errors
+    setValidationErrors([]);
     
     // Validate form
     if (!formData.originCity || !formData.destinationCity) {
+      setValidationErrors(['Please enter both origin and destination cities']);
       showToast('Please enter both origin and destination cities', 'error');
       return;
     }
 
-    if (!contactInfo.name || !contactInfo.email || !contactInfo.phone) {
-      showToast('Please provide your contact information', 'error');
+    if (!formData.weight) {
+      setValidationErrors(['Please enter the weight']);
+      showToast('Please enter the weight', 'error');
       return;
     }
 
@@ -44,17 +50,15 @@ export const useQuoteViewModel = (showToast: (message: string, type: 'success' |
 
     try {
       const response = await api.requestQuote({
-        pickup_location: formData.originCity,
-        delivery_location: formData.destinationCity,
-        cargo_type: formData.equipmentType,
-        weight: formData.weight ? parseFloat(formData.weight) : undefined,
-        contact_name: contactInfo.name,
-        contact_email: contactInfo.email,
-        contact_phone: contactInfo.phone,
+        originCity: formData.originCity,
+        destinationCity: formData.destinationCity,
+        equipmentType: formData.equipmentType,
+        weight: formData.weight,
       });
 
       if (response.success) {
         showToast('Quote request submitted successfully! We will contact you soon.', 'success');
+        setValidationErrors([]);
         // Reset form after successful submission
         setFormData({
           originCity: '',
@@ -63,7 +67,13 @@ export const useQuoteViewModel = (showToast: (message: string, type: 'success' |
           weight: '',
         });
       } else {
-        showToast(response.message || 'Failed to submit quote request. Please try again.', 'error');
+        // Display validation errors professionally
+        if (response.errorMessages && response.errorMessages.length > 0) {
+          setValidationErrors(response.errorMessages);
+          showToast(response.message || 'Please correct the errors below', 'error');
+        } else {
+          showToast(response.message || 'Failed to submit quote request. Please try again.', 'error');
+        }
       }
     } catch (error) {
       showToast('Network error. Please check your connection and try again.', 'error');
@@ -78,6 +88,7 @@ export const useQuoteViewModel = (showToast: (message: string, type: 'success' |
   return {
     formData,
     isSubmitting,
+    validationErrors,
     equipmentTypes: EQUIPMENT_TYPES,
     updateFormField,
     handleSubmit,

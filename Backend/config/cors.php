@@ -17,22 +17,27 @@ return [
 
     'paths' => ['api/*', 'sanctum/csrf-cookie'],
 
-    'allowed_methods' => ['*'],
+    'allowed_methods' => ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
 
-    'allowed_origins' => [
+    'allowed_origins' => array_filter([
         'http://localhost:3000',
+        'http://localhost:3001',
         'http://localhost:5173',
         'http://localhost:5174',
-        env('FRONTEND_URL', 'http://localhost:3000'),
+        env('FRONTEND_URL'),
+        env('FRONTEND_URL_PRODUCTION'),
+    ]),
+
+    'allowed_origins_patterns' => [
+        '/^https?:\/\/(.*\.)?vercel\.app$/',
+        '/^https?:\/\/(.*\.)?netlify\.app$/',
     ],
 
-    'allowed_origins_patterns' => [],
+    'allowed_headers' => ['Content-Type', 'X-Requested-With', 'Authorization', 'Accept', 'Origin', 'X-CSRF-Token'],
 
-    'allowed_headers' => ['*'],
+    'exposed_headers' => ['X-RateLimit-Limit', 'X-RateLimit-Remaining'],
 
-    'exposed_headers' => [],
-
-    'max_age' => 0,
+    'max_age' => 3600,
 
     'supports_credentials' => false,
 

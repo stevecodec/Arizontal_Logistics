@@ -1,117 +1,32 @@
 // Header Component (View Layer)
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useScroll } from '@/hooks/useScroll';
-import { APP_NAME, NAVIGATION_ITEMS, CONTACT_INFO, SOCIAL_LINKS } from '@/constants';
+import { useScroll, useTopBarHeight } from '@/hooks';
+import { APP_NAME, NAVIGATION_ITEMS } from '@/constants';
 import { getImageUrl } from '@/data/services/imageService';
 
 export const Header = () => {
   const scrolled = useScroll();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isTopBarVisible, setIsTopBarVisible] = useState(true);
-
-  // Load top bar visibility state from localStorage on mount
-  useEffect(() => {
-    try {
-      const topBarClosed = localStorage.getItem('topBarClosed');
-      if (topBarClosed === 'true') {
-        setIsTopBarVisible(false);
-      }
-    } catch (error) {
-      // localStorage might not be available (private browsing, etc.)
-      // Fail silently and keep top bar visible
-    }
-  }, []);
+  const topBarHeight = useTopBarHeight();
+  const gapSize = 4; // Professional gap in pixels
 
   const handleNavClick = () => setIsMenuOpen(false);
 
-  const handleCloseTopBar = () => {
-    setIsTopBarVisible(false);
-    try {
-      localStorage.setItem('topBarClosed', 'true');
-    } catch (error) {
-      // Fail silently if localStorage is not available
-    }
-  };
-
   return (
     <>
-      {/* Top Bar */}
-      {isTopBarVisible && (
-        <div className="fixed top-0 left-0 right-0 z-[51] bg-slate-800 text-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between py-1 sm:py-1.5 text-xs sm:text-sm">
-              {/* Contact Info */}
-              <div className="flex items-center gap-4 sm:gap-6 flex-wrap">
-                <a 
-                  href={`tel:${CONTACT_INFO.phone}`}
-                  className="flex items-center gap-1.5 hover:text-theme-secondary transition-colors"
-                >
-                  <i className="ri-phone-line text-sm"></i>
-                  <span className="hidden sm:inline">{CONTACT_INFO.phone}</span>
-                </a>
-                <a 
-                  href={`mailto:${CONTACT_INFO.email}`}
-                  className="flex items-center gap-1.5 hover:text-theme-secondary transition-colors"
-                >
-                  <i className="ri-mail-line text-sm"></i>
-                  <span className="hidden sm:inline">{CONTACT_INFO.email}</span>
-                </a>
-              </div>
-
-              {/* Social Links and Close Button */}
-              <div className="flex items-center gap-3">
-                {SOCIAL_LINKS.facebook && (
-                  <a
-                    href={SOCIAL_LINKS.facebook}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-theme-secondary transition-colors"
-                    aria-label="Facebook"
-                  >
-                    <i className="ri-facebook-fill text-base"></i>
-                  </a>
-                )}
-                {SOCIAL_LINKS.twitter && (
-                  <a
-                    href={SOCIAL_LINKS.twitter}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-theme-secondary transition-colors"
-                    aria-label="Twitter"
-                  >
-                    <i className="ri-twitter-x-line text-base"></i>
-                  </a>
-                )}
-                {SOCIAL_LINKS.instagram && (
-                  <a
-                    href={SOCIAL_LINKS.instagram}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-theme-secondary transition-colors"
-                    aria-label="Instagram"
-                  >
-                    <i className="ri-instagram-fill text-base"></i>
-                  </a>
-                )}
-                
-                {/* Close Button */}
-                <button
-                  onClick={handleCloseTopBar}
-                  className="ml-2 hover:text-theme-secondary transition-colors"
-                  aria-label="Close top bar"
-                >
-                  <i className="ri-close-line text-lg"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
+      {/* Spacer Gap */}
+      <div 
+        className="fixed left-0 right-0 z-[49] bg-slate-100/30 backdrop-blur-sm"
+        style={{ 
+          top: `${topBarHeight}px`,
+          height: `${gapSize}px`
+        }}
+      />
+      
       <nav className={`fixed left-0 right-0 z-50 transition-all duration-300 backdrop-blur ${scrolled ? 'bg-white/95 shadow-lg' : 'bg-slate-900/70'}`}
-        style={{ top: isTopBarVisible ? '28px' : '0' }}
+        style={{ top: `${topBarHeight + gapSize}px` }}
       >
         <div className="max-w-7xl mx-auto pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))] sm:pl-[max(1.5rem,env(safe-area-inset-left))] sm:pr-[max(1.5rem,env(safe-area-inset-right))] lg:pl-8 lg:pr-8">
           <div className="flex items-center justify-between h-16">

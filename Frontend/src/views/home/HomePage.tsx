@@ -1,5 +1,6 @@
 // Home Page View Component
 
+import { TopBar } from '@/views/shared/TopBar';
 import { Header } from '@/views/shared/Header';
 import { HeroSection } from '@/views/home/components/HeroSection';
 import { ServicesOverview } from '@/views/home/components/ServicesOverview';
@@ -13,6 +14,7 @@ import { Footer } from '@/views/shared/Footer';
 const HomePage = () => {
   return (
     <div className="min-h-screen">
+      <TopBar />
       <Header />
       <main>
         <HeroSection />

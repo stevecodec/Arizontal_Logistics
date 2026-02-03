@@ -5,6 +5,7 @@ import { FleetDetailsStep } from './FleetDetailsStep';
 import { DocumentUploadStep } from './DocumentUploadStep';
 import { useScrollAnimation } from '../../../../hooks';
 import { useToast } from '@/contexts/ToastContext';
+import { ValidationErrorList } from '@/components/ValidationErrorList';
 import api from '@/services/api';
 
 export const PartnerRegistrationForm = () => {
@@ -14,6 +15,7 @@ export const PartnerRegistrationForm = () => {
     triggerOnce: true 
   });
   const { showToast } = useToast();
+  const [validationErrors, setValidationErrors] = useState<string[]>([]);
   const [formData, setFormData] = useState({
     // Company Details
     companyName: '',
@@ -82,26 +84,56 @@ export const PartnerRegistrationForm = () => {
   const handleSubmit = async () => {
     // Handle form submission
     try {
-      // Build equipment types from fleet data
-      const equipmentTypes = Object.entries(formData.fleet)
-        .filter(([, count]) => count > 0)
-        .map(([type, count]) => `${type}: ${count}`);
+      // Clear previous validation errors
+      setValidationErrors([]);
 
-      // Build full address
-      const fullAddress = [formData.street, formData.city, formData.postCode, formData.country]
-        .filter(Boolean)
-        .join(', ');
+      // Validate required files
+      if (!formData.proofOfIdentity || !formData.cmrInsurance || !formData.operatorsLicence) {
+        setValidationErrors(['Please upload all required documents']);
+        showToast('Please upload all required documents', 'error');
+        return;
+      }
 
-      const response = await api.registerPartner({
-        company_name: formData.companyName,
-        contact_name: formData.title,
-        email: formData.email,
-        phone: formData.phoneNumber,
-        equipment_types: equipmentTypes,
-        message: `Address: ${fullAddress}\nFleet Details: ${JSON.stringify(formData.fleet, null, 2)}`,
+      if (!formData.agreementAccepted) {
+        setValidationErrors(['Please accept the terms and conditions']);
+        showToast('Please accept the terms and conditions', 'error');
+        return;
+      }
+
+      // Build FormData for file upload
+      const submitData = new FormData();
+      
+      // Company details
+      submitData.append('companyName', formData.companyName);
+      submitData.append('street', formData.street);
+      submitData.append('postCode', formData.postCode);
+      submitData.append('city', formData.city);
+      submitData.append('country', formData.country);
+      
+      // Personal details
+      if (formData.title) {
+        submitData.append('title', formData.title);
+      }
+      submitData.append('phoneNumber', formData.phoneNumber);
+      submitData.append('email', formData.email);
+      
+      // Fleet details - send as nested object
+      Object.entries(formData.fleet).forEach(([key, value]) => {
+        submitData.append(`fleet[${key}]`, value.toString());
       });
+      
+      // Document uploads
+      submitData.append('proofOfIdentity', formData.proofOfIdentity);
+      submitData.append('cmrInsurance', formData.cmrInsurance);
+      submitData.append('operatorsLicence', formData.operatorsLicence);
+      
+      // Agreement
+      submitData.append('agreementAccepted', formData.agreementAccepted ? '1' : '0');
+
+      const response = await api.registerPartner(submitData);
 
       if (response.success) {
+        setValidationErrors([]);
         // Reset form after successful submission
         setFormData({
           companyName: '',
@@ -136,7 +168,15 @@ export const PartnerRegistrationForm = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
         showToast('Registration submitted successfully! We will contact you soon.', 'success');
       } else {
-        showToast(response.message || 'Submission failed. Please try again.', 'error');
+        // Display validation errors professionally
+        if (response.errorMessages && response.errorMessages.length > 0) {
+          setValidationErrors(response.errorMessages);
+          showToast(response.message || 'Please correct the errors below', 'error');
+          // Scroll to top to show validation errors
+          document.getElementById('registration-form')?.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          showToast(response.message || 'Submission failed. Please try again.', 'error');
+        }
       }
     } catch (error) {
       showToast('There was an error submitting your registration. Please try again or contact us directly.', 'error');
@@ -186,6 +226,9 @@ export const PartnerRegistrationForm = () => {
 
           {/* Form Content */}
           <div className="p-4 sm:p-6">
+            {/* Validation Errors */}
+            <ValidationErrorList errors={validationErrors} />
+
             {currentStep === 1 && (
               <CompanyDetailsStep
                 formData={formData}

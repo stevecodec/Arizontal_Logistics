@@ -6,10 +6,12 @@ import 'react-phone-number-input/style.css';
 import { MapContainer, TileLayer, Marker, Tooltip } from 'react-leaflet';
 import { Icon } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import { TopBar } from '@/views/shared/TopBar';
 import { Header } from '@/views/shared/Header';
 import { Footer } from '@/views/shared/Footer';
 import { CONTACT_INFO, SOCIAL_LINKS } from '@/constants';
 import { useToast } from '@/contexts/ToastContext';
+import { ValidationErrorList } from '@/components/ValidationErrorList';
 import api from '@/services/api';
 
 // Custom marker icon for office location
@@ -129,6 +131,7 @@ const ContactPage = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [openFAQIndex, setOpenFAQIndex] = useState<number | null>(null);
+  const [validationErrors, setValidationErrors] = useState<string[]>([]);
   const { showToast } = useToast();
 
   const handlePhoneChange = (value?: string) => {
@@ -149,6 +152,9 @@ const ContactPage = () => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    // Clear previous validation errors
+    setValidationErrors([]);
+
     const requiredFields = [
       formData.fullName,
       formData.company,
@@ -159,11 +165,13 @@ const ContactPage = () => {
     ];
 
     if (requiredFields.some((field) => !field.trim())) {
+      setValidationErrors(['Please fill in all required fields']);
       showToast('Please fill in all required fields', 'error');
       return;
     }
 
     if (formData.message.length > 500) {
+      setValidationErrors(['Message must be 500 characters or less']);
       showToast('Message must be 500 characters or less', 'error');
       return;
     }
@@ -172,14 +180,17 @@ const ContactPage = () => {
 
     try {
       const response = await api.submitContact({
-        name: formData.fullName,
-        email: formData.email,
+        fullName: formData.fullName,
+        company: formData.company,
+        state: formData.state,
         phone: formData.phone,
-        message: `Company: ${formData.company}\nState: ${formData.state}\n\n${formData.message}`,
+        email: formData.email,
+        message: formData.message,
       });
 
       if (response.success) {
         showToast('Thank you for your message! We will get back to you soon.', 'success');
+        setValidationErrors([]);
         setFormData({
           fullName: '',
           company: '',
@@ -189,7 +200,13 @@ const ContactPage = () => {
           message: '',
         });
       } else {
-        showToast(response.message || 'There was an error submitting your message. Please try again.', 'error');
+        // Display validation errors professionally
+        if (response.errorMessages && response.errorMessages.length > 0) {
+          setValidationErrors(response.errorMessages);
+          showToast(response.message || 'Please correct the errors below', 'error');
+        } else {
+          showToast(response.message || 'There was an error submitting your message. Please try again.', 'error');
+        }
       }
     } catch (error) {
       showToast('Network error. Please check your connection and try again.', 'error');
@@ -200,6 +217,7 @@ const ContactPage = () => {
 
   return (
     <div className="min-h-screen bg-white flex flex-col">
+      <TopBar />
       <Header />
 
       <main className="flex-1">
@@ -342,6 +360,9 @@ const ContactPage = () => {
                     id="contact-form"
                     className="space-y-2.5 sm:space-y-3 flex flex-col"
                   >
+                    {/* Validation Errors */}
+                    <ValidationErrorList errors={validationErrors} />
+
                     {/* Full Name */}
                     <input
                       type="text"

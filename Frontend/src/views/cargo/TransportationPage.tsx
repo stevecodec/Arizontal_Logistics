@@ -1,5 +1,6 @@
 // Transportation Page - Owner-Operator Partnerships
 
+import { TopBar } from '@/views/shared/TopBar';
 import { Header } from '@/views/shared/Header';
 import { Footer } from '@/views/shared/Footer';
 import {
@@ -14,6 +15,7 @@ import {
 const TransportationPage = () => {
   return (
     <div className="min-h-screen bg-white flex flex-col">
+      <TopBar />
       <Header />
       
       <main className="flex-1">
