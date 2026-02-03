@@ -169,6 +169,14 @@
 /* Leaflet Map Custom Styling */
 .leaflet-container {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif !important;
+  touch-action: pan-x pan-y;
+}
+
+/* Require two-finger scroll on mobile for maps */
+@media (max-width: 1023px) {
+  .leaflet-container {
+    touch-action: pan-x pan-y pinch-zoom;
+  }
 }
 
 .leaflet-popup-content-wrapper {

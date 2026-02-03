@@ -39,7 +39,7 @@ export const CompanyProfile = () => {
               <span className="text-xs sm:text-sm font-semibold text-[#d58630]">WHO WE ARE</span>
             </div>
             <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-slate-900 mb-4 sm:mb-6">
-              Licensed & Insured Motor Carrier
+              Licensed & Insured Freight Broker
             </h2>
             <p className="text-sm sm:text-base text-slate-600 mb-4 leading-relaxed">
               Arizontal Transportation is a licensed and insured freight broker dedicated to safe 

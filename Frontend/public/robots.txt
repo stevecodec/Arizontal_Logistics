@@ -1,0 +1,21 @@
+# robots.txt for Arizontal Transportation Group
+
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Disallow admin areas (if any)
+Disallow: /admin/
+Disallow: /api/
+Disallow: /*.json$
+
+# Allow Google Image Bot
+User-agent: Googlebot-Image
+Allow: /assets/images/
+
+# Sitemaps
+Sitemap: https://arizontal.com/sitemap.xml
+
+# Crawl-delay for specific bots (optional)
+User-agent: *
+Crawl-delay: 1

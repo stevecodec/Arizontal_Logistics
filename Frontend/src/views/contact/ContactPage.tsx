@@ -1,6 +1,6 @@
 // Contact Page View Component
 
-import { useState, FormEvent } from 'react';
+import { useState, useEffect, FormEvent } from 'react';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 import { MapContainer, TileLayer, Marker, Tooltip } from 'react-leaflet';
@@ -13,6 +13,8 @@ import { CONTACT_INFO, SOCIAL_LINKS } from '@/constants';
 import { useToast } from '@/contexts/ToastContext';
 import { ValidationErrorList } from '@/components/ValidationErrorList';
 import api from '@/services/api';
+import { useSEO } from '@/hooks';
+import { SEO_CONFIG } from '@/constants/seo';
 
 // Custom marker icon for office location
 const officeMarkerIcon = new Icon({
@@ -121,6 +123,8 @@ const FAQItem = ({ question, answer, number, isOpen, onToggle }: FAQItemProps) =
 };
 
 const ContactPage = () => {
+  useSEO(SEO_CONFIG.contact);
+
   const [formData, setFormData] = useState({
     fullName: '',
     company: '',
@@ -222,11 +226,11 @@ const ContactPage = () => {
 
       <main className="flex-1">
         {/* Hero Section - Compact Professional */}
-        <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden">
+        <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden pt-20 sm:pt-24 md:pt-20">
           {/* Subtle overlay pattern */}
           <div className="pointer-events-none absolute inset-0 opacity-40 mix-blend-soft-light bg-[radial-gradient(circle_at_top,_rgba(213,134,48,0.32)_0,_transparent_55%),radial-gradient(circle_at_bottom,_rgba(15,23,42,0.9)_0,_transparent_65%)]" />
 
-          <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+          <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 md:py-12">
             <div className="text-center max-w-3xl mx-auto">         
 
               {/* Contact highlights - horizontal row */}
@@ -309,8 +313,8 @@ const ContactPage = () => {
                     scrollWheelZoom={false}
                     dragging={true}
                     zoomControl={true}
-                    doubleClickZoom={false}
-                    touchZoom={false}
+                    doubleClickZoom={true}
+                    touchZoom={true}
                     attributionControl={false}
                     style={{ height: '100%', width: '100%', position: 'relative', zIndex: 0 }}
                   >

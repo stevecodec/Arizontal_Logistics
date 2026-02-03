@@ -10,8 +10,12 @@ import { CompanyLogos } from '@/views/home/components/CompanyLogos';
 import { WhyChooseUs } from '@/views/home/components/WhyChooseUs';
 import { CareersTeaser } from '@/views/home/components/CareersTeaser';
 import { Footer } from '@/views/shared/Footer';
+import { useSEO } from '@/hooks';
+import { SEO_CONFIG } from '@/constants/seo';
 
 const HomePage = () => {
+  useSEO(SEO_CONFIG.home);
+
   return (
     <div className="min-h-screen">
       <TopBar />

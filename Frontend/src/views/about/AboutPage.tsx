@@ -4,6 +4,8 @@ import { TopBar } from '@/views/shared/TopBar';
 import { Header } from '@/views/shared/Header';
 import { Footer } from '@/views/shared/Footer';
 import { getImageUrl } from '@/data/services/imageService';
+import { useSEO } from '@/hooks';
+import { SEO_CONFIG } from '@/constants/seo';
 import {
   HeroSection,
   CompanyProfile,
@@ -14,6 +16,8 @@ import {
 } from './components';
 
 const AboutPage = () => {
+  useSEO(SEO_CONFIG.about);
+
   return (
     <div className="min-h-screen flex flex-col">
       <TopBar />

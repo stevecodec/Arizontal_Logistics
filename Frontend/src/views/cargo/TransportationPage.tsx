@@ -3,6 +3,8 @@
 import { TopBar } from '@/views/shared/TopBar';
 import { Header } from '@/views/shared/Header';
 import { Footer } from '@/views/shared/Footer';
+import { useSEO } from '@/hooks';
+import { SEO_CONFIG } from '@/constants/seo';
 import {
   HeroSection,
   PartnershipOverview,
@@ -13,6 +15,8 @@ import {
 } from './components';
 
 const TransportationPage = () => {
+  useSEO(SEO_CONFIG.transportation);
+
   return (
     <div className="min-h-screen bg-white flex flex-col">
       <TopBar />

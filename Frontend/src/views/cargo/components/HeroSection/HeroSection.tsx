@@ -4,7 +4,7 @@ import { getImageUrl } from '@/data/services/imageService';
 
 export const HeroSection = () => {
   return (
-    <section className="relative bg-slate-900 text-white min-h-[500px] sm:min-h-[600px] flex items-center">
+    <section className="relative bg-slate-900 text-white min-h-[500px] sm:min-h-[600px] flex items-center pt-20 sm:pt-24 md:pt-20">
       <div className="absolute inset-0">
         <img
           src={getImageUrl('truck1')}
@@ -14,7 +14,7 @@ export const HeroSection = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-[#1e3a8a]/90 via-transparent via-40% to-transparent"></div>
       </div>
       
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-20 sm:py-24">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-12 sm:py-16">
         <div className="max-w-2xl">
           {/* Yellow accent line */}
           <div className="w-12 sm:w-16 h-1 bg-[#fbbf24] mb-4 sm:mb-6"></div>

@@ -42,28 +42,28 @@ export const HeroSection = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/60"></div>
 
       {/* Hero Content */}
-      <div className="relative z-10 h-full flex items-center pt-16 pb-36 sm:pb-24">
-        <div className="max-w-7xl mx-auto w-full pl-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))] sm:pl-6 sm:pr-6 lg:pl-8 lg:pr-8">
+      <div className="relative z-10 h-full flex items-center pt-24 sm:pt-28 md:pt-24 lg:pt-16 pb-44 sm:pb-32 md:pb-24 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto w-full">
           {/* Content Card */}
           <div 
-            className={`bg-gradient-to-r from-[#d58630] to-theme-primary backdrop-blur-sm p-6 sm:p-8 lg:p-12 max-w-2xl shadow-2xl transition-all duration-1000 ease-out delay-300 ${
+            className={`bg-gradient-to-r from-[#d58630] to-theme-primary backdrop-blur-sm p-4 sm:p-6 md:p-8 lg:p-12 w-full sm:max-w-xl md:max-w-2xl shadow-2xl transition-all duration-1000 ease-out delay-300 ${
               isVisible 
                 ? 'opacity-100 translate-x-0' 
                 : 'opacity-0 -translate-x-20'
             }`}
           >
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 sm:mb-6 leading-tight">
-              From Coast to Coast<sup className="text-base sm:text-xl">®</sup>
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-3 sm:mb-4 md:mb-6 leading-tight">
+              From Coast to Coast<sup className="text-sm sm:text-base md:text-xl">®</sup>
             </h2>
 
-            <p className="text-sm sm:text-base lg:text-lg text-white/95 mb-6 sm:mb-8 leading-relaxed">
+            <p className="text-xs sm:text-sm md:text-base lg:text-lg text-white/95 mb-4 sm:mb-6 md:mb-8 leading-relaxed">
               Delivering exceptional logistics services and tailored freight solutions.
             </p>
 
             {/* CTA Button */}
             <Link 
               to="/contact"
-              className="inline-block px-6 sm:px-8 py-2.5 sm:py-3 bg-white text-[#d58630] text-sm sm:text-base font-bold border-2 border-transparent hover:border-theme-primary hover:bg-slate-100 transition-all whitespace-nowrap cursor-pointer shadow-xl"
+              className="inline-block px-4 sm:px-6 md:px-8 py-2 sm:py-2.5 md:py-3 bg-white text-[#d58630] text-xs sm:text-sm md:text-base font-bold border-2 border-transparent hover:border-theme-primary hover:bg-slate-100 transition-all whitespace-nowrap cursor-pointer shadow-xl"
             >
               Get Instant Quote
             </Link>

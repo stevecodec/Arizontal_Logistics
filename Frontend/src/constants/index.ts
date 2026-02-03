@@ -1,12 +1,12 @@
 // Application Constants
 
 export const APP_NAME = 'Arizontal';
-export const COMPANY_NAME = 'Arizontal Logistics';
+export const COMPANY_NAME = 'Arizontal';
 
 // Contact Information
 export const CONTACT_INFO = {
   phone: '(919) 555-0123',
-  email: 'info@arizontallogistics.com',
+  email: 'info@arizontal.com',
   address: '4037 E Independence Blvd, Suite 402, Charlotte, NC 28205',
 } as const;
 

@@ -12,6 +12,8 @@ import { getImageUrl } from '@/data/services/imageService';
 import { useToast } from '@/contexts/ToastContext';
 import { ValidationErrorList } from '@/components/ValidationErrorList';
 import api from '@/services/api';
+import { useSEO } from '@/hooks';
+import { SEO_CONFIG } from '@/constants/seo';
 
 
 const US_STATES = [
@@ -69,6 +71,7 @@ const US_STATES = [
 ];
 
 const CareersPage = () => {
+  useSEO(SEO_CONFIG.careers);
   const [formData, setFormData] = useState({
     fullName: '',
     phone: '',
@@ -219,8 +222,8 @@ const CareersPage = () => {
       <TopBar />
       <Header />
 
-      <main className="flex-1 pt-16">
-        <section className="relative overflow-hidden bg-slate-900 text-white">
+      <main className="flex-1">
+        <section className="relative overflow-hidden bg-slate-900 text-white pt-20 sm:pt-24 md:pt-20">
           <div className="absolute inset-0">
             <img
               src={getImageUrl('overlay1')}
@@ -229,7 +232,7 @@ const CareersPage = () => {
             />
             <div className="absolute inset-0 bg-gradient-to-b from-slate-900/70 via-slate-900/60 to-slate-900/85"></div>
           </div>
-          <div className="relative max-w-6xl mx-auto px-6 lg:px-8 py-32 lg:py-40"></div>
+          <div className="relative max-w-6xl mx-auto px-6 lg:px-8 py-24 sm:py-28 lg:py-32"></div>
         </section>
 
         <section id="application" className="relative z-20 -mt-36 -mb-16 bg-transparent">

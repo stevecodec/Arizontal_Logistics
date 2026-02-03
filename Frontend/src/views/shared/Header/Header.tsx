@@ -176,24 +176,26 @@ export const Header = () => {
                   </a>
                 )
               ))}
-              
-              {/* Make an Enquiry Button - Inline */}
-              <Link
-                to="/contact"
-                onClick={handleNavClick}
-                className={`mt-4 px-6 py-3 bg-gradient-to-r from-theme-primary to-theme-dark text-white text-base font-semibold rounded-lg hover:from-theme-dark hover:to-theme-darker shadow-lg text-center transition-all ${
-                  isMenuOpen 
-                    ? 'opacity-100 translate-x-0 scale-100' 
-                    : 'opacity-0 translate-x-8 scale-95'
-                }`}
-                style={{
-                  transitionDelay: isMenuOpen ? `${100 + NAVIGATION_ITEMS.length * 50}ms` : '0ms',
-                  transitionDuration: '400ms'
-                }}
-              >
-                Make an Enquiry
-              </Link>
             </nav>
+          </div>
+
+          {/* Menu Footer with Get Quote Button */}
+          <div className="border-t border-slate-200 p-4">
+            <Link
+              to="/contact"
+              onClick={handleNavClick}
+              className={`block w-full px-6 py-3 bg-gradient-to-r from-theme-primary to-theme-dark text-white text-base font-semibold rounded-lg hover:from-theme-dark hover:to-theme-darker shadow-lg text-center transition-all ${
+                isMenuOpen 
+                  ? 'opacity-100 translate-y-0' 
+                  : 'opacity-0 translate-y-4'
+              }`}
+              style={{
+                transitionDelay: isMenuOpen ? `${100 + NAVIGATION_ITEMS.length * 50}ms` : '0ms',
+                transitionDuration: '400ms'
+              }}
+            >
+              Get Instant Quote
+            </Link>
           </div>
         </div>
       </div>
