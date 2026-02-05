@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import PhoneInput from 'react-phone-number-input';
+import DOMPurify from 'dompurify';
 import 'react-phone-number-input/style.css';
 
 type ChatRole = 'carrier' | 'shipper';
@@ -179,9 +180,13 @@ export const LiveChatWidget = () => {
                             ? 'bg-[#d58630] text-white'
                             : 'bg-slate-100 text-slate-700'
                         }`}
-                      >
-                        {message.text}
-                      </div>
+                        dangerouslySetInnerHTML={{ 
+                          __html: DOMPurify.sanitize(message.text, { 
+                            ALLOWED_TAGS: [], 
+                            ALLOWED_ATTR: [] 
+                          }) 
+                        }}
+                      />
                     </div>
                   ))}
                 </div>

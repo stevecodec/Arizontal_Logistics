@@ -1,6 +1,6 @@
 // Quote Form ViewModel
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { QuoteFormData } from '@/models/types';
 import { EQUIPMENT_TYPES } from '@/constants/home';
 import api, { ApiResponse } from '@/services/api';
@@ -19,6 +19,17 @@ export const useQuoteViewModel = (showToast: (message: string, type: 'success' |
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [validationErrors, setValidationErrors] = useState<string[]>([]);
+  
+  // Track mounted state to prevent state updates after unmount
+  const isMountedRef = useRef(true);
+
+  useEffect(() => {
+    isMountedRef.current = true;
+    
+    return () => {
+      isMountedRef.current = false;
+    };
+  }, []);
 
   const updateFormField = <K extends keyof QuoteFormData>(
     field: K,
@@ -56,6 +67,8 @@ export const useQuoteViewModel = (showToast: (message: string, type: 'success' |
         weight: formData.weight,
       });
 
+      if (!isMountedRef.current) return;
+
       if (response.success) {
         showToast('Quote request submitted successfully! We will contact you soon.', 'success');
         setValidationErrors([]);
@@ -67,7 +80,7 @@ export const useQuoteViewModel = (showToast: (message: string, type: 'success' |
           weight: '',
         });
       } else {
-        // Display validation errors professionally
+        // Display validation errors 
         if (response.errorMessages && response.errorMessages.length > 0) {
           setValidationErrors(response.errorMessages);
           showToast(response.message || 'Please correct the errors below', 'error');
@@ -76,12 +89,16 @@ export const useQuoteViewModel = (showToast: (message: string, type: 'success' |
         }
       }
     } catch (error) {
+      if (!isMountedRef.current) return;
+      
       showToast('Network error. Please check your connection and try again.', 'error');
       if (process.env.NODE_ENV === 'development') {
         console.error('Error submitting quote:', error);
       }
     } finally {
-      setIsSubmitting(false);
+      if (isMountedRef.current) {
+        setIsSubmitting(false);
+      }
     }
   };
 

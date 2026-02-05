@@ -25,10 +25,11 @@ class PartnerRegistrationController extends Controller
      */
     public function store(StorePartnerRegistrationRequest $request): JsonResponse
     {
+        $uploadedFiles = [];
+        
         try {
-            DB::beginTransaction();
-
-            // Handle file uploads securely
+            // Handle file uploads BEFORE transaction
+            // This prevents orphaned files if transaction fails
             $proofOfIdentityPath = null;
             $cmrInsurancePath = null;
             $operatorsLicencePath = null;
@@ -38,6 +39,7 @@ class PartnerRegistrationController extends Controller
                     $request->file('proofOfIdentity'),
                     'partner-documents/proof-of-identity'
                 );
+                $uploadedFiles[] = $proofOfIdentityPath;
             }
 
             if ($request->hasFile('cmrInsurance')) {
@@ -45,6 +47,7 @@ class PartnerRegistrationController extends Controller
                     $request->file('cmrInsurance'),
                     'partner-documents/cmr-insurance'
                 );
+                $uploadedFiles[] = $cmrInsurancePath;
             }
 
             if ($request->hasFile('operatorsLicence')) {
@@ -52,7 +55,11 @@ class PartnerRegistrationController extends Controller
                     $request->file('operatorsLicence'),
                     'partner-documents/operators-licence'
                 );
+                $uploadedFiles[] = $operatorsLicencePath;
             }
+
+            // Now start transaction for database operations
+            DB::beginTransaction();
 
             $registration = PartnerRegistration::create([
                 'company_name' => $request->input('company_name'),
@@ -83,7 +90,7 @@ class PartnerRegistrationController extends Controller
 
             DB::commit();
 
-            // Send email notifications (queued for performance)
+            // Send email notifications after successful transaction (queued for performance)
             $adminEmail = config('mail.admin_email');
             if ($adminEmail) {
                 Mail::to($adminEmail)->queue(new PartnerRegistrationReceived($registration));
@@ -91,7 +98,11 @@ class PartnerRegistrationController extends Controller
 
             Mail::to($registration->email)->queue(new PartnerConfirmation($registration));
 
-            Log::info('Partner registration submitted', ['registration_id' => $registration->id]);
+            Log::info('Partner registration submitted', [
+                'registration_id' => $registration->id,
+                'company_name' => $registration->company_name,
+                'email' => $registration->email
+            ]);
 
             return response()->json([
                 'success' => true,
@@ -101,9 +112,18 @@ class PartnerRegistrationController extends Controller
         } catch (\Exception $e) {
             DB::rollBack();
 
+            // Clean up uploaded files on failure
+            foreach ($uploadedFiles as $filePath) {
+                $this->fileUploadService->deleteFile($filePath);
+            }
+
+            // Sanitized logging - no full request data or trace
             Log::error('Partner registration failed', [
                 'error' => $e->getMessage(),
-                'trace' => $e->getTraceAsString()
+                'email' => $request->input('email'),
+                'company_name' => $request->input('company_name'),
+                'file' => $e->getFile(),
+                'line' => $e->getLine()
             ]);
 
             return response()->json([

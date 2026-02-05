@@ -35,9 +35,18 @@ class FileUploadService
      */
     public function uploadDocument(UploadedFile $file, string $directory, ?string $customName = null): string
     {
-        // Validate file type
-        if (!in_array($file->getMimeType(), self::ALLOWED_MIME_TYPES)) {
+        // Validate file type using actual file content (magic bytes)
+        $finfo = finfo_open(FILEINFO_MIME_TYPE);
+        $actualMimeType = finfo_file($finfo, $file->getRealPath());
+        finfo_close($finfo);
+
+        if (!in_array($actualMimeType, self::ALLOWED_MIME_TYPES)) {
             throw new \Exception('Invalid file type. Only PDF and image files are allowed.');
+        }
+
+        // Additional check: ensure client-reported MIME matches actual content
+        if (!in_array($file->getMimeType(), self::ALLOWED_MIME_TYPES)) {
+            throw new \Exception('File type mismatch detected. Upload rejected for security.');
         }
 
         // Validate file size
@@ -45,10 +54,17 @@ class FileUploadService
             throw new \Exception('File size exceeds maximum allowed size of ' . self::MAX_FILE_SIZE . 'KB.');
         }
 
-        // Generate unique filename
+        // Validate extension against whitelist
+        $allowedExtensions = ['pdf', 'jpg', 'jpeg', 'png', 'webp'];
+        $extension = strtolower($file->getClientOriginalExtension());
+        if (!in_array($extension, $allowedExtensions)) {
+            throw new \Exception('Invalid file extension.');
+        }
+
+        // Generate unique filename with validated extension only
         $filename = $customName 
-            ? $customName . '.' . $file->getClientOriginalExtension()
-            : Str::uuid() . '_' . time() . '.' . $file->getClientOriginalExtension();
+            ? $customName . '.' . $extension
+            : Str::uuid() . '_' . time() . '.' . $extension;
 
         // Store file securely
         $path = $file->storeAs(

@@ -29,8 +29,10 @@ return [
     ]),
 
     'allowed_origins_patterns' => [
-        '/^https?:\/\/(.*\.)?vercel\.app$/',
-        '/^https?:\/\/(.*\.)?netlify\.app$/',
+        // Specific whitelisted domains only - no wildcards
+        // Add your specific deployment URLs here
+        // Example: '/^https:\/\/your-app\.vercel\.app$/',
+        // Example: '/^https:\/\/your-app\.netlify\.app$/',
     ],
 
     'allowed_headers' => ['Content-Type', 'X-Requested-With', 'Authorization', 'Accept', 'Origin', 'X-CSRF-Token'],

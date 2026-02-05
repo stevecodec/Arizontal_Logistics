@@ -30,6 +30,9 @@ export const CompanyLogos = () => {
     const gap = 32; // gap-8 = 32px
     const logoWithGap = logoWidth + gap;
     const originalWidth = COMPANY_LOGOS.length * logoWithGap;
+    
+    // Track all timeouts for cleanup
+    const timeouts: NodeJS.Timeout[] = [];
 
     // Set initial scroll position
     logoSlider.scrollLeft = 0;
@@ -40,10 +43,11 @@ export const CompanyLogos = () => {
       isScrollingRef.current = true;
       logoSlider.scrollBy({ left: 1, behavior: 'auto' }); // Smooth continuous scroll
       
-      // Reset flag
-      setTimeout(() => {
+      // Reset flag with tracked timeout
+      const timeout = setTimeout(() => {
         isScrollingRef.current = false;
       }, 16);
+      timeouts.push(timeout);
     };
 
     // Handle seamless loop
@@ -56,11 +60,13 @@ export const CompanyLogos = () => {
       if (scrollLeft >= originalWidth - 10) {
         logoSlider.style.scrollBehavior = 'auto';
         logoSlider.scrollLeft = scrollLeft - originalWidth;
-        setTimeout(() => {
+        
+        const timeout = setTimeout(() => {
           if (logoSlider) {
             logoSlider.style.scrollBehavior = 'auto';
           }
         }, 0);
+        timeouts.push(timeout);
       }
     };
 
@@ -88,9 +94,16 @@ export const CompanyLogos = () => {
     logoSlider.addEventListener('mouseleave', handleMouseLeave);
 
     return () => {
+      // Clear all tracked timeouts
+      timeouts.forEach((timeout) => clearTimeout(timeout));
+      
+      // Clear interval
       if (scrollIntervalRef.current) {
         clearInterval(scrollIntervalRef.current);
+        scrollIntervalRef.current = null;
       }
+      
+      // Remove event listeners
       logoSlider.removeEventListener('scroll', handleScroll);
       logoSlider.removeEventListener('mouseenter', handleMouseEnter);
       logoSlider.removeEventListener('mouseleave', handleMouseLeave);

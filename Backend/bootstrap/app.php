@@ -17,26 +17,36 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        // Configure trusted proxies for proper IP detection
+        $middleware->trustProxies(at: '*', headers: Request::HEADER_X_FORWARDED_FOR | Request::HEADER_X_FORWARDED_HOST | Request::HEADER_X_FORWARDED_PORT | Request::HEADER_X_FORWARDED_PROTO);
+
         // Enable CORS for API routes
         $middleware->api(prepend: [
             \Illuminate\Http\Middleware\HandleCors::class,
         ]);
 
-        // Configure rate limiting
+        // Add security headers middleware globally
+        $middleware->append(\App\Http\Middleware\SecurityHeaders::class);
+
+        // Configure rate limiting with better identifier
         RateLimiter::for('api', function (Request $request) {
-            return Limit::perMinute(60)->by($request->ip());
+            $identifier = $request->ip() . '|' . $request->userAgent();
+            return Limit::perMinute(60)->by($identifier);
         });
 
         RateLimiter::for('contact', function (Request $request) {
-            return Limit::perMinute(5)->by($request->ip());
+            $identifier = $request->ip() . '|' . $request->userAgent();
+            return Limit::perMinute(5)->by($identifier);
         });
 
         RateLimiter::for('registration', function (Request $request) {
-            return Limit::perMinute(3)->by($request->ip());
+            $identifier = $request->ip() . '|' . $request->userAgent();
+            return Limit::perMinute(3)->by($identifier);
         });
 
         RateLimiter::for('quotes', function (Request $request) {
-            return Limit::perMinute(10)->by($request->ip());
+            $identifier = $request->ip() . '|' . $request->userAgent();
+            return Limit::perMinute(10)->by($identifier);
         });
     })
     ->withExceptions(function (Exceptions $exceptions): void {

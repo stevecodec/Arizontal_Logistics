@@ -3,17 +3,15 @@ import { useRoutes } from "react-router-dom";
 import { useEffect } from "react";
 import routes from "@/router/config";
 
-let navigateResolver: (navigate: ReturnType<typeof useNavigate>) => void;
-
-declare global {
-  interface Window {
-    REACT_APP_NAVIGATE: ReturnType<typeof useNavigate>;
-  }
-}
+// Secure navigation resolver using closure
+let navigateResolver: ((navigate: ReturnType<typeof useNavigate>) => void) | null = null;
 
 export const navigatePromise = new Promise<NavigateFunction>((resolve) => {
   navigateResolver = resolve;
 });
+
+// Export a secure navigation function that can be used programmatically
+export let programmaticNavigate: NavigateFunction | null = null;
 
 export function AppRoutes() {
   const element = useRoutes(routes);
@@ -21,16 +19,17 @@ export function AppRoutes() {
   const location = useLocation();
   
   useEffect(() => {
-    window.REACT_APP_NAVIGATE = navigate;
+    // Store navigate function in module scope 
+    programmaticNavigate = navigate;
+    
     if (navigateResolver) {
-      navigateResolver(window.REACT_APP_NAVIGATE);
+      navigateResolver(navigate);
+      navigateResolver = null; 
     }
     
     return () => {
-      // Cleanup: remove navigate from window on unmount
-      if (window.REACT_APP_NAVIGATE) {
-        delete window.REACT_APP_NAVIGATE;
-      }
+      // Cleanup
+      programmaticNavigate = null;
     };
   }, [navigate]);
 

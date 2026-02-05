@@ -11,10 +11,11 @@ const requirements = [
 ];
 
 const openLiveChat = () => {
-  // Find and click the live chat button
-  const chatButton = document.querySelector('[aria-label="Open chat"]') as HTMLButtonElement;
-  if (chatButton) {
-    chatButton.click();
+  // Open Tawk.to chat widget
+  if (typeof window.Tawk_API !== 'undefined' && window.Tawk_API) {
+    window.Tawk_API.maximize();
+  } else {
+    console.warn('Tawk.to chat is not loaded yet');
   }
 };
 

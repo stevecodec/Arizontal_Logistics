@@ -9,6 +9,7 @@ use App\Mail\ContactConfirmation;
 use App\Mail\ContactFormSubmitted;
 use App\Models\Contact;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
@@ -20,6 +21,8 @@ class ContactController extends Controller
     public function store(StoreContactRequest $request): JsonResponse
     {
         try {
+            DB::beginTransaction();
+
             $contact = Contact::create([
                 'full_name' => $request->input('full_name'),
                 'company' => $request->input('company'),
@@ -29,7 +32,9 @@ class ContactController extends Controller
                 'message' => $request->input('message'),
             ]);
 
-            // Send email notification to admin
+            DB::commit();
+
+            // Send email notifications after successful transaction
             $adminEmail = config('mail.admin_email');
             if ($adminEmail) {
                 Mail::to($adminEmail)->queue(new ContactFormSubmitted($contact));
@@ -38,7 +43,10 @@ class ContactController extends Controller
             // Send confirmation email to user
             Mail::to($contact->email)->queue(new ContactConfirmation($contact));
 
-            Log::info('Contact form submitted', ['contact_id' => $contact->id]);
+            Log::info('Contact form submitted', [
+                'contact_id' => $contact->id,
+                'email' => $contact->email
+            ]);
 
             return response()->json([
                 'success' => true,
@@ -46,9 +54,14 @@ class ContactController extends Controller
                 'data' => new ContactResource($contact),
             ], 201);
         } catch (\Exception $e) {
+            DB::rollBack();
+
+            // Sanitized logging - no full request data
             Log::error('Contact form submission failed', [
                 'error' => $e->getMessage(),
-                'request' => $request->all()
+                'email' => $request->input('email'),
+                'file' => $e->getFile(),
+                'line' => $e->getLine()
             ]);
 
             return response()->json([

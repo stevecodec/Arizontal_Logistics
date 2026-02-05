@@ -2,8 +2,9 @@
 // Handles all HTTP requests to the backend API
 
 import { formatValidationErrors, getValidationErrorSummary } from '@/utils/errorHandling';
+import { ENV } from '@/config/environment';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000/api';
+const API_BASE_URL = ENV.API_BASE_URL;
 
 interface RequestOptions {
   method?: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
@@ -48,15 +49,28 @@ class ApiService {
 
     try {
       const response = await fetch(`${this.baseUrl}${endpoint}`, config);
-      const data = await response.json();
+      
+      // Validate content-type before parsing JSON
+      const contentType = response.headers.get('content-type');
+      if (!contentType || !contentType.includes('application/json')) {
+        throw new Error('Invalid response format. Expected JSON.');
+      }
+
+      // JSON with error handling
+      let data;
+      try {
+        data = await response.json();
+      } catch (jsonError) {
+        throw new Error('Failed to parse server response.');
+      }
 
       if (!response.ok) {
-        const errors = data.errors;
+        const errors = data?.errors;
         const errorMessages = formatValidationErrors(errors);
         
         return {
           success: false,
-          message: data.message || (errorMessages.length > 0 ? 'Please fix the following errors:' : 'An error occurred'),
+          message: data?.message || (errorMessages.length > 0 ? 'Please fix the following errors:' : 'An error occurred'),
           errors,
           errorMessages,
         };
@@ -107,15 +121,27 @@ class ApiService {
         },
       });
 
-      const responseData = await response.json();
+      // Validate content-type before parsing JSON
+      const contentType = response.headers.get('content-type');
+      if (!contentType || !contentType.includes('application/json')) {
+        throw new Error('Invalid response format. Expected JSON.');
+      }
+
+      // Parse JSON with error handling
+      let responseData;
+      try {
+        responseData = await response.json();
+      } catch (jsonError) {
+        throw new Error('Failed to parse server response.');
+      }
 
       if (!response.ok) {
-        const errors = responseData.errors;
+        const errors = responseData?.errors;
         const errorMessages = formatValidationErrors(errors);
         
         return {
           success: false,
-          message: responseData.message || (errorMessages.length > 0 ? 'Please fix the following errors:' : 'An error occurred'),
+          message: responseData?.message || (errorMessages.length > 0 ? 'Please fix the following errors:' : 'An error occurred'),
           errors,
           errorMessages,
         };

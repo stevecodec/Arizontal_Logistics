@@ -7,6 +7,7 @@ use App\Http\Resources\LoadResource;
 use App\Models\Load;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class LoadController extends Controller
 {
@@ -25,6 +26,12 @@ class LoadController extends Controller
                 ],
             ]);
         } catch (\Exception $e) {
+            Log::error('Failed to fetch load count', [
+                'error' => $e->getMessage(),
+                'file' => $e->getFile(),
+                'line' => $e->getLine()
+            ]);
+
             return response()->json([
                 'success' => false,
                 'message' => 'Unable to fetch load count.',
@@ -40,13 +47,19 @@ class LoadController extends Controller
         try {
             $query = Load::available()->upcoming();
 
-            // Optional filters
+            // Optional filters - sanitize input
             if ($request->filled('origin')) {
-                $query->where('origin_city', 'like', '%' . $request->input('origin') . '%');
+                $origin = $request->input('origin');
+                // Escape LIKE special characters
+                $origin = str_replace(['%', '_'], ['\%', '\_'], $origin);
+                $query->where('origin_city', 'like', '%' . $origin . '%');
             }
 
             if ($request->filled('destination')) {
-                $query->where('destination_city', 'like', '%' . $request->input('destination') . '%');
+                $destination = $request->input('destination');
+                // Escape LIKE special characters
+                $destination = str_replace(['%', '_'], ['\%', '\_'], $destination);
+                $query->where('destination_city', 'like', '%' . $destination . '%');
             }
 
             if ($request->filled('equipment_type')) {
@@ -61,6 +74,17 @@ class LoadController extends Controller
                 'data' => LoadResource::collection($loads)->response()->getData(),
             ]);
         } catch (\Exception $e) {
+            Log::error('Failed to fetch loads', [
+                'error' => $e->getMessage(),
+                'filters' => [
+                    'origin' => $request->input('origin'),
+                    'destination' => $request->input('destination'),
+                    'equipment_type' => $request->input('equipment_type')
+                ],
+                'file' => $e->getFile(),
+                'line' => $e->getLine()
+            ]);
+
             return response()->json([
                 'success' => false,
                 'message' => 'Unable to fetch loads.',
